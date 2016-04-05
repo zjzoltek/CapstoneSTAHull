@@ -7,6 +7,7 @@ This repository is for the STA Development Team in Mrs. Hull's room for working 
 This will not tell you how to use all of github, just what you need to know. When you are finished for the day, you will do this.
 
 * Open up github (the program not shell)
+[Read more words!](Pics/gitshellbluetext.png)
 * Make sure you have the right repository selected (CapstoneSTAHull)
 * Make sure you have the right branch selected (Should be yourname-work where yourname is your name)
 * Click the cog-wheel in the top right and click "Open in Git-Shell"
