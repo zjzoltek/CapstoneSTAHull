@@ -4,7 +4,7 @@ This repository is for the STA Development Team in Mrs. Hull's room for working 
 
 # How to use GitHub
 
-This will not tell you how to use all of github, just what you need to know. When you are finished for the day, you will do this.
+This will not tell you how to use all of github, just what you need to know. When you are done with a major contribution, you will do this.
 
 * Open up github (the program not shell)[Example](Pics/gitshellbluetext.png)
 * Make sure you have the right repository selected (CapstoneSTAHull)[Example](Pics/rightRepoSelected.png)
