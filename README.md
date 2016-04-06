@@ -13,7 +13,7 @@ This will not tell you how to use all of github, just what you need to know. Whe
 * Once the shell opens you will see your branch name in a fancy color (if it is not your branch name you need to exit and make sure you are on your own branch in the github program)
 * If the branch is blue, then everything is good![Example](Pics/gitshellbluetext.png)
 * If it is green then you need to do the command "git push". [Example](Pics/greenshell.png)
-* If your name has some red numbers after it, then you need to do "git add --all".[Example](Pics/gitshellRedText.png)
+* If your name has some red numbers after it, then you need to do <git add --all>.[Example](Pics/gitshellRedText.png)
 * If your name has some green numbers after it, you need to commit, so use the command "git commit -a".[Example](Pics/gitshellgreentext.png)
 * Once you commit, you'll see a file popup in notepad. What you need to do here is write what changes you made and why. Once you write that, go ahead and save and close the window, and then do "git push". 
 * IF YOU HAVE HAD YOUR CONSOLE WINDOW OPEN FOR A WHILE, THE FIRST THING YOU NEED TO DO IS USE "git status" SO YOUR COLORS UPDATE
