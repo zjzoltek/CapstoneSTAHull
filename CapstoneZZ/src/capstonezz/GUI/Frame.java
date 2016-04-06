@@ -1,8 +1,6 @@
 package capstonezz.GUI;
 
-import java.awt.event.KeyListener;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 /**
  * @author Zachary Zoltek
@@ -10,13 +8,13 @@ import javax.swing.JPanel;
  * @since Apr 6, 2016
  */
 
-public abstract class BasicPage extends JPanel implements KeyListener {
-    private int width;
-    private int height;
+public class Frame {
+    public final int width;
+    public final int height;
     
     public JFrame frame;
     
-    public BasicPage(){
+    public Frame(){
         frame = new JFrame();
         frame.setResizable(false);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -26,11 +24,22 @@ public abstract class BasicPage extends JPanel implements KeyListener {
         height = frame.getHeight();
     }
     
-    public void getWidth(int width){
-        this.width = width;
+    public Frame(String title){
+        frame = new JFrame(title);
+        frame.setResizable(false);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        width = frame.getWidth();
+        height = frame.getHeight();
     }
     
-    public void getHeight(int height){
-        this.height = height;
+    public void show(){
+        frame.setVisible(true);
     }
+    
+    public void hide(){
+        frame.setVisible(false);
+    }
+    
 }
