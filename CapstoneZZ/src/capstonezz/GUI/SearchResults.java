@@ -1,7 +1,13 @@
 package capstonezz.GUI;
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Toolkit;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
@@ -14,6 +20,10 @@ import javax.swing.JSeparator;
 public class SearchResults extends JPanel {
     private GridBagConstraints c;
     
+    private JButton backButton;
+    private JButton forwardButton;
+    private JSeparator seppy;
+    
     public SearchResults(){
         super(new GridBagLayout());
         init();
@@ -22,26 +32,43 @@ public class SearchResults extends JPanel {
     private void init(){
         c = new GridBagConstraints();
         
-        JSeparator seppy = new JSeparator();
-
+        ImageIcon back = new ImageIcon(getClass().getResource("/BackButton.png"));
+        ImageIcon forward = new ImageIcon(getClass().getResource("/ForwardButton.png"));
         
-        c.fill = GridBagConstraints.HORIZONTAL;
+        backButton = new JButton((Icon)back);
+        forwardButton = new JButton((Icon)forward);
+        
+        c.gridx = 0;
+        c.gridy = 0;
+        
+        add(backButton, c);
+        
+        /*c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 1;
         c.gridheight = 3;
         c.gridwidth = GridBagConstraints.REMAINDER;
         c.gridx = 0;
         c.gridy = 1;
         
-        add(seppy, c);
+        add(seppy, c);*/
     }
     
     
     public static void main(String[] args){
         SearchResults page = new SearchResults();
-        Frame frame = new Frame();
+        JFrame frame = new JFrame();
         
-        frame.frame.add(page);
-        frame.frame.setVisible(true);
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        int width = (int)tk.getScreenSize().getWidth();
+        int height = (int)tk.getScreenSize().getHeight();
+        
+        frame.setSize(new Dimension(width, height));
+        
+        frame.add(page);
+        
+        frame.setResizable(false);
+        frame.setVisible(true);
+        
     }
 
 }
