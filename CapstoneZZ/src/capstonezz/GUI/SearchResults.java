@@ -1,15 +1,14 @@
 package capstonezz.GUI;
 
+import capstonezz.Util;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Toolkit;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
+import java.awt.Color;
+import java.awt.Graphics;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JSeparator;
 
 /**
  * @author Zachary Zoltek
@@ -18,56 +17,100 @@ import javax.swing.JSeparator;
  */
 
 public class SearchResults extends JPanel {
-    private GridBagConstraints c;
+    private NavigationButton backButton;
+    private NavigationButton forwardButton;
+    private JButton homeButton;
     
-    private JButton backButton;
-    private JButton forwardButton;
-    private JSeparator seppy;
+    private final int screenWidth;
+    private final int screenHeight;
     
     public SearchResults(){
         super(new GridBagLayout());
+        
+        screenWidth = Util.getScreenDimension().width;
+        screenHeight = Util.getScreenDimension().height;
+        
         init();
     }
     
     private void init(){
-        c = new GridBagConstraints();
+        setBackground(Color.GRAY.brighter());
+        GridBagConstraints c = new GridBagConstraints();
         
-        ImageIcon back = new ImageIcon(getClass().getResource("/BackButton.png"));
-        ImageIcon forward = new ImageIcon(getClass().getResource("/ForwardButton.png"));
-        
-        backButton = new JButton((Icon)back);
-        forwardButton = new JButton((Icon)forward);
+        backButton = new NavigationButton(NavigationButton.NavigationType.BACK,
+        screenWidth / NavigationButton.NAVWIDTH_DIVISOR - NavigationButton. NAVBUTTON_OFFSET, 
+                screenHeight / NavigationButton.NAVHEIGHT_DIVISOR - NavigationButton.NAVBUTTON_OFFSET);
         
         c.gridx = 0;
         c.gridy = 0;
-        
+        c.weightx = 0;
+        c.weighty = .1;
+        c.anchor = GridBagConstraints.NORTHWEST;
         add(backButton, c);
         
-        /*c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 1;
-        c.gridheight = 3;
-        c.gridwidth = GridBagConstraints.REMAINDER;
-        c.gridx = 0;
-        c.gridy = 1;
+        forwardButton = new NavigationButton(NavigationButton.NavigationType.FORWARD,
+        screenWidth / NavigationButton.NAVWIDTH_DIVISOR - NavigationButton. NAVBUTTON_OFFSET,
+                screenHeight / NavigationButton.NAVHEIGHT_DIVISOR - NavigationButton.NAVBUTTON_OFFSET);
         
-        add(seppy, c);*/
+        c.gridx = 1;
+        c.gridy = 0;
+        c.weightx = 1;
+        c.weighty = 0;
+        c.anchor = GridBagConstraints.NORTHWEST;
+        add(forwardButton, c);
+        
+        homeButton = new JButton("Home"); 
+        
+        homeButton.setFocusPainted(false);
+        homeButton.setBackground(getBackground().darker());
+        
+        homeButton.setPreferredSize(new Dimension(Util.getScreenDimension().width / 12,
+                backButton.getHeight() + 10));
+        
+        c.gridx = 2;
+        c.gridy = 0;
+        c.weightx = 0;
+        c.weighty = 0;
+        c.anchor = GridBagConstraints.NORTH;
+        
+        add(homeButton, c);
+        
+        c = new GridBagConstraints();
+        
+        SearchBox address = new SearchBox("Address", 30);
+        address.setPreferredSize(new Dimension(SearchBox.BOXWIDTH, SearchBox.BOXHEIGHT));
+        c.gridx = 0;
+        c.gridy = 2;
+        c.weightx = 0;
+        c.weighty = .9;
+        c.gridwidth = 5;
+        c.anchor = GridBagConstraints.NORTHWEST;
+        
+        
+        add(address, c);
+        
+        
     }
     
+    @Override
+    protected void paintComponent(Graphics g){
+        super.paintComponent(g);
+        g.fillRect(0, backButton.getHeight(), Util.getScreenDimension().width, 15);
+    }
     
     public static void main(String[] args){
         SearchResults page = new SearchResults();
         JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        Toolkit tk = Toolkit.getDefaultToolkit();
-        int width = (int)tk.getScreenSize().getWidth();
-        int height = (int)tk.getScreenSize().getHeight();
-        
-        frame.setSize(new Dimension(width, height));
-        
+        frame.setSize(Util.getScreenDimension());
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.add(page);
         
-        frame.setResizable(false);
+        //frame.setResizable(false);
         frame.setVisible(true);
+        
+        frame.requestFocus();
         
     }
 
