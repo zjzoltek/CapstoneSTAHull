@@ -27,7 +27,7 @@ public class HomeScreen extends JPanel{
         
         
         // add the components to the screen
-        add(banner, BorderLayout.NORTH);
+        add(banner, BorderLayout.PAGE_START);
         add(search, BorderLayout.CENTER);
         add(notificationBar, BorderLayout.SOUTH);
     } // end of constructor

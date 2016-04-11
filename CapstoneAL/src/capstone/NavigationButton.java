@@ -7,8 +7,8 @@ package capstone;
 
 /**
  *
- * @author acleavitt0612
+ * @author ACLeavitt0612
  */
-public class searchArea {
+public class NavigationButton {
     
 }
