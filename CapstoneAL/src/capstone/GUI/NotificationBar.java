@@ -1,7 +1,7 @@
 /*
  * This class extends JPanel to make a panel containing the notification bar 
  */
-package capstone;
+package capstone.GUI;
 
 /**
  *
