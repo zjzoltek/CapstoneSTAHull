@@ -1,117 +1,82 @@
 package capstonezz.GUI;
 
-import capstonezz.Util;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Color;
-import java.awt.Graphics;
-import javax.swing.JButton;
-import javax.swing.JFrame;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 
 /**
  * @author Zachary Zoltek
  * @version 1.0
- * @since Apr 5, 2016
+ * @since Apr 9, 2016
  */
 
 public class SearchResults extends JPanel {
-    private NavigationButton backButton;
-    private NavigationButton forwardButton;
-    private JButton homeButton;
+    private final int width;
+    private final int height;
+    public static final int RESULTS_PER_PAGE = 5;
+    private final ArrayList<ResultElement> results;
     
-    private final int screenWidth;
-    private final int screenHeight;
-    
-    public SearchResults(){
-        super(new GridBagLayout());
-        
-        screenWidth = Util.getScreenDimension().width;
-        screenHeight = Util.getScreenDimension().height;
-        
-        init();
+    public SearchResults(Color color, int parentWidth, int parentHeight){
+        width = parentWidth;
+        height = parentHeight;
+        results = new ArrayList<>();
+        init(color);
     }
     
-    private void init(){
-        setBackground(Color.GRAY.brighter());
-        GridBagConstraints c = new GridBagConstraints();
-        
-        backButton = new NavigationButton(NavigationButton.NavigationType.BACK,
-        screenWidth / NavigationButton.NAVWIDTH_DIVISOR - NavigationButton. NAVBUTTON_OFFSET, 
-                screenHeight / NavigationButton.NAVHEIGHT_DIVISOR - NavigationButton.NAVBUTTON_OFFSET);
-        
-        c.gridx = 0;
-        c.gridy = 0;
-        c.weightx = 0;
-        c.weighty = .1;
-        c.anchor = GridBagConstraints.NORTHWEST;
-        add(backButton, c);
-        
-        forwardButton = new NavigationButton(NavigationButton.NavigationType.FORWARD,
-        screenWidth / NavigationButton.NAVWIDTH_DIVISOR - NavigationButton. NAVBUTTON_OFFSET,
-                screenHeight / NavigationButton.NAVHEIGHT_DIVISOR - NavigationButton.NAVBUTTON_OFFSET);
-        
-        c.gridx = 1;
-        c.gridy = 0;
-        c.weightx = 1;
-        c.weighty = 0;
-        c.anchor = GridBagConstraints.NORTHWEST;
-        add(forwardButton, c);
-        
-        homeButton = new JButton("Home"); 
-        
-        homeButton.setFocusPainted(false);
-        homeButton.setBackground(getBackground().darker());
-        
-        homeButton.setPreferredSize(new Dimension(Util.getScreenDimension().width / 12,
-                backButton.getHeight() + 10));
-        
-        c.gridx = 2;
-        c.gridy = 0;
-        c.weightx = 0;
-        c.weighty = 0;
-        c.anchor = GridBagConstraints.NORTH;
-        
-        add(homeButton, c);
-        
-        c = new GridBagConstraints();
-        
-        SearchBox address = new SearchBox("Address", 30);
-        address.setPreferredSize(new Dimension(SearchBox.BOXWIDTH, SearchBox.BOXHEIGHT));
-        c.gridx = 0;
-        c.gridy = 2;
-        c.weightx = 0;
-        c.weighty = .9;
-        c.gridwidth = 5;
-        c.anchor = GridBagConstraints.NORTHWEST;
-        
-        
-        add(address, c);
-        
-        
-    }
-    
-    @Override
-    protected void paintComponent(Graphics g){
-        super.paintComponent(g);
-        g.fillRect(0, backButton.getHeight(), Util.getScreenDimension().width, 15);
-    }
-    
-    public static void main(String[] args){
-        SearchResults page = new SearchResults();
-        JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        frame.setSize(Util.getScreenDimension());
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.add(page);
-        
-        //frame.setResizable(false);
-        frame.setVisible(true);
-        
-        frame.requestFocus();
-        
+    private void init(Color color){
+        setBackground(color);
+        setSize(new Dimension(getWidth() / 4, getHeight() / 4));
+        setLayout(new GridBagLayout());
     }
 
+    
+    public void addResults(ResultElement...args){
+        GridBagConstraints c;
+        
+        for(int i = 0; i < args.length; i++){
+            results.add(args[i]);
+            c = new GridBagConstraints();
+            c.gridx = 0;
+            c.gridy = i;
+            c.anchor = GridBagConstraints.NORTHWEST;
+            c.weightx = 1;
+            c.weighty = (float)(1f / args.length);
+            add(args[i], c);
+        }
+    }
+    
+    public void addResults(ArrayList<ResultElement> args){
+        GridBagConstraints c;
+         
+        for(int i = 0; i < args.size(); i++){
+            results.add(args.get(i));
+            c = new GridBagConstraints();
+            c.gridx = 0;
+            c.gridy = i;
+            c.anchor = GridBagConstraints.NORTHWEST;
+            c.weightx = 1;
+            c.weighty = (float)(1f / args.size());
+            add(args.get(i), c);
+        }
+    }
+    
+    public void addResult(ResultElement arg){
+        GridBagConstraints c = new GridBagConstraints();
+         
+        c.gridx = 0;
+        c.gridy = results.size();
+        c.anchor = GridBagConstraints.NORTHWEST;
+        c.weightx = 1;
+        c.weighty = (float)(1f / results.size());
+        results.add(arg);
+        add(arg, c);
+    }
+    
+    public void clearResults(){
+        results.clear();
+    }
+    
 }

@@ -1,6 +1,7 @@
 package capstonezz.GUI;
 
 import capstonezz.Util;
+import java.awt.Cursor;
 import java.awt.image.BufferedImage;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -31,9 +32,10 @@ public class NavigationButton extends JButton {
     
     
     private void init(NavigationType type, int width, int height){
+        setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         setSize(width, height);
+        setFocusPainted(true);
         setContentAreaFilled(false);
-        setFocusPainted(false);
         setBorderPainted(true);
         
         switch(type){
@@ -64,5 +66,13 @@ public class NavigationButton extends JButton {
     public int getTrueHeight(){
         return realHeight;
     }
-
+    
+    public static int getButtonWidth(int width){
+        return width / NAVWIDTH_DIVISOR - NAVBUTTON_OFFSET;
+    }
+    
+    public static int getButtonHeight(int height){
+        return height / NAVHEIGHT_DIVISOR - NAVBUTTON_OFFSET;
+    }
+    
 }
