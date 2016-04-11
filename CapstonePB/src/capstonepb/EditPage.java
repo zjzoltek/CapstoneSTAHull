@@ -4,9 +4,13 @@
  * and open the template in the editor.
  */
 package capstonepb;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JToolBar;
 
 
 
@@ -17,63 +21,57 @@ import javax.swing.JPanel;
  */
 public class EditPage extends JPanel
 {
-    int width;
-    public EditPage(int width)
+    private final int height;
+    private final int width;
+    
+    private final JToolBar toolBar;
+    
+    private final JButton cancelButton = new EditPageButtons(EditPageButtons.ButtonType.CANCEL,
+            Util.getScreenDimension().width, Util.getScreenDimension().height);
+    
+    private final JButton andButton = new EditPageButtons(EditPageButtons.ButtonType.AND,
+            Util.getScreenDimension().width, Util.getScreenDimension().height);
+     
+    private final JButton saveButton = new EditPageButtons(EditPageButtons.ButtonType.SAVE,
+            Util.getScreenDimension().width, Util.getScreenDimension().height);
+    
+    public EditPage(int width, int height)
     {
         this.width = width;
+        this.height = height;
+        
+        toolBar = new JToolBar(JToolBar.HORIZONTAL);
+        
+        init();
     }
     
-    /*@Override
-    public void paintComponent(Graphics g)
-    {
-    super.paintComponent(g);
-    Graphics2D g2d = (Graphics2D) g;
-    g2d.setColor(Color.DARK_GRAY);
-    g2d.fillRect(0,0,width,150);
-    }*/
-    
-   /* public class GridBagLayoutDemo {
-    final static boolean shouldFill = true;
-    final static boolean shouldWeightX = true;
-    final static boolean RIGHT_TO_LEFT = false;
- 
-    public void addComponentsToPane(Container pane) {
-        if (RIGHT_TO_LEFT) {
-            pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-        }}}*/
-    
+    private void init(){
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setBackground(Color.GRAY.brighter());
+        toolBar.setLayout(new FlowLayout());
+        toolBar.setBorderPainted(false);
+        toolBar.add(cancelButton);
+        toolBar.add(andButton);
+        toolBar.add(saveButton);
+        
+        add(toolBar);
+    }
     
     public static void main(String[] args){
-        JFrame frame1 = new JFrame();
-        frame1.setLayout(new GridBagLayout());
-         GridBagConstraints c = new GridBagConstraints();
-    
+        JFrame frame = new JFrame();
+        EditPage page = new EditPage(Util.getScreenDimension().width, Util.getScreenDimension().height);
         
-        Toolkit tk = Toolkit.getDefaultToolkit();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        int width = (int)tk.getScreenSize().getWidth();
-        int height = (int)tk.getScreenSize().getHeight();
+        frame.setSize(Util.getScreenDimension());
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.setContentPane(page);
         
-        frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
         
-        
-        EditPage page = new EditPage(width);
-        frame1.add(page);
+        frame.requestFocus();
         
         
-        frame1.setVisible(true);
-        Buttons newContentPane = new Buttons();
-        newContentPane.setOpaque(true); //content panes must be opaque
-        frame1.setContentPane(newContentPane);
-        frame1.setSize(new Dimension(width, height));
-        //g2d.fillRect(0,0,width, 150);
-        Buttons buttons = new Buttons();
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                buttons.createAndShowGUI(); 
-            }
-        });
         
-   }
+    }
 }
