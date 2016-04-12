@@ -1,7 +1,7 @@
 package capstonezz;
 
+import capstoneal.GUI.HomeScreen;
 import capstonezz.GUI.SearchResultsPage;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,12 +22,14 @@ public class Linker {
     private final Stack<JPanel> forwardStack;
     
     private final SearchResultsPage searchResultsPage;
+    private final HomeScreen homescreen;
     
     public Linker(int width, int height){
         backStack = new Stack<>();
         forwardStack = new Stack<>();
         
         searchResultsPage = new SearchResultsPage(width, height);
+        homescreen = new HomeScreen(width, height);
         
         frame = new JFrame();
         frame.setSize(Util.getScreenDimension());
@@ -44,7 +46,10 @@ public class Linker {
     public Linker(Dimension dimension){
         backStack = new Stack<>();
         forwardStack = new Stack<>();
+        
         searchResultsPage = new SearchResultsPage((int)dimension.getWidth(), (int)dimension.getHeight());
+        homescreen = new HomeScreen((int)dimension.getWidth(), (int)dimension.getHeight());
+        
         frame = new JFrame();
         frame.setSize(dimension);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -56,8 +61,20 @@ public class Linker {
     }
     
     private void init(){
+       frame.add(homescreen);
+       frame.add(searchResultsPage);
+       
+       homescreen.setVisible(false);
+       searchResultsPage.setVisible(false);
+       
        searchResultsPage.getBackButton().addActionListener(new BackButton(searchResultsPage, searchResultsPage.getBackButton()));
        searchResultsPage.getForwardButton().addActionListener(new ForwardButton(searchResultsPage, searchResultsPage.getForwardButton()));
+       homescreen.banner.getBackButton().addActionListener(new BackButton(searchResultsPage, searchResultsPage.getBackButton()));
+       homescreen.banner.getForwardButton().addActionListener(new ForwardButton(searchResultsPage, searchResultsPage.getForwardButton()));
+       homescreen.search.getSearchBar().addActionListener(new PanelChanger(homescreen, searchResultsPage));
+       
+       homescreen.setVisible(true);
+       frame.revalidate();
     }
     
     class BackButton implements ActionListener {
@@ -126,11 +143,28 @@ public class Linker {
         
     }
     
+    class PanelChanger implements ActionListener{
+        private final JPanel screen;
+        private final JPanel prevScreen;
+        
+        public PanelChanger(JPanel prevScreen, JPanel newScreen){
+            screen = newScreen;
+            this.prevScreen = prevScreen;
+        }
+        
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            backStack.push(prevScreen);
+            prevScreen.setVisible(false);
+            screen.setVisible(true);
+        }
+        
+    }
+    
         
     public static void main(String[] args){
         Linker frame = new Linker(Util.getScreenDimension());
         
-        frame.frame.setContentPane(frame.searchResultsPage);
         frame.frame.setVisible(true);
         
         frame.frame.requestFocus();
