@@ -12,7 +12,8 @@ package capstone.GUI;
 
 import javax.swing.*;
 import java.awt.*;
-import capstonezz.NavigationButton;
+import capstonezz.GUI.NavigationButton;
+import capstonezz.Util;
 
 
 public class Banner extends JPanel{
@@ -26,6 +27,9 @@ public class Banner extends JPanel{
 
 
     Banner(){
+        screenWidth = Util.getScreenDimension().width;
+        screenHeight = Util.getScreenDimension().height;
+        
         
         backButton = new NavigationButton(NavigationButton.NavigationType.BACK,
         NavigationButton.getButtonWidth(screenWidth), 
@@ -36,7 +40,7 @@ public class Banner extends JPanel{
         NavigationButton.getButtonWidth(screenWidth),
         NavigationButton.getButtonHeight(screenHeight)); 
         
-        toolbar.setBorderPainted(false);
+        toolBar.setBorderPainted(false);
         
         toolBar.setLayout(new FlowLayout());
         toolBar.add(backButton);
