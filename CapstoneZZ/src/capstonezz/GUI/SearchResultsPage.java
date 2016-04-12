@@ -1,14 +1,12 @@
 package capstonezz.GUI;
 
-import capstonezz.Util;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import javax.swing.BoxLayout;
-import javax.swing.JFrame;
+import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
 import javax.swing.ScrollPaneConstants;
@@ -30,18 +28,15 @@ public class SearchResultsPage extends JPanel {
     private GUI mainPanel; 
     private SearchResults searchResults;
     
-    public SearchResultsPage(){
-        screenWidth = Util.getScreenDimension().width;
-        screenHeight = Util.getScreenDimension().height;
+    public SearchResultsPage(int width, int height){
+        screenWidth = width;
+        screenHeight = height;
         
         init();
     }
     
     private void init(){
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        //NOTE: if you need to change the toolbar to have navigation buttons on far left,
-        //and home button in the middle, switch layout manager to boxlayout and adjust
-        //using glue
         setBackground(Color.GRAY.brighter());
         searchResults = new SearchResults(getBackground(), screenWidth, screenHeight);
         mainPanel = new GUI(getBackground(), screenWidth, screenHeight, searchResults);
@@ -64,8 +59,6 @@ public class SearchResultsPage extends JPanel {
         
         toolbar.setBorderPainted(false);
         
-        
-        
         toolbar.setLayout(new FlowLayout());
         toolbar.add(backButton);
         toolbar.add(homeButton);
@@ -83,20 +76,12 @@ public class SearchResultsPage extends JPanel {
         add(scrollPane);
     }
     
-    public static void main(String[] args){
-        JPanel page = new SearchResultsPage();
-        JFrame frame = new JFrame();
-        
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        frame.setSize(Util.getScreenDimension());
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setContentPane(page);
-        //frame.setResizable(false);
-        frame.setVisible(true);
-        
-        frame.requestFocus();
-        
+    public JButton getBackButton(){
+        return backButton;
+    }
+    
+    public JButton getForwardButton(){
+        return forwardButton;
     }
 
 }
