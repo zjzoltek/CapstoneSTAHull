@@ -1,7 +1,7 @@
 /*
  * This class creates the the search area for the homescreen
  */
-package capstone.GUI;
+package capstoneal.GUI;
 
 /**
  *

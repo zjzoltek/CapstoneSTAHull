@@ -1,7 +1,7 @@
 /*
  * This class creates the banner for the homescreen
  */
-package capstone.GUI;
+package capstoneal.GUI;
 
 /**
  *
@@ -27,29 +27,33 @@ public class Banner extends JPanel{
 
 
     Banner(){
+        
+        //getting dimensions for buttons
         screenWidth = Util.getScreenDimension().width;
         screenHeight = Util.getScreenDimension().height;
         
-        
+        //creating back button
         backButton = new NavigationButton(NavigationButton.NavigationType.BACK,
         NavigationButton.getButtonWidth(screenWidth), 
         NavigationButton.getButtonHeight(screenHeight));
         
-        
+        //creating forward button
         forwardButton = new NavigationButton(NavigationButton.NavigationType.FORWARD,
         NavigationButton.getButtonWidth(screenWidth),
         NavigationButton.getButtonHeight(screenHeight)); 
         
+        
         toolBar.setBorderPainted(false);
         
         toolBar.setLayout(new FlowLayout());
+        //adding the buttons to the toolbar
         toolBar.add(backButton);
         toolBar.add(newAddressButton);
         toolBar.add(forwardButton);
         
         toolBar.setBorderPainted(false);
         
-        add(toolBar);
+        add(toolBar); // add toolBar to the panel
     
     } // end of constructor
     

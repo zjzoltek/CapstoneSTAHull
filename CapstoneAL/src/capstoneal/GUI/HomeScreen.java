@@ -1,7 +1,7 @@
 /*
  * This class uses JPanel to assemble the componenets of the homescreen
  */
-package capstone.GUI;
+package capstoneal.GUI;
 
 /**
  *
@@ -10,9 +10,9 @@ package capstone.GUI;
  * 
  */
 
-import capstone.GUI.NotificationBar;
-import capstone.GUI.Search;
-import capstone.GUI.Banner;
+import capstoneal.GUI.NotificationBar;
+import capstoneal.GUI.Search;
+import capstoneal.GUI.Banner;
 import java.awt.BorderLayout;
 import javax.swing.*;
 import java.awt.Dimension;
