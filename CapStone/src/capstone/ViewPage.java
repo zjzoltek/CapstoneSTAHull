@@ -5,6 +5,8 @@
  */
 package capstone;
 
+import capstonezz.Util;
+import java.awt.Cursor;
 import java.awt.FlowLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
@@ -24,8 +26,8 @@ public class ViewPage extends JPanel {
     
     private NavigationButton forward;
     private NavigationButton backward;
-    
-    private GUI mainPanel; 
+    private Home homeButton;
+    private EditButton editButton;
     
     public ViewPage(int width, int height){
         this.width = width;
@@ -48,12 +50,29 @@ public class ViewPage extends JPanel {
         NavigationButton.getButtonWidth(width),
         NavigationButton.getButtonHeight(height));
         
+        homeButton = new Home(NavigationButton.getButtonWidth(width),
+        NavigationButton.getButtonHeight(height));
+        
+        editButton = new EditButton(NavigationButton.getButtonWidth(width),
+        NavigationButton.getButtonHeight(height));
+        
+        editButton.setBorderPainted(true);
+        editButton.setFocusPainted(true);
+        editButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        
+        homeButton.setBorderPainted(true);
+        homeButton.setFocusPainted(true);
+        homeButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        
+        
+        toolBar.setLayout(new FlowLayout());
         toolBar.add(backward);
         toolBar.add(forward);
+        toolBar.add(homeButton);
+        toolBar.add(editButton);
         
         add(toolBar);
         
-        add(mainPanel);
         
     }
     
@@ -66,6 +85,7 @@ public class ViewPage extends JPanel {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(Util.getScreenDimension());
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.setContentPane(page);
         frame.setVisible(true);
         
         frame.requestFocus();

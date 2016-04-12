@@ -6,6 +6,7 @@
 package capstone;
 
 import capstone.Util;
+import java.awt.Cursor;
 import java.awt.image.BufferedImage;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -33,11 +34,13 @@ public class Home extends JButton {
         setFocusPainted(false);
         setBorderPainted(true);
         
+ 
         BufferedImage homeImg = Util.scaledBuffered(Util.getImage(getClass()
                 .getResource("/HomeButton.png")), this.getWidth(), this.getHeight());
         
         ImageIcon ico = new ImageIcon(homeImg);
         setIcon((Icon) ico);
+        
          
     }
     
