@@ -98,13 +98,6 @@ public class SearchResultsPage extends JPanel {
         frame.requestFocus();
         
     }
-    
-    public JPanel getPage()
-    {
-        JPanel page = new SearchResultsPage();
-        
-        return page;
-    }
 
 }
 
