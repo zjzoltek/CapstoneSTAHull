@@ -20,7 +20,8 @@ public class Banner extends JPanel{
     private NavigationButton backButton; // creates back button
     private NavigationButton forwardButton; // creates forward button
     private JButton newAddressButton = new JButton("New Address"); // creates New Address button
-    
+    private final int screenWidth;
+    private final int screenHeight;    
     private JToolBar toolBar = new JToolBar();
 
 
