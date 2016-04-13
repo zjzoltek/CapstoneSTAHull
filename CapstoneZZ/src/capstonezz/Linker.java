@@ -43,10 +43,7 @@ public class Linker {
     private Linker(int width, int height){
         searchResultsPage = new SearchResultsPage(width, height);
         homescreen = new HomeScreen(width, height);
-<<<<<<< HEAD
-=======
-        editpage = new EditPage(width, height);
->>>>>>> 8269afde3ecfae204b4840e463d2b9f918617a1a
+
 
         backStack = new Stack<>();
         forwardStack = new Stack<>();
@@ -122,13 +119,6 @@ public class Linker {
 
        ((CardLayout)frame.getLayout()).show(frame, homescreen.getName());
 
-<<<<<<< HEAD
-=======
-       editpage.cancelButton.addActionListener(new GracefulExit());
-       editpage.andButton.addActionListener(new GracefulExit());
-       editpage.saveButton.addActionListener(new GracefulExit());
-
->>>>>>> 8269afde3ecfae204b4840e463d2b9f918617a1a
        bhf.setButtonsEnabled(false);
        bhb.setButtonsEnabled(false);
     }
@@ -207,7 +197,6 @@ public class Linker {
             ((CardLayout)frame.getLayout()).show(frame, currPanel);
         }
 
-<<<<<<< HEAD
     }
 
     class ViewCreate implements ActionListener{
@@ -222,22 +211,6 @@ public class Linker {
         }
     }
 
-=======
-    }
-
-    class ViewCreate implements ActionListener{
-        private final ViewPage view;
-
-        public ViewCreate(ViewPage view){
-            this.view = view;
-        }
-        @Override
-        public void actionPerformed(ActionEvent e){
-            createEdit(view);
-        }
-    }
-
->>>>>>> 8269afde3ecfae204b4840e463d2b9f918617a1a
     public void updateButtons(){
         backButtonEnabled = !backStack.isEmpty();
         forwardButtonEnabled = !forwardStack.isEmpty();
@@ -276,19 +249,15 @@ public class Linker {
     public void createEdit(ViewPage view){
         String identifier = view.getString() + "edit";
 
-<<<<<<< HEAD
         EditPage edit = new EditPage(view.getWidth(), view.getHeight(), identifier, view.getColor());
 
         edit.andButton.addActionListener(new GracefulExit());
         edit.cancelButton.addActionListener(new GracefulExit());
         edit.saveButton.addActionListener(new GracefulExit());
-=======
-        EditPage edit = new EditPage(view.getWidth(), view.getHeight(), identifier, view.getColor())
 
-        edit.andButton.addActionListener(new GraceFulExit());
-        edit.cancelButton.addActionListener(new GraceFulExit());
-        edit.saveButton.addActionListener(new GraceFulExit());
->>>>>>> 8269afde3ecfae204b4840e463d2b9f918617a1a
+        edit.andButton.addActionListener(new GracefulExit());
+        edit.cancelButton.addActionListener(new GracefulExit());
+        edit.saveButton.addActionListener(new GracefulExit());
 
         frame.add(edit, identifier);
 

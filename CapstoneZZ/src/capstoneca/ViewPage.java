@@ -115,8 +115,4 @@ public class ViewPage extends JPanel implements NavigationModel {
     public Color getColor(){
         return color;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 8269afde3ecfae204b4840e463d2b9f918617a1a
