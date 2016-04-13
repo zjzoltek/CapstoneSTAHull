@@ -1,3 +1,0 @@
-git status
-git commit -a
-git push
