@@ -22,33 +22,39 @@ public class EditPage extends JPanel
 {
     private final int height;
     private final int width;
-    
+
     private final JToolBar toolBar;
-    
+
     public final JButton cancelButton;
-    
+
     public final JButton andButton;
-     
+
     public final JButton saveButton;
-    
-    public EditPage(int width, int height)
+
+    private Color color;
+    private String display;
+
+    public EditPage(int width, int height, String display, Color color)
     {
+        this.color = color;
+        this.display = display;
         this.width = width;
         this.height = height;
-        
+
         toolBar = new JToolBar(JToolBar.HORIZONTAL);
-        
+
+        toolBar.setBackground(color);
         cancelButton = new EditPageButtons(EditPageButtons.ButtonType.CANCEL,
             width, height);
-        
+
         andButton = new EditPageButtons(EditPageButtons.ButtonType.AND,
             width, height);
-        
+
         saveButton = new EditPageButtons(EditPageButtons.ButtonType.SAVE,
             width, height);
         init();
     }
-    
+
     private void init(){
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(Color.GRAY.brighter());
@@ -57,7 +63,7 @@ public class EditPage extends JPanel
         toolBar.add(cancelButton);
         toolBar.add(andButton);
         toolBar.add(saveButton);
-        
+
         add(toolBar);
     }
 
