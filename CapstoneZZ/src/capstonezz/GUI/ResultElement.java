@@ -1,11 +1,11 @@
 package capstonezz.GUI;
 
+import capstonezz.Linker;
 import capstonezz.Util;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
@@ -26,7 +26,7 @@ import javax.swing.text.StyledDocument;
  * @since Apr 9, 2016
  */
 
-public class ResultElement extends JTextPane implements MouseListener, ActionListener, FocusListener  {
+public class ResultElement extends JTextPane implements MouseListener, FocusListener  {
     private final String title;
     private final String subtitle;
     
@@ -37,7 +37,6 @@ public class ResultElement extends JTextPane implements MouseListener, ActionLis
     
     private boolean underlineVisible = true;
     
-    private Border activeBorder;
     private Border hoverBorder;
     private Border standardBorder;
     
@@ -57,11 +56,9 @@ public class ResultElement extends JTextPane implements MouseListener, ActionLis
         addFocusListener(this);
         
         if (underlineVisible) {
-            activeBorder = new MatteBorder(0,0,1,0,activeColor);
             hoverBorder = new MatteBorder(0,0,1,0,hoverColor);
             standardBorder = new MatteBorder(0,0,1,0,transparent);
         } else {
-            activeBorder = new MatteBorder(0,0,0,0,activeColor);
             hoverBorder = new MatteBorder(0,0,0,0,hoverColor);
             standardBorder = new MatteBorder(0,0,0,0,transparent);
         }
@@ -86,11 +83,9 @@ public class ResultElement extends JTextPane implements MouseListener, ActionLis
         addFocusListener(this);
         
         if (underlineVisible) {
-            activeBorder = new MatteBorder(0,0,1,0,activeColor);
             hoverBorder = new MatteBorder(0,0,1,0,hoverColor);
             standardBorder = new MatteBorder(0,0,1,0,transparent);
         } else {
-            activeBorder = new MatteBorder(0,0,0,0,activeColor);
             hoverBorder = new MatteBorder(0,0,0,0,hoverColor);
             standardBorder = new MatteBorder(0,0,0,0,transparent);
         }
@@ -190,6 +185,8 @@ public class ResultElement extends JTextPane implements MouseListener, ActionLis
     @Override
     public void mousePressed(MouseEvent e) {
         setBorder(standardBorder);
+        Linker link = Linker.getLinker();
+        link.createView(title);
     }
 
     @Override
@@ -210,11 +207,6 @@ public class ResultElement extends JTextPane implements MouseListener, ActionLis
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        setBorder(activeBorder);
-    }
-
-    @Override
     public void focusLost(FocusEvent fe) {
         setForeground(standardColor);
         setBorder(standardBorder);
@@ -225,5 +217,7 @@ public class ResultElement extends JTextPane implements MouseListener, ActionLis
         setForeground(hoverColor);
         //setBorder(hoverBorder);
     }
+    
+    
     
 }

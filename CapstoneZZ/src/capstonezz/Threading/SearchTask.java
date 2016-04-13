@@ -30,6 +30,10 @@ public class SearchTask implements Runnable {
         this.caseSensitive = caseSensitive;
         this.gui = gui;
         pool = Executors.newSingleThreadExecutor();
+        execute();
+    }
+    
+    private void execute(){
         pool.execute(this);
     }
     

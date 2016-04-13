@@ -1,12 +1,15 @@
 package capstonezz;
 
 import capstoneal.GUI.HomeScreen;
+import capstoneca.ViewPage;
+import capstonepb.EditPage;
+import capstonezz.GUI.NavigationButton;
 import capstonezz.GUI.SearchResultsPage;
+import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Stack;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -17,157 +20,271 @@ import javax.swing.JPanel;
  */
 
 public class Linker {
-    public final JFrame frame;
-    private final Stack<JPanel> backStack;
-    private final Stack<JPanel> forwardStack;
+    public final JPanel frame;
+    
+    private final Stack<String> backStack;
+    private final Stack<String> forwardStack;
     
     private final SearchResultsPage searchResultsPage;
     private final HomeScreen homescreen;
+    private final EditPage editpage;
     
-    public Linker(int width, int height){
-        backStack = new Stack<>();
-        forwardStack = new Stack<>();
-        
+    public static final String SEARCHRESULTS = "SEARCH RESULTS PAGE";
+    public static final String HOMESCREEN = "HOMESCREEN";
+    public static final String EDIT = "EDITPAGE";
+    
+    private boolean backButtonEnabled = false;
+    private boolean forwardButtonEnabled = false;
+    
+    private final NavButtonHandler bhb;
+    private final NavButtonHandler bhf;
+    
+    private String currPanel = HOMESCREEN;
+    
+    private static Linker linker;
+    
+    private Linker(int width, int height){
         searchResultsPage = new SearchResultsPage(width, height);
         homescreen = new HomeScreen(width, height);
+        editpage = new EditPage(width, height);
         
-        frame = new JFrame();
-        frame.setSize(Util.getScreenDimension());
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        
+        backStack = new Stack<>();
+        forwardStack = new Stack<>();
+        frame = new JPanel(new CardLayout());
         frame.setSize(width, height);
         
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        
+        bhb = new NavButtonHandler();
+        bhf = new NavButtonHandler();
         init();
     }
     
-    public Linker(Dimension dimension){
+    private Linker(Dimension dimension){
+        searchResultsPage = new SearchResultsPage((int)dimension.getWidth(), (int)dimension.getHeight());
+        homescreen = new HomeScreen((int)dimension.getWidth(), (int)dimension.getHeight());
+        editpage = new EditPage((int)dimension.getWidth(), (int)dimension.getHeight());
         backStack = new Stack<>();
         forwardStack = new Stack<>();
         
-        searchResultsPage = new SearchResultsPage((int)dimension.getWidth(), (int)dimension.getHeight());
-        homescreen = new HomeScreen((int)dimension.getWidth(), (int)dimension.getHeight());
+        frame = new JPanel(new CardLayout());
+        frame.setSize(dimension.width, dimension.height);
         
-        frame = new JFrame();
-        frame.setSize(dimension);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        
+        bhb = new NavButtonHandler();
+        bhf = new NavButtonHandler();
         init();
     }
     
     private void init(){
-       frame.add(homescreen);
-       frame.add(searchResultsPage);
+       frame.add(homescreen, HOMESCREEN);
+       frame.add(searchResultsPage, SEARCHRESULTS);
+       frame.add(editpage, EDIT);
        
-       homescreen.setVisible(false);
-       searchResultsPage.setVisible(false);
+       bhf.addButton((NavigationButton)searchResultsPage.getForwardButton());
+       bhf.addButton((NavigationButton)homescreen.getForwardButton());
+       bhb.addButton((NavigationButton)searchResultsPage.getBackButton());
+       bhb.addButton((NavigationButton)homescreen.getBackButton());
        
-       searchResultsPage.getBackButton().addActionListener(new BackButton(searchResultsPage, searchResultsPage.getBackButton()));
-       searchResultsPage.getForwardButton().addActionListener(new ForwardButton(searchResultsPage, searchResultsPage.getForwardButton()));
-       homescreen.banner.getBackButton().addActionListener(new BackButton(searchResultsPage, searchResultsPage.getBackButton()));
-       homescreen.banner.getForwardButton().addActionListener(new ForwardButton(searchResultsPage, searchResultsPage.getForwardButton()));
-       homescreen.search.getSearchBar().addActionListener(new PanelChanger(homescreen, searchResultsPage));
+       searchResultsPage.getBackButton().addActionListener
+        (new BackButton());
        
-       homescreen.setVisible(true);
-       frame.revalidate();
+       searchResultsPage.getForwardButton().addActionListener
+        (new ForwardButton());
+       
+       searchResultsPage.getHomeButton().addActionListener
+               (new HomeTaker());
+       
+       homescreen.getBackButton().addActionListener
+        (new BackButton());
+       
+       homescreen.getForwardButton().addActionListener
+        (new ForwardButton());
+       
+       homescreen.search.getLinkingComponent().
+               addActionListener((ActionEvent ae) -> {
+                   homescreen.search.getGoButton().doClick();
+               });
+       
+       homescreen.search.getGoButton().
+               addActionListener((ActionEvent ae) -> {
+                   searchResultsPage.mainPanel.address
+                           .setText(homescreen.search.getLinkingComponent().getText());
+                   
+                   homescreen.search.getLinkingComponent().setText("");
+               });
+       
+       homescreen.search.getGoButton()
+               .addActionListener(new PanelChanger(SEARCHRESULTS));
+       
+       homescreen.search.getGoButton()
+               .addActionListener((ActionEvent ae) -> {
+                  searchResultsPage.mainPanel.address.setText(
+                          homescreen.search.getLinkingComponent().getText());
+                  
+                  searchResultsPage.mainPanel.initiateSearch.doClick();
+               });
+       
+       ((CardLayout)frame.getLayout()).show(frame, homescreen.getName());
+       
+       editpage.cancelButton.addActionListener(new GracefulExit());
+       editpage.andButton.addActionListener(new GracefulExit());
+       editpage.saveButton.addActionListener(new GracefulExit());
+       
+       bhf.setButtonsEnabled(false);
+       bhb.setButtonsEnabled(false);
     }
     
     class BackButton implements ActionListener {
-        private JPanel panel;
-        private final JButton button;
-        
-        public BackButton(JPanel panel, JButton button){
-            this.panel = panel;
-            this.button = button;
-            
-            if(backStack.isEmpty()){
-                button.setVisible(false);
-            }
-        }
-        
         @Override
         public void actionPerformed(ActionEvent ae) {
-            if(backStack.isEmpty()){
-                button.setVisible(false);
+            if(backStack.empty()){
+                return;
             }
             
-            JPanel lastScreen = backStack.pop();
+            String lastScreen = backStack.pop();
+            forwardStack.push(currPanel);
             
-            backStack.push(panel);
+            currPanel = lastScreen;
             
-            panel = lastScreen;
-            
-            frame.removeAll();
-            frame.add(lastScreen);
-            frame.validate();
-            
+            updateButtons();
+            ((CardLayout)frame.getLayout()).show(frame, currPanel);
         }
         
     }
     
-    public class ForwardButton implements ActionListener {
-        private JPanel panel;
-        private final JButton button;
-        
-        public ForwardButton(JPanel panel, JButton button){
-            this.panel = panel;
-            this.button = button;
-            
-            if(forwardStack.isEmpty()){
-                button.setVisible(false);
-            }
-        }
-        
+    class ForwardButton implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent ae) {
-            if(forwardStack.isEmpty()){
-                button.setVisible(false);
+            if(forwardStack.empty()){
+                return;
             }
             
-            JPanel lastScreen = forwardStack.pop();
+            String lastScreen = forwardStack.pop();
             
-            backStack.push(panel);
+            backStack.push(currPanel);
             
-            panel = lastScreen;
+            currPanel = lastScreen;
             
-            frame.removeAll();
-            frame.add(lastScreen);
-            frame.validate();
-            
+            updateButtons();
+            ((CardLayout)frame.getLayout()).show(frame, currPanel);
         }
         
     }
     
     class PanelChanger implements ActionListener{
-        private final JPanel screen;
-        private final JPanel prevScreen;
+        private final String screen;
         
-        public PanelChanger(JPanel prevScreen, JPanel newScreen){
+        public PanelChanger(String newScreen){
             screen = newScreen;
-            this.prevScreen = prevScreen;
         }
         
         @Override
         public void actionPerformed(ActionEvent ae) {
-            backStack.push(prevScreen);
-            prevScreen.setVisible(false);
-            screen.setVisible(true);
+            backStack.push(currPanel);
+            
+            if(!forwardStack.isEmpty())
+                forwardStack.pop();
+            
+            currPanel = screen;
+            
+            updateButtons();
+            ((CardLayout)frame.getLayout()).show(frame, currPanel);
         }
         
     }
     
+    class GracefulExit implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            currPanel = backStack.pop();
+            
+            updateButtons();
+            ((CardLayout)frame.getLayout()).show(frame, currPanel);
+        }
         
+    }
+    
+    class HomeTaker implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            backStack.push(currPanel);
+            currPanel = HOMESCREEN;
+            
+            forwardStack.removeAllElements();
+            updateButtons();
+            ((CardLayout)frame.getLayout()).show(frame, currPanel);
+        }
+        
+    }
+    
+    public void updateButtons(){
+        backButtonEnabled = !backStack.isEmpty();
+        forwardButtonEnabled = !forwardStack.isEmpty();
+        bhb.setButtonsEnabled(backButtonEnabled);
+        bhf.setButtonsEnabled(forwardButtonEnabled);
+    }
+    
+    public void changeScreen(String screen){
+        backStack.push(currPanel);
+         if(!forwardStack.isEmpty())
+                forwardStack.pop();
+            
+        currPanel = screen;
+
+        updateButtons();
+        ((CardLayout)frame.getLayout()).show(frame, currPanel);
+    }
+    
+    
+    public void createView(String display){
+        ViewPage view = new ViewPage(frame.getWidth(), frame.getHeight(), display);
+        frame.add(view, display);
+        
+        bhf.addButton((NavigationButton)view.getForwardButton());
+        bhb.addButton((NavigationButton)view.getBackButton());
+        
+        view.getForwardButton().addActionListener(new ForwardButton());
+        view.getBackButton().addActionListener(new BackButton());
+        view.getHomeButton().addActionListener(new HomeTaker());
+
+        view.getEditButton().addActionListener(new PanelChanger(EDIT));
+        
+        backStack.push(currPanel);
+        if(!forwardStack.isEmpty())
+                forwardStack.pop();
+            
+        currPanel = display;
+        ((CardLayout)frame.getLayout()).show(frame, display);
+        updateButtons();
+    }
+    
+    public static Linker getLinker(int width, int height){
+        linker = new Linker(width, height);
+        return linker;
+    }
+    
+    public static Linker getLinker(Dimension dimension){
+        linker = new Linker(dimension);
+        return linker;
+    }
+    
+    public static Linker getLinker(){
+        return linker;
+    }
+    
     public static void main(String[] args){
-        Linker frame = new Linker(Util.getScreenDimension());
+        Linker link = Linker.getLinker(Util.getScreenDimension());
         
-        frame.frame.setVisible(true);
+        JFrame frame = new JFrame();
+        frame.add(link.frame);
         
-        frame.frame.requestFocus();
+        frame.setSize(Util.getScreenDimension());
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.setVisible(true);
+        
+        frame.requestFocus();
         
     }
     

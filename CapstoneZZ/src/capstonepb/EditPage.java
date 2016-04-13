@@ -8,7 +8,6 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
@@ -26,14 +25,11 @@ public class EditPage extends JPanel
     
     private final JToolBar toolBar;
     
-    private final JButton cancelButton = new EditPageButtons(EditPageButtons.ButtonType.CANCEL,
-            Util.getScreenDimension().width, Util.getScreenDimension().height);
+    public final JButton cancelButton;
     
-    private final JButton andButton = new EditPageButtons(EditPageButtons.ButtonType.AND,
-            Util.getScreenDimension().width, Util.getScreenDimension().height);
+    public final JButton andButton;
      
-    private final JButton saveButton = new EditPageButtons(EditPageButtons.ButtonType.SAVE,
-            Util.getScreenDimension().width, Util.getScreenDimension().height);
+    public final JButton saveButton;
     
     public EditPage(int width, int height)
     {
@@ -42,6 +38,14 @@ public class EditPage extends JPanel
         
         toolBar = new JToolBar(JToolBar.HORIZONTAL);
         
+        cancelButton = new EditPageButtons(EditPageButtons.ButtonType.CANCEL,
+            width, height);
+        
+        andButton = new EditPageButtons(EditPageButtons.ButtonType.AND,
+            width, height);
+        
+        saveButton = new EditPageButtons(EditPageButtons.ButtonType.SAVE,
+            width, height);
         init();
     }
     
@@ -56,22 +60,5 @@ public class EditPage extends JPanel
         
         add(toolBar);
     }
-    
-    public static void main(String[] args){
-        JFrame frame = new JFrame();
-        EditPage page = new EditPage(Util.getScreenDimension().width, Util.getScreenDimension().height);
-        
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        frame.setSize(Util.getScreenDimension());
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setContentPane(page);
-        
-        frame.setVisible(true);
-        
-        frame.requestFocus();
-        
-        
-        
-    }
+
 }

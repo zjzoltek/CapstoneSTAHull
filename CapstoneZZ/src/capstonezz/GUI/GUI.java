@@ -32,13 +32,13 @@ import javax.swing.JRadioButton;
 public class GUI extends JPanel implements ActionListener {
     private final ButtonGroup quadrants = new ButtonGroup();
     
-    public JButton initiateSearch;
+    public final JButton initiateSearch;
     private final int width;
     private final int height;
-    private SearchBox number;
-    private SearchBox address;
+    public final SearchBox number;
+    public final SearchBox address;
     private JCheckBox caseSensitive;
-    private final JProgressBar loadingBar;
+    public final JProgressBar loadingBar;
     private final SearchResults searchresults;
     
     public GUI(Color color, int parentWidth, int parentHeight, SearchResults results){
@@ -47,6 +47,10 @@ public class GUI extends JPanel implements ActionListener {
         height = parentHeight;
         searchresults = results;
         loadingBar = new JProgressBar();
+        
+        address = new SearchBox("Address", 30, 5, false);
+        number = new SearchBox("Number", 30, 5, true);
+        initiateSearch = new JButton("SEARCH");
         init(color);
     }
     
@@ -93,7 +97,6 @@ public class GUI extends JPanel implements ActionListener {
         
         c = new GridBagConstraints();
         
-        address = new SearchBox("Address", 30, 5, false);
         address.setPreferredSize(new Dimension(SearchBox.BOXWIDTH, SearchBox.BOXHEIGHT));
         c.gridx = 1;
         c.gridy = 4;
@@ -129,7 +132,7 @@ public class GUI extends JPanel implements ActionListener {
         c.gridwidth = 5;
         c.anchor = GridBagConstraints.NORTH;
         
-        number = new SearchBox("Number", 30, 5, true);
+
         number.setPreferredSize(new Dimension(SearchBox.BOXWIDTH, SearchBox.BOXHEIGHT));
         
         number.addActionListener((ActionEvent e) ->{
@@ -154,7 +157,7 @@ public class GUI extends JPanel implements ActionListener {
         c.gridwidth = 5;
         c.anchor = GridBagConstraints.NORTH;
         
-        initiateSearch = new JButton("SEARCH", (Icon) searchIco);
+        initiateSearch.setIcon((Icon) searchIco);
         initiateSearch.setFocusPainted(false);
         initiateSearch.setBorderPainted(false);
         initiateSearch.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

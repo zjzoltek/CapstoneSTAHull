@@ -1,6 +1,8 @@
 package capstonezz.GUI;
 
-import java.awt.Color;
+import capstonezz.CapstoneConstants;
+import capstonezz.NavigationModel;
+import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -17,29 +19,28 @@ import javax.swing.ScrollPaneConstants;
  * @since Apr 5, 2016
  */
 
-public class SearchResultsPage extends JPanel {
+public class SearchResultsPage extends JPanel implements NavigationModel {
     private NavigationButton backButton;
     private NavigationButton forwardButton;
-    private HomeButton homeButton;
+    public HomeButton homeButton;
     
     private final JToolBar toolbar = new JToolBar();
     private final int screenWidth;
     private final int screenHeight;
-    private GUI mainPanel; 
-    private SearchResults searchResults;
+    public final GUI mainPanel; 
+    public final SearchResults searchResults;
     
     public SearchResultsPage(int width, int height){
         screenWidth = width;
         screenHeight = height;
-        
+        searchResults = new SearchResults(CapstoneConstants.PANEL_BG, screenWidth, screenHeight);
+        mainPanel = new GUI(CapstoneConstants.PANEL_BG, screenWidth, screenHeight, searchResults);
         init();
     }
     
     private void init(){
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setBackground(Color.GRAY.brighter());
-        searchResults = new SearchResults(getBackground(), screenWidth, screenHeight);
-        mainPanel = new GUI(getBackground(), screenWidth, screenHeight, searchResults);
+        setBackground(CapstoneConstants.PANEL_BG);
         
         backButton = new NavigationButton(NavigationButton.NavigationType.BACK,
         NavigationButton.getButtonWidth(screenWidth), 
@@ -76,12 +77,19 @@ public class SearchResultsPage extends JPanel {
         add(scrollPane);
     }
     
+    @Override
     public JButton getBackButton(){
         return backButton;
     }
     
+    @Override
     public JButton getForwardButton(){
         return forwardButton;
+    }
+
+    @Override
+    public JButton getHomeButton() {
+        return homeButton;
     }
 
 }

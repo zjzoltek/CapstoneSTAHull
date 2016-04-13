@@ -10,33 +10,35 @@ package capstoneal.GUI;
  * 
  */
 
+import capstonezz.CapstoneConstants;
+import capstonezz.GUI.SearchBox;
+import capstonezz.LinkerModel;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 
 
-public class Search extends JPanel{
+public class Search extends JPanel implements LinkerModel{
     
-    private JTextField searchBar = new JTextField("Search..."); // create search field
-    private JButton searchButton = new JButton("GO"); // creates search button
+    public final SearchBox searchBar = new SearchBox("Search...", 30, 5, false); // create search field
+    public final JButton searchButton = new JButton("GO"); // creates search button
     
-    private final GridBagLayout layout;
-    private final GridBagConstraints constraints;
+    private final GridBagConstraints constraints = new GridBagConstraints();
     
     // making check boxes
-    private JCheckBox nwcb = new JCheckBox("NW");
-    private JCheckBox necb = new JCheckBox("NE");
-    private JCheckBox swcb = new JCheckBox("SW");
-    private JCheckBox secb = new JCheckBox("SE");
+    private final JCheckBox nwcb = new JCheckBox("NW");
+    private final JCheckBox necb = new JCheckBox("NE");
+    private final JCheckBox swcb = new JCheckBox("SW");
+    private final JCheckBox secb = new JCheckBox("SE");
         
-    Search(){
+    public Search(){
+        setBackground(CapstoneConstants.PANEL_BG);
+        setLayout(new GridBagLayout()); // sets the layout to GridLayout
         
-        setLayout(new GridLayout()); // set the layout to GridLayout
-        layout = new GridBagLayout();
-        setLayout(layout); // sets the layout to GridLayout
-        constraints = new GridBagConstraints();
-        
-        
+        searchButton.setContentAreaFilled(false);
+        nwcb.setBackground(CapstoneConstants.PANEL_BG);
+        necb.setBackground(CapstoneConstants.PANEL_BG);
+        swcb.setBackground(CapstoneConstants.PANEL_BG);
+        secb.setBackground(CapstoneConstants.PANEL_BG);
         // adding check boxes to panel
         addComponent(nwcb, 0, 0, 1, 1);
         addComponent(necb, 0, 1, 1, 1);
@@ -50,17 +52,22 @@ public class Search extends JPanel{
         
     } // end of constructor
     
-        private void addComponent(Component component, int row, int column, int width, int height)
+    private void addComponent(Component component, int row, int column, int width, int height)
     {
         constraints.gridx = column;
         constraints.gridy = row;
         constraints.gridwidth = width;
         constraints.gridheight = height;
-        layout.setConstraints(component, constraints); //set constraints
+        ((GridBagLayout)getLayout()).setConstraints(component, constraints); //set constraints
         add(component);
     }
         
-    public JTextField getSearchBar(){
+    @Override
+    public JTextField getLinkingComponent() {
         return searchBar;
+    }
+    
+    public JButton getGoButton(){
+        return searchButton;
     }
 } // end of class
