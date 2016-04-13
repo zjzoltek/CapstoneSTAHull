@@ -26,16 +26,17 @@ public class ViewPage extends JPanel implements NavigationModel {
     private final int width;
     private final int height;
     private final JToolBar toolBar;
-    
+
     private NavigationButton forward;
     private NavigationButton backward;
     private Home homeButton;
     private EditButton editButton;
-    
+
     private String displayString = "";
-    
+
     private Random rand = new Random();
-    
+    private Color color;
+
     public ViewPage(int width, int height, String display){
         this.width = width;
         this.height = height;
@@ -43,42 +44,44 @@ public class ViewPage extends JPanel implements NavigationModel {
         displayString = display;
         init();
     }
-    
+
     private void init(){
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        toolBar.setBackground(new Color(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)));
+        color = new Color(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255));
+
+        toolBar.setBackground(color);
         toolBar.setBorderPainted(true);
         toolBar.setLayout(new FlowLayout());
-        
+
         forward = new NavigationButton(NavigationButton.NavigationType.FORWARD,
         NavigationButton.getButtonWidth(width),
         NavigationButton.getButtonHeight(height));
-        
+
         backward = new NavigationButton(NavigationButton.NavigationType.BACK,
         NavigationButton.getButtonWidth(width),
         NavigationButton.getButtonHeight(height));
-        
+
         homeButton = new Home(NavigationButton.getButtonWidth(width),
         NavigationButton.getButtonHeight(height));
-        
+
         editButton = new EditButton(NavigationButton.getButtonWidth(width),
         NavigationButton.getButtonHeight(height));
-        
+
         editButton.setBorderPainted(true);
         editButton.setFocusPainted(true);
         editButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        
+
         homeButton.setBorderPainted(true);
         homeButton.setFocusPainted(true);
         homeButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        
-        
+
+
         toolBar.setLayout(new FlowLayout());
         toolBar.add(backward);
         toolBar.add(homeButton);
         toolBar.add(forward);
         toolBar.add(editButton);
-        
+
         add(toolBar);
     }
 
@@ -96,16 +99,20 @@ public class ViewPage extends JPanel implements NavigationModel {
     public JButton getHomeButton() {
         return homeButton;
     }
-    
+
     public JButton getEditButton(){
         return editButton;
     }
-    
+
     public void change(String string){
         displayString = string;
     }
-    
+
     public String getString(){
         return displayString;
+    }
+
+    public Color getColor(){
+        return color;
     }
 }
