@@ -1,3 +1,4 @@
+
 package capstonepb;
 
 import java.awt.Dimension;
@@ -12,7 +13,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 /**
- * @author Zachary Zoltek
+ * @author Phillip
  * @version 1.0
  * @since Apr 6, 2016
  */
