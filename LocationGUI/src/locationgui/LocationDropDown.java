@@ -1,29 +1,34 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * This program will create a drop down boxes for the location promts on 
+ * the Inspection form portion of the edit page
+ * Phillip Bledsoe
+ * 041416
  */
 package locationgui;
 
 import javax.swing.*;
-import javax.swing.JComboBox;
+import javax.swing.JComboBox; //import for drop down boxes
 import java.awt.*;
 
-/**
- *
- * @author pebledsoe1231
- */
+
 public class LocationDropDown {
     
     public void locationBox(){
         
-         String location[] = {"A", "B", "C", "D"};
+        //array of strings for the options in the drop box 
+        String location[] = {"A", "B", "C", "D"};
     
+        //creating the panel for the drop box to be in
         JPanel locationPanel = new JPanel();
-    
+        
+        //creating the drop box
         JComboBox locationDrop = new JComboBox(location);
-    
+        locationDrop.setSelectedIndex(4);
+        
+        //setting the panel layout
         locationPanel.setLayout(new GridBagLayout());
+        
+        //adding the drop box to the panne;
         locationPanel.add(locationDrop);
     
     
