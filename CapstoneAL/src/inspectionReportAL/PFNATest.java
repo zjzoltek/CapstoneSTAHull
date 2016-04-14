@@ -21,8 +21,9 @@ public class PFNATest {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         PFNA pfna = new PFNA("text");
+        ServiceDate date = new ServiceDate("insert text here");
         
-        frame.add(pfna);
+        frame.add(date);
         frame.setSize(400, 400);
         frame.setVisible(true);
     }
