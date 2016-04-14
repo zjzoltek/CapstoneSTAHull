@@ -15,7 +15,7 @@ package inspectionReportAL;
 import javax.swing.JRadioButton;
 import javax.swing.JPanel;
 import javax.swing.ButtonGroup;
-import javax.swing.JTextField;
+import javax.swing.JLabel;
 // awt imports
 import java.awt.FlowLayout;
 
@@ -26,7 +26,7 @@ public class PFNA extends JPanel{
     private JRadioButton na = new JRadioButton();
     private ButtonGroup group =  new ButtonGroup();
     // Instantiating textfield
-    private JTextField label;
+    private JLabel label;
     
     private FlowLayout layout = new FlowLayout();
     
@@ -40,7 +40,7 @@ public class PFNA extends JPanel{
         group.add(na);
         
         //initialize text field
-        label = new JTextField(labelText);
+        label = new JLabel(labelText);
         
         //add components to the JPanel
         add(pass);
