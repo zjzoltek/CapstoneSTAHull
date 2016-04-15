@@ -10,6 +10,7 @@ package inspectionReportAL;
  * @author ACLeavitt0612
  */
 
+import java.awt.BorderLayout;
 import javax.swing.JFrame;
 
 public class PFNATest {
@@ -20,10 +21,10 @@ public class PFNATest {
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        PFNA pfna = new PFNA("text");
-        ServiceDate date = new ServiceDate("insert text here");
+        InspectionReport inspectionReport = new InspectionReport();
+        PFNA pfna = new PFNA("Generic Text Here"); 
         
-        frame.add(date);
+        frame.add(inspectionReport, BorderLayout.PAGE_START);
         frame.setSize(400, 400);
         frame.setVisible(true);
     }
