@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.util.Stack;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 
 /**
  * @author Zachary Zoltek
@@ -253,12 +254,7 @@ public class Linker {
 
         edit.andButton.addActionListener(new GracefulExit());
         edit.cancelButton.addActionListener(new GracefulExit());
-        edit.saveButton.addActionListener(new GracefulExit());
-
-        edit.andButton.addActionListener(new GracefulExit());
-        edit.cancelButton.addActionListener(new GracefulExit());
-        edit.saveButton.addActionListener(new GracefulExit());
-
+        
         frame.add(edit, identifier);
 
         changeScreen(identifier);
@@ -280,7 +276,8 @@ public class Linker {
 
     public static void main(String[] args){
         Linker link = Linker.getLinker(Util.getScreenDimension());
-
+        UIManager.put("JComponent.sizeVariant", "large");
+        
         JFrame frame = new JFrame();
         frame.add(link.frame);
 

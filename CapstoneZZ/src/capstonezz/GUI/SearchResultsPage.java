@@ -2,7 +2,6 @@ package capstonezz.GUI;
 
 import capstonezz.CapstoneConstants;
 import capstonezz.NavigationModel;
-import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
