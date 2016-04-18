@@ -26,6 +26,8 @@ public class SearchResultsPage extends JPanel implements NavigationModel {
     private final JToolBar toolbar = new JToolBar();
     private final int screenWidth;
     private final int screenHeight;
+    
+    public static final String LINK_NAME = "SEARCHRESULTS";
     public final GUI mainPanel; 
     public final SearchResults searchResults;
     

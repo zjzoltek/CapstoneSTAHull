@@ -25,9 +25,11 @@ public class HomeScreen extends JPanel implements NavigationModel{
     
     private final NavigationButton backButton; // creates back button
     private final NavigationButton forwardButton; // creates forward button
-    private final JButton newAddressButton = new JButton("New Address"); // creates New Address button
+    private final JButton newAddressButton = new JButton("Create New Address"); // creates New Address button
     private final JToolBar toolBar = new JToolBar();
-
+    
+    public static final String LINK_NAME = "HOMESCREEN";
+        
     public HomeScreen(int width, int height){
         setBackground(CapstoneConstants.PANEL_BG);
         notificationBar = new NotificationBar(); // create an instance of NotificationBar
