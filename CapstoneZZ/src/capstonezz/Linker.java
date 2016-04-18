@@ -13,10 +13,7 @@ import java.util.Stack;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
-<<<<<<< HEAD
-=======
 import javax.swing.UnsupportedLookAndFeelException;
->>>>>>> Zachs-Work
 
 /**
  * @author Zachary Zoltek
@@ -290,14 +287,9 @@ public class Linker {
         }
         
         Linker link = Linker.getLinker(Util.getScreenDimension());
-<<<<<<< HEAD
         UIManager.put("JComponent.sizeVariant", "large");
         
-        JFrame frame = new JFrame();
-=======
-
         JFrame frame = new JFrame("LSFD Form Database");
->>>>>>> Zachs-Work
         frame.add(link.frame);
         frame.setSize(Util.getScreenDimension());
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
