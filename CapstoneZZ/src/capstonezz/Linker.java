@@ -260,17 +260,21 @@ public class Linker {
     }
 
     public static Linker getLinker(int width, int height){
-        linker = new Linker(width, height);
+        if(linker == null) linker = new Linker(width, height);
         return linker;
     }
 
     public static Linker getLinker(Dimension dimension){
-        linker = new Linker(dimension);
+        if(linker == null) linker = new Linker(dimension);
         return linker;
     }
 
     public static Linker getLinker(){
         return linker;
+    }
+    
+    public static boolean linkerExists(){
+        return linker != null;
     }
 
     public static void main(String[] args){
