@@ -10,4 +10,5 @@ import java.awt.Color;
 
 public class CapstoneConstants {
     public final static Color PANEL_BG = Color.GRAY.brighter();
+    public final static float FONT_SIZE = 16f;
 }

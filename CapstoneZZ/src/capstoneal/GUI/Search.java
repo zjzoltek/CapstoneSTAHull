@@ -10,16 +10,23 @@ package capstoneal.GUI;
  * 
  */
 
+import capstonepb.Util;
 import capstonezz.CapstoneConstants;
 import capstonezz.GUI.SearchBox;
 import capstonezz.LinkerModel;
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 
 public class Search extends JPanel implements LinkerModel{
     
-    public final SearchBox searchBar = new SearchBox("Search...", 30, 5, false); // create search field
+    public final SearchBox searchBar = new SearchBox("Address Search . . .", 30, 5, false); // create search field
     public final JButton searchButton = new JButton("GO"); // creates search button
     
     private final GridBagConstraints constraints = new GridBagConstraints();
@@ -35,6 +42,7 @@ public class Search extends JPanel implements LinkerModel{
         setLayout(new GridBagLayout()); // sets the layout to GridLayout
         
         searchButton.setContentAreaFilled(false);
+        searchButton.setPreferredSize(new Dimension(Util.getScreenDimension().width / 8, 30));
         nwcb.setBackground(CapstoneConstants.PANEL_BG);
         necb.setBackground(CapstoneConstants.PANEL_BG);
         swcb.setBackground(CapstoneConstants.PANEL_BG);
@@ -44,11 +52,14 @@ public class Search extends JPanel implements LinkerModel{
         addComponent(necb, 0, 1, 1, 1);
         addComponent(swcb, 0, 2, 1, 1);
         addComponent(secb, 0, 3, 1, 1);
-        constraints.fill = GridBagConstraints.BOTH;
-        constraints.weightx = 1000;
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.weightx = 1;
+        constraints.weighty = 0;
         addComponent(searchBar, 0, 4, 1, 1); // add search bar text field
         constraints.weightx = 0;
-        addComponent(searchButton, 0, 6, 1, 1); // add search button
+        constraints.weighty = 0;
+        constraints.fill = GridBagConstraints.NONE;
+        addComponent(searchButton, 1, 4, 1, 1); // add search button
         
     } // end of constructor
     

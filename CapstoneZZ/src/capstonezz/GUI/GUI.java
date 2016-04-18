@@ -14,14 +14,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.image.BufferedImage;
-import javax.swing.ButtonGroup;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
-import javax.swing.JRadioButton;
 
 /**
  * @author Zachary Zoltek
@@ -30,8 +28,6 @@ import javax.swing.JRadioButton;
  */
 
 public class GUI extends JPanel implements ActionListener {
-    private final ButtonGroup quadrants = new ButtonGroup();
-    
     public final JButton initiateSearch;
     private final int width;
     private final int height;
@@ -60,20 +56,15 @@ public class GUI extends JPanel implements ActionListener {
         loadingBar.setIndeterminate(true);
         GridBagConstraints c = new GridBagConstraints();
         
-        JRadioButton NW = new JRadioButton("NW");
-        JRadioButton NE = new JRadioButton("NE");
-        JRadioButton SW = new JRadioButton("SW");
-        JRadioButton SE = new JRadioButton("SE");
+        JCheckBox NW = new JCheckBox("NW");
+        JCheckBox NE = new JCheckBox("NE");
+        JCheckBox SW = new JCheckBox("SW");
+        JCheckBox SE = new JCheckBox("SE");
         
         NW.setBackground(getBackground());
         NE.setBackground(getBackground());
         SW.setBackground(getBackground());
         SE.setBackground(getBackground());
-        
-        quadrants.add(NW);
-        quadrants.add(NE);
-        quadrants.add(SW);
-        quadrants.add(SE);
         
         c.anchor = GridBagConstraints.CENTER;
         
@@ -199,9 +190,6 @@ public class GUI extends JPanel implements ActionListener {
         
         g2d.setColor(getBackground().darker());
         g2d.fillRect(0, getHeight() - 15, width, 15);
-    }
-    public ButtonGroup getQuadrants(){
-        return quadrants;
     }
     
     public boolean isCaseSensitive(){

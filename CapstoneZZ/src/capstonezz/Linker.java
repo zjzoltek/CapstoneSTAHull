@@ -12,6 +12,8 @@ import java.awt.event.ActionListener;
 import java.util.Stack;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  * @author Zachary Zoltek
@@ -27,16 +29,13 @@ public class Linker {
     private final SearchResultsPage searchResultsPage;
     private final HomeScreen homescreen;
 
-    public static final String SEARCHRESULTS = "SEARCH RESULTS PAGE";
-    public static final String HOMESCREEN = "HOMESCREEN";
-
     private boolean backButtonEnabled = false;
     private boolean forwardButtonEnabled = false;
 
     private final NavButtonHandler bhb;
     private final NavButtonHandler bhf;
 
-    private String currPanel = HOMESCREEN;
+    private String currPanel = HomeScreen.LINK_NAME;
 
     private static Linker linker;
 
@@ -69,8 +68,8 @@ public class Linker {
     }
 
     private void init(){
-       frame.add(homescreen, HOMESCREEN);
-       frame.add(searchResultsPage, SEARCHRESULTS);
+       frame.add(homescreen, HomeScreen.LINK_NAME);
+       frame.add(searchResultsPage, SearchResultsPage.LINK_NAME);
 
        bhf.addButton((NavigationButton)searchResultsPage.getForwardButton());
        bhf.addButton((NavigationButton)homescreen.getForwardButton());
@@ -106,7 +105,7 @@ public class Linker {
                });
 
        homescreen.search.getGoButton()
-               .addActionListener(new PanelChanger(SEARCHRESULTS));
+               .addActionListener(new PanelChanger(SearchResultsPage.LINK_NAME));
 
        homescreen.search.getGoButton()
                .addActionListener((ActionEvent ae) -> {
@@ -189,7 +188,7 @@ public class Linker {
         @Override
         public void actionPerformed(ActionEvent e) {
             backStack.push(currPanel);
-            currPanel = HOMESCREEN;
+            currPanel = HomeScreen.LINK_NAME;
 
             forwardStack.removeAllElements();
             updateButtons();
@@ -278,11 +277,19 @@ public class Linker {
     }
 
     public static void main(String[] args){
+        UIManager.put("JComponent.sizeVariant", "large");
+        try{
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        }catch(ClassNotFoundException | 
+                InstantiationException | 
+                IllegalAccessException | 
+                UnsupportedLookAndFeelException e){
+        }
+        
         Linker link = Linker.getLinker(Util.getScreenDimension());
 
-        JFrame frame = new JFrame();
+        JFrame frame = new JFrame("LSFD Form Database");
         frame.add(link.frame);
-
         frame.setSize(Util.getScreenDimension());
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
