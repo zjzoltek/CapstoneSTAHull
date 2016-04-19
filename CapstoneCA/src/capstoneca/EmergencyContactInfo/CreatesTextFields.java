@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package EmergencyContactInfo;
+package capstoneca.EmergencyContactInfo;
 
 import java.awt.*;
 import javax.swing.*;
@@ -31,11 +31,11 @@ public class CreatesTextFields extends JPanel {
     CreatesTextFields (String labelText)
     {
         setLayout(layout);
-        
+        // this places nameF text box at a location on screen
         c.gridx = -1;
         c.gridy = -1;
         panel.add(nameF,c);
-        
+        // places the text box within  the same as nameF box
         c.gridx = -1;
         c.gridy = -1;
         panel.add(contactf,c);

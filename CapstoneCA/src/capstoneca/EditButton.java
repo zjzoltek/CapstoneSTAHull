@@ -28,7 +28,7 @@ public class EditButton extends JButton {
         init(width, height);
     }
     
-    
+    // creats the image of the button
     private void init(int width, int height){
         setSize(width, height);
         setContentAreaFilled(false);
@@ -42,6 +42,8 @@ public class EditButton extends JButton {
         setIcon((Icon) ico);
          
     }
+    
+    //gets the height and width of the screen
     
     public int getTrueWidth(){
         return realWidth;
