@@ -18,13 +18,12 @@ import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 // awt imports
 import java.awt.FlowLayout;
-import javax.swing.SwingConstants;
 
 public class PFNA extends JPanel{
     // JRadioButtons and button group
     private final JRadioButton pass = new JRadioButton();
     private final JRadioButton fail = new JRadioButton();
-    private final JRadioButton na = new JRadioButton();
+    private final JRadioButton na = new JRadioButton("", true);
     private final ButtonGroup group =  new ButtonGroup();
     // Instantiating textfield
     private final JLabel label;
