@@ -18,17 +18,18 @@ import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 // awt imports
 import java.awt.FlowLayout;
+import javax.swing.SwingConstants;
 
 public class PFNA extends JPanel{
     // JRadioButtons and button group
-    private JRadioButton pass = new JRadioButton();
-    private JRadioButton fail = new JRadioButton();
-    private JRadioButton na = new JRadioButton();
-    private ButtonGroup group =  new ButtonGroup();
+    private final JRadioButton pass = new JRadioButton();
+    private final JRadioButton fail = new JRadioButton();
+    private final JRadioButton na = new JRadioButton();
+    private final ButtonGroup group =  new ButtonGroup();
     // Instantiating textfield
-    private JLabel label;
+    private final JLabel label;
     
-    private FlowLayout layout = new FlowLayout();
+    private final FlowLayout layout = new FlowLayout();
     
     public PFNA(String labelText)
     {
