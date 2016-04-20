@@ -1,10 +1,11 @@
 package capstonezz.GUI;
 
-import capstonezz.Linker;
 import capstonezz.Util;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
@@ -25,7 +26,7 @@ import javax.swing.text.StyledDocument;
  * @since Apr 9, 2016
  */
 
-public class ResultElement extends JTextPane implements MouseListener, FocusListener  {
+public class ResultElement extends JTextPane implements MouseListener, ActionListener, FocusListener  {
     private final String title;
     private final String subtitle;
     
@@ -36,34 +37,31 @@ public class ResultElement extends JTextPane implements MouseListener, FocusList
     
     private boolean underlineVisible = true;
     
+    private Border activeBorder;
     private Border hoverBorder;
     private Border standardBorder;
     
-    private final boolean links;
-    
-    public ResultElement(String title, String subtitle, Color background, Color foreground, boolean links){
+    public ResultElement(String title, String subtitle, Color background, Color foreground){
         this.title = title.toUpperCase();
         this.subtitle = subtitle;
-        this.links = links;
         init(background, foreground);
     }
-    public ResultElement(String title, String subtitle, Color background, boolean links){
+    public ResultElement(String title, String subtitle, Color background){
         this.title = title.toUpperCase();
         this.subtitle = subtitle;
-        this.links = links;
         init(background);
     }
     
     private void init(Color bg, Color fg){
-        if(links){
-            addMouseListener(this);
-            addFocusListener(this);
-        }
+        addMouseListener(this);
+        addFocusListener(this);
         
         if (underlineVisible) {
+            activeBorder = new MatteBorder(0,0,1,0,activeColor);
             hoverBorder = new MatteBorder(0,0,1,0,hoverColor);
             standardBorder = new MatteBorder(0,0,1,0,transparent);
         } else {
+            activeBorder = new MatteBorder(0,0,0,0,activeColor);
             hoverBorder = new MatteBorder(0,0,0,0,hoverColor);
             standardBorder = new MatteBorder(0,0,0,0,transparent);
         }
@@ -71,7 +69,7 @@ public class ResultElement extends JTextPane implements MouseListener, FocusList
         int deltaFont = Util.getScreenDimension().width / 24 
                 - Util.getScreenDimension().height / 20;
         
-        if(links) setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         setFont(getFont().deriveFont(Font.BOLD, (float)deltaFont));
         setBorder(standardBorder);
         setSelectedTextColor(Color.BLUE);
@@ -84,15 +82,15 @@ public class ResultElement extends JTextPane implements MouseListener, FocusList
     }
     
     private void init(Color bg){
-        if(links){
-            addMouseListener(this);
-            addFocusListener(this);
-        }
+        addMouseListener(this);
+        addFocusListener(this);
         
         if (underlineVisible) {
+            activeBorder = new MatteBorder(0,0,1,0,activeColor);
             hoverBorder = new MatteBorder(0,0,1,0,hoverColor);
             standardBorder = new MatteBorder(0,0,1,0,transparent);
         } else {
+            activeBorder = new MatteBorder(0,0,0,0,activeColor);
             hoverBorder = new MatteBorder(0,0,0,0,hoverColor);
             standardBorder = new MatteBorder(0,0,0,0,transparent);
         }
@@ -100,7 +98,7 @@ public class ResultElement extends JTextPane implements MouseListener, FocusList
         int deltaFont = Util.getScreenDimension().width / 24 
                 - Util.getScreenDimension().height / 20;
         
-        if(links) setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         setFont(getFont().deriveFont(Font.BOLD, (float)deltaFont));
         setBorder(standardBorder);
         setSelectedTextColor(Color.BLUE);
@@ -192,8 +190,6 @@ public class ResultElement extends JTextPane implements MouseListener, FocusList
     @Override
     public void mousePressed(MouseEvent e) {
         setBorder(standardBorder);
-        Linker link = Linker.getLinker();
-        link.createView(title);
     }
 
     @Override
@@ -214,6 +210,11 @@ public class ResultElement extends JTextPane implements MouseListener, FocusList
     }
 
     @Override
+    public void actionPerformed(ActionEvent e) {
+        setBorder(activeBorder);
+    }
+
+    @Override
     public void focusLost(FocusEvent fe) {
         setForeground(standardColor);
         setBorder(standardBorder);
@@ -224,7 +225,5 @@ public class ResultElement extends JTextPane implements MouseListener, FocusList
         setForeground(hoverColor);
         //setBorder(hoverBorder);
     }
-    
-    
     
 }

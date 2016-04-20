@@ -14,12 +14,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.image.BufferedImage;
+import javax.swing.ButtonGroup;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
+import javax.swing.JRadioButton;
 
 /**
  * @author Zachary Zoltek
@@ -28,13 +30,15 @@ import javax.swing.JProgressBar;
  */
 
 public class GUI extends JPanel implements ActionListener {
-    public final JButton initiateSearch;
+    private final ButtonGroup quadrants = new ButtonGroup();
+    
+    public JButton initiateSearch;
     private final int width;
     private final int height;
-    public final SearchBox number;
-    public final SearchBox address;
+    private SearchBox number;
+    private SearchBox address;
     private JCheckBox caseSensitive;
-    public final JProgressBar loadingBar;
+    private final JProgressBar loadingBar;
     private final SearchResults searchresults;
     
     public GUI(Color color, int parentWidth, int parentHeight, SearchResults results){
@@ -43,10 +47,6 @@ public class GUI extends JPanel implements ActionListener {
         height = parentHeight;
         searchresults = results;
         loadingBar = new JProgressBar();
-        
-        address = new SearchBox("Address", 30, 5, false);
-        number = new SearchBox("Number", 30, 5, true);
-        initiateSearch = new JButton("SEARCH");
         init(color);
     }
     
@@ -56,15 +56,20 @@ public class GUI extends JPanel implements ActionListener {
         loadingBar.setIndeterminate(true);
         GridBagConstraints c = new GridBagConstraints();
         
-        JCheckBox NW = new JCheckBox("NW");
-        JCheckBox NE = new JCheckBox("NE");
-        JCheckBox SW = new JCheckBox("SW");
-        JCheckBox SE = new JCheckBox("SE");
+        JRadioButton NW = new JRadioButton("NW");
+        JRadioButton NE = new JRadioButton("NE");
+        JRadioButton SW = new JRadioButton("SW");
+        JRadioButton SE = new JRadioButton("SE");
         
         NW.setBackground(getBackground());
         NE.setBackground(getBackground());
         SW.setBackground(getBackground());
         SE.setBackground(getBackground());
+        
+        quadrants.add(NW);
+        quadrants.add(NE);
+        quadrants.add(SW);
+        quadrants.add(SE);
         
         c.anchor = GridBagConstraints.CENTER;
         
@@ -88,6 +93,7 @@ public class GUI extends JPanel implements ActionListener {
         
         c = new GridBagConstraints();
         
+        address = new SearchBox("Address", 30, 5, false);
         address.setPreferredSize(new Dimension(SearchBox.BOXWIDTH, SearchBox.BOXHEIGHT));
         c.gridx = 1;
         c.gridy = 4;
@@ -123,7 +129,7 @@ public class GUI extends JPanel implements ActionListener {
         c.gridwidth = 5;
         c.anchor = GridBagConstraints.NORTH;
         
-
+        number = new SearchBox("Number", 30, 5, true);
         number.setPreferredSize(new Dimension(SearchBox.BOXWIDTH, SearchBox.BOXHEIGHT));
         
         number.addActionListener((ActionEvent e) ->{
@@ -148,7 +154,7 @@ public class GUI extends JPanel implements ActionListener {
         c.gridwidth = 5;
         c.anchor = GridBagConstraints.NORTH;
         
-        initiateSearch.setIcon((Icon) searchIco);
+        initiateSearch = new JButton("SEARCH", (Icon) searchIco);
         initiateSearch.setFocusPainted(false);
         initiateSearch.setBorderPainted(false);
         initiateSearch.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -190,6 +196,9 @@ public class GUI extends JPanel implements ActionListener {
         
         g2d.setColor(getBackground().darker());
         g2d.fillRect(0, getHeight() - 15, width, 15);
+    }
+    public ButtonGroup getQuadrants(){
+        return quadrants;
     }
     
     public boolean isCaseSensitive(){

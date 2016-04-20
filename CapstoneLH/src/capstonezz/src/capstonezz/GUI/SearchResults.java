@@ -79,6 +79,4 @@ public class SearchResults extends JPanel {
         results.clear();
     }
     
-    
-    
 }
