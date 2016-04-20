@@ -22,7 +22,8 @@ public class PFNATest {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         InspectionReport inspectionReport = new InspectionReport();
-        PFNA pfna = new PFNA("Generic Text Here"); 
+        //PFNA pfna = new PFNA("Generic Text Here"); 
+        
         
         frame.add(inspectionReport, BorderLayout.PAGE_START);
         frame.setSize(400, 400);

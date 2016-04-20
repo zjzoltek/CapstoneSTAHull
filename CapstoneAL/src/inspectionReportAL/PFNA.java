@@ -30,7 +30,7 @@ public class PFNA extends JPanel{
     
     private FlowLayout layout = new FlowLayout();
     
-    PFNA(String labelText)
+    public PFNA(String labelText)
     {
         setLayout(layout); // set layout of screen
         

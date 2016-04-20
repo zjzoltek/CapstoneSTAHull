@@ -12,7 +12,8 @@ package inspectionReportAL;
 
 import java.awt.*;
 import javax.swing.*;
-import 
+import capstonelh.NumberedField;
+import capstonead.CommentsInspection;
 
 public class InspectionReport extends JPanel{
     
@@ -26,24 +27,24 @@ public class InspectionReport extends JPanel{
     
     
     //create numbered sections
-    private numberedField section1 = new numberedField(1);
-    private numberedField section2 = new numberedField(2);
-    private numberedField section3 = new numberedField(3);
-    private numberedField section4 = new numberedField(4);
-    private numberedField section5 = new numberedField(5);
-    private numberedField section6 = new numberedField(6);
-    private numberedField section7 = new numberedField(7);
-    private numberedField section8 = new numberedField(8);
-    private numberedField section9 = new numberedField(9);
-    private numberedField section10 = new numberedField(10);
-    private numberedField section11 = new numberedField(11);
-    private numberedField section12 = new numberedField(12);
-    private numberedField section13 = new numberedField(13);
-    private numberedField section14 = new numberedField(14);
-    private numberedField section15 = new numberedField(15);
-    private numberedField section16 = new numberedField(16);
-    private numberedField section17 = new numberedField(17);
-    private numberedField section18 = new numberedField(18);
+    private NumberedField section1 = new NumberedField(1);
+    private NumberedField section2 = new NumberedField(2);
+    private NumberedField section3 = new NumberedField(3);
+    private NumberedField section4 = new NumberedField(4);
+    private NumberedField section5 = new NumberedField(5);
+    private NumberedField section6 = new NumberedField(6);
+    private NumberedField section7 = new NumberedField(7);
+    private NumberedField section8 = new NumberedField(8);
+    private NumberedField section9 = new NumberedField(9);
+    private NumberedField section10 = new NumberedField(10);
+    private NumberedField section11 = new NumberedField(11);
+    private NumberedField section12 = new NumberedField(12);
+    private NumberedField section13 = new NumberedField(13);
+    private NumberedField section14 = new NumberedField(14);
+    private NumberedField section15 = new NumberedField(15);
+    private NumberedField section16 = new NumberedField(16);
+    private NumberedField section17 = new NumberedField(17);
+    private NumberedField section18 = new NumberedField(18);
     
     private CommentsInspection commentsInspection = new CommentsInspection();
     
