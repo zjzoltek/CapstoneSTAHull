@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package locationgui;
+package capstonepb.locationgui;
 
 //package components;
  
 //import javax.rmi.CORBA.Util;
-import capstonepb.Util;
+import capstonezz.Util;
 import javax.swing.*;
  
 

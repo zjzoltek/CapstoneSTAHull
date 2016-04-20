@@ -4,7 +4,7 @@
  * Phillip Bledsoe
  * 041416
  */
-package locationgui;
+package capstonepb.locationgui;
 
 import javax.swing.*;
 import javax.swing.JComboBox; //import for drop down boxes

@@ -6,7 +6,7 @@
 
 package capstonelh;
 
-import inspectionReportAL.PFNA;
+import capstoneal.InspectionReport.PFNA;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
