@@ -16,7 +16,7 @@ import java.awt.*;
 public class CommentsInspection extends JPanel{
         BorderLayout layout = new BorderLayout(); // create layout
         FlowLayout layout2 = new FlowLayout(); // create layout
-        JLabel comments = new JLabel("ADDITIONAL  VIOLATIONS/COMMENTS:                                                                                                                                                                                                                 P = Pass     F = Fail   NA = Not Applicable"); // create a varriable to hold the string
+        JLabel comments = new JLabel("ADDITIONAL  VIOLATIONS/COMMENTS: Type comments below"); // create a varriable to hold the string
         JLabel date = new JLabel("Date of Report:"); // create a varriable to hold the string
         JLabel inspector = new JLabel("Inspector:"); // create a varriable to hold the string
         JLabel signature = new JLabel("Signature:"); // create a varriable to hold the string
