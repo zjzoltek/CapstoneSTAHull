@@ -8,13 +8,12 @@ package capstonelh;
 
 import inspectionReportAL.PFNA;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Rectangle;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 
 
 public class NumberedField extends JPanel{
@@ -32,6 +31,8 @@ public class NumberedField extends JPanel{
         JLabel title = new JLabel("");
         title.setFont(getFont().deriveFont(16f));
         title.setBorder(BorderFactory.createLineBorder(Color.black));
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.ipadx = 0;
         
         //Create subtitle and set font
         JLabel subtitle = new JLabel("   P    F   NA");
@@ -110,6 +111,7 @@ public class NumberedField extends JPanel{
         add(title, c);
 
         c.gridy = 1;
+        c.fill = GridBagConstraints.NONE;
         add(subtitle, c);
 
         PFNA obstruction = new PFNA("Obstruction");
@@ -136,6 +138,7 @@ public class NumberedField extends JPanel{
         add(title, c);
         
         c.gridy = 1;
+        c.fill = GridBagConstraints.NONE;
         add(subtitle, c);
         
         PFNA exitSigns = new PFNA("Exit Signs Illuminated");
@@ -157,6 +160,7 @@ public class NumberedField extends JPanel{
         add(title, c);
         
         c.gridy = 1;
+        c.fill = GridBagConstraints.NONE;
         add(subtitle, c);
         
         PFNA maintained = new PFNA("Maintained/Close Fully");
@@ -182,6 +186,7 @@ public class NumberedField extends JPanel{
         add(title, c);
         
         c.gridy = 1;
+        c.fill = GridBagConstraints.NONE;
         add(subtitle, c);
         
         PFNA minimum = new PFNA("Minimum2A10BC");
@@ -211,6 +216,7 @@ public class NumberedField extends JPanel{
         add(title, c);
         
         c.gridy = 1;
+        c.fill = GridBagConstraints.NONE;
         add(subtitle, c);
         
         PFNA extCords = new PFNA("Extension Cords");
@@ -244,6 +250,7 @@ public class NumberedField extends JPanel{
         add(title, c);
         
         c.gridy = 1;
+        c.fill = GridBagConstraints.NONE;
         add(subtitle, c);
         
         PFNA housekeeping = new PFNA("Housekeeping");
@@ -277,6 +284,7 @@ public class NumberedField extends JPanel{
         add(title, c);
         
         c.gridy = 1;
+        c.fill = GridBagConstraints.NONE;
         add(subtitle, c);
         
         PFNA placards = new PFNA("704 Placards");
@@ -295,66 +303,277 @@ public class NumberedField extends JPanel{
     //Create and add components for field eight
     private void Field8(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
     {
+        title.setText(" 8. COMPRESSED GASES ");
+        c.gridx = 0;
+        c.gridy = 0;
+        c.anchor = GridBagConstraints.WEST;
+        add(title, c);
         
+        c.gridy = 1;
+        c.fill = GridBagConstraints.NONE;
+        add(subtitle, c);
+        
+        PFNA secured = new PFNA("Secured");
+        c.gridy = 2;
+        add(secured, c);
     }
     
     //Create and add components for field nine
     private void Field9(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
     {
+        title.setText(" 9. SPRAY FINISHING OPERATION ");
+        c.gridx = 0;
+        c.gridy = 0;
+        c.anchor = GridBagConstraints.WEST;
+        add(title, c);
+        
+        c.gridy = 1;
+        c.fill = GridBagConstraints.NONE;
+        add(subtitle, c);
+        
+        PFNA extinguisher = new PFNA("Minimum 4A40BC fire extinguisher within 30'");
+        c.gridy = 2;
+        add(extinguisher, c);
+        
+        PFNA sprayBooth = new PFNA("Approved spray booth");
+        c.gridy = 3;
+        add(sprayBooth, c);
+        
+        PFNA autoExt = new PFNA("Auto extinguishing system Inspected Annually");
+        c.gridy = 4;
+        add(autoExt, c);
+        
+        PFNA warningSigns = new PFNA("Welding/hotwork warning signs and No Smoking signs");
+        c.gridy = 5;
+        add(warningSigns, c);
         
     }
     
     //Create and add components for field ten
     private void Field10(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
     {
+        title.setText(" 10. SPRINKLER/STANDPIPE ");
+        c.gridx = 0;
+        c.gridy = 0;
+        c.anchor = GridBagConstraints.WEST;
+        add(title, c);
+        
+        c.gridy = 1;
+        c.fill = GridBagConstraints.NONE;
+        add(subtitle, c);
+        
+        c.gridy = 2;
+        PFNA service = new PFNA("Annual Service");
+        add(service, c);
+        
+        c.gridy = 3;
+        //date of last service here
+        
+        c.gridy = 4;
+        PFNA access = new PFNA("Access");
+        add(access, c);
+        
+        PFNA standpipe = new PFNA("Standpipe sticker on door");
+        c.gridy = 5;
+        add(standpipe, c);
+        
+        PFNA sprinklerRoom = new PFNA("Sprinkler room identified");
+        c.gridy = 6;
+        add(sprinklerRoom, c);
+        
+        //riser location here
+        c.gridy = 7;
         
     }
     
     //Create and add components for field eleven
     private void Field11(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
     {
+        title.setText(" 11. HOOD EXT. SYSTEM ");
+        c.gridx = 0;
+        c.gridy = 0;
+        c.anchor = GridBagConstraints.WEST;
+        add(title, c);
         
+        c.gridy = 1;
+        c.fill = GridBagConstraints.NONE;
+        add(subtitle, c);
+        
+        PFNA service = new PFNA("Service within 6 months");
+        c.gridy = 2;
+        add(service, c);
+        
+        //last service date here
+        c.gridy = 3;
+        
+        PFNA access = new PFNA("Access to remote pull");
+        c.gridy = 4;
+        add(access, c);
+        
+        PFNA clean = new PFNA("Clean");
+        c.gridy = 5;
+        add(clean, c);
+        
+        PFNA extinguisher = new PFNA("\"K\" Class extinguisher");
+        c.gridy = 6;
+        add(extinguisher, c);
+        
+        PFNA nozzle = new PFNA("Nozzle Condition");
+        c.gridy = 7;
+        add(nozzle, c);
+        
+        PFNA filters = new PFNA("Filters in place");
+        c.gridy = 8;
+        add(filters, c);
     }
     
     //Create and add components for field twelve
     private void Field12(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
     {
+        title.setText(" 12. OCCUPANT LOAD ");
+        c.gridx = 0;
+        c.gridy = 0;
+        c.anchor = GridBagConstraints.WEST;
+        add(title, c);
         
+        c.gridy = 1;
+        c.fill = GridBagConstraints.NONE;
+        add(subtitle, c);
+        
+        PFNA posted = new PFNA("Posted in places of assembly");
+        c.gridy = 2;
+        add(posted, c);
     }
     
     //Create and add components for field thirteen
     private void Field13(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
     {
+        title.setText(" 13. ADDRESS ");
+        c.gridx = 0;
+        c.gridy = 0;
+        c.anchor = GridBagConstraints.WEST;
+        add(title, c);
         
+        c.gridy = 1;
+        c.fill = GridBagConstraints.NONE;
+        add(subtitle, c);
+        
+        PFNA visible = new PFNA("Visible & legible");
+        c.gridy = 2;
+        add(visible, c);
     }
     
     //Create and add components for field fourteen
     private void Field14(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
     {
+        title.setText(" 14. FIRE DEPT. ACCESS ");
+        c.gridx = 0;
+        c.gridy = 0;
+        c.anchor = GridBagConstraints.WEST;
+        add(title, c);
         
+        c.gridy = 1;
+        c.fill = GridBagConstraints.NONE;
+        add(subtitle, c);
+        
+        PFNA maint = new PFNA("Maint/Lubrication");
+        c.gridy = 2;
+        add(maint, c);
+        
+        PFNA boxKeys = new PFNA("Knox box keys current");
+        c.gridy = 3;
+        add(boxKeys, c);
+        
+        //Knox box location here
     }
     
     //Create and add components for field fifteen
     private void Field15(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
     {
+        title.setText(" 15. FIRE DEPT. CONNECTION ");
+        c.gridx = 0;
+        c.gridy = 0;
+        c.anchor = GridBagConstraints.WEST;
+        add(title, c);
         
+        c.gridy = 1;
+        c.fill = GridBagConstraints.NONE;
+        add(subtitle, c);
+        
+        PFNA caps = new PFNA("FDC caps in place");
+        c.gridy = 2;
+        add(caps, c);
+        
+        PFNA identified = new PFNA("FDC identified");
+        c.gridy = 3;
+        add(identified, c);
+        
+        PFNA access = new PFNA("FDC access is uobstructed");
+        c.gridy = 4;
+        add(access, c);
+        
+        //FDC location here
     }
     
     //Create and add components for field sixteen
     private void Field16(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
     {
+        title.setText(" 16. ELEVATOR ");
+        c.gridx = 0;
+        c.gridy = 0;
+        c.anchor = GridBagConstraints.WEST;
+        add(title, c);
         
+        c.gridy = 1;
+        c.fill = GridBagConstraints.NONE;
+        add(subtitle, c);
+        
+        PFNA keys = new PFNA("Override Keys On-Site");
+        c.gridy = 2;
+        add(keys, c);
     }
     
     //Create and add components for field seventeen
     private void Field17(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
     {
+        title.setText(" 17. PROPANE ");
+        c.gridx = 0;
+        c.gridy = 0;
+        c.anchor = GridBagConstraints.WEST;
+        add(title, c);
         
+        c.gridy = 1;
+        c.fill = GridBagConstraints.NONE;
+        add(subtitle, c);
+        
+        PFNA placards = new PFNA("704 Placards");
+        c.gridy = 2;
+        add(placards, c);
+        
+        PFNA permit = new PFNA("Permit on site");
+        c.gridy = 3;
+        add(permit, c);
+        
+        PFNA bollards = new PFNA("Impact bollards");
+        c.gridy = 4;
+        add(bollards, c);
     }
     
     //Create and add components for field eighteen
     private void Field18(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
     {
+        title.setText(" 18. OTHER ");
+        c.gridx = 0;
+        c.gridy = 0;
+        c.anchor = GridBagConstraints.WEST;
+        add(title, c);
         
+        c.gridy = 1;
+        c.fill = GridBagConstraints.NONE;
+        add(subtitle, c);
+        
+        JRadioButton button = new JRadioButton("Other Violations Noted", false);
+        c.gridy = 4;
+        add(button, c);
     }
 }

@@ -38,10 +38,24 @@ public class NumberedFieldTest extends JPanel
         //Initialize array and add to panel
         for(int i = 0; i < ARRAY_SIZE; i++)
         {
+            int row = i;
             fields[i] = new NumberedField(i+1);
-//            fields[i].setBorder(BorderFactory.createLineBorder(Color.black));
-            c.gridx = 0;
-            c.gridy = i;
+            fields[i].setBorder(BorderFactory.createLineBorder(Color.black));
+            if(i<6)
+            {
+                c.gridx = 0;
+            }
+            else if(i<12)
+            {
+                c.gridx = 1;
+                row -= 6;
+            }
+            else if(i<18)
+            {
+                c.gridx = 2;
+                row -= 12;
+            }
+            c.gridy = row;
             c.anchor = GridBagConstraints.WEST;
             panel.add(fields[i], c);
         }
