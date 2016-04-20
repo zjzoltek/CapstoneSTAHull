@@ -51,14 +51,14 @@ public class InspectionReport extends JPanel{
         
         setLayout(layout);
         constraints = new GridBagConstraints();
-        
+        //setting basic constraints
         constraints.fill = GridBagConstraints.BOTH;
         constraints.weightx = 1000;
         addComponent(title, 0, 0, 1, 1);
         
         businessInformation.setBorder(BorderFactory.createLineBorder(Color.black));
         addComponent(businessInformation, 1, 0, 1, 1);
-        
+        // creating and adding the emergancy contact label
         emergancyContactLabel.setFont(new Font("Serif", Font.BOLD, 16));
         emergancyContactLabel.setBorder(BorderFactory.createLineBorder(Color.black));
         addComponent(emergancyContactLabel, 2, 0, 1, 1);
