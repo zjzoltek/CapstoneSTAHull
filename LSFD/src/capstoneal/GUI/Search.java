@@ -10,11 +10,13 @@ package capstoneal.GUI;
  * 
  */
 
-import capstonepb.Util;
 import capstonezz.CapstoneConstants;
 import capstonezz.GUI.SearchBox;
 import capstonezz.LinkerModel;
+import capstonezz.Util;
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -22,6 +24,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.plaf.basic.BasicBorders;
 
 
 public class Search extends JPanel implements LinkerModel{
@@ -41,8 +44,11 @@ public class Search extends JPanel implements LinkerModel{
         setBackground(CapstoneConstants.PANEL_BG);
         setLayout(new GridBagLayout()); // sets the layout to GridLayout
         
+        searchButton.setBorder(new BasicBorders.ButtonBorder(Color.BLACK,
+        Color.GRAY, Color.WHITE, Color.WHITE.darker()));
         searchButton.setContentAreaFilled(false);
         searchButton.setPreferredSize(new Dimension(Util.getScreenDimension().width / 8, 30));
+        searchButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         nwcb.setBackground(CapstoneConstants.PANEL_BG);
         necb.setBackground(CapstoneConstants.PANEL_BG);
         swcb.setBackground(CapstoneConstants.PANEL_BG);
