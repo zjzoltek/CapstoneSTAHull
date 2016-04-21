@@ -20,7 +20,7 @@ public class CommentsInspection extends JPanel{
         JLabel date = new JLabel("Date of Report:"); // create a varriable to hold the string
         JLabel inspector = new JLabel("Inspector:"); // create a varriable to hold the string
         JLabel signature = new JLabel("Signature:"); // create a varriable to hold the string
-        JTextArea commentArea = new JTextArea(8, 1); // arguements rows, columns
+        JTextArea commentArea = new JTextArea(); // arguements rows, columns
         
         JTextField dateField = new JTextField(10); // create the text fields and show 10 spaces
         JTextField inspectorField = new JTextField(10); // create the text fields and show 10 spaces
