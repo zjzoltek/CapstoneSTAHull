@@ -278,13 +278,13 @@ public class Linker {
 
     public static void main(String[] args){
         UIManager.put("JComponent.sizeVariant", "large");
-        try{
+        /*try{
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         }catch(ClassNotFoundException | 
                 InstantiationException | 
                 IllegalAccessException | 
                 UnsupportedLookAndFeelException e){
-        }
+        }*/
         
         Linker link = Linker.getLinker(Util.getScreenDimension());
 

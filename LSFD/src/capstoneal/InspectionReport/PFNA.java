@@ -12,7 +12,7 @@ package capstoneal.InspectionReport;
  * 
  */
 // swing imports
-import javax.swing.JRadioButton;
+import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
@@ -20,10 +20,10 @@ import javax.swing.JLabel;
 import java.awt.FlowLayout;
 
 public class PFNA extends JPanel{
-    // JRadioButtons and button group
-    private JRadioButton pass = new JRadioButton();
-    private JRadioButton fail = new JRadioButton();
-    private JRadioButton na = new JRadioButton();
+    // JCheckBoxs and button group
+    private JCheckBox pass = new JCheckBox();
+    private JCheckBox fail = new JCheckBox();
+    private JCheckBox na = new JCheckBox();
     private ButtonGroup group =  new ButtonGroup();
     // Instantiating textfield
     private JLabel label;

@@ -12,7 +12,7 @@ package capstoneal.InspectionReport;
 
 import java.awt.*;
 import javax.swing.*;
-import capstonelh.NumberedField;
+import capstonelh.IRSection;
 import capstonead.CommentsInspection;
 
 public class InspectionReport extends JPanel{
@@ -27,24 +27,24 @@ public class InspectionReport extends JPanel{
     
     
     //create numbered sections
-    private NumberedField section1 = new NumberedField(1);
-    private NumberedField section2 = new NumberedField(2);
-    private NumberedField section3 = new NumberedField(3);
-    private NumberedField section4 = new NumberedField(4);
-    private NumberedField section5 = new NumberedField(5);
-    private NumberedField section6 = new NumberedField(6);
-    private NumberedField section7 = new NumberedField(7);
-    private NumberedField section8 = new NumberedField(8);
-    private NumberedField section9 = new NumberedField(9);
-    private NumberedField section10 = new NumberedField(10);
-    private NumberedField section11 = new NumberedField(11);
-    private NumberedField section12 = new NumberedField(12);
-    private NumberedField section13 = new NumberedField(13);
-    private NumberedField section14 = new NumberedField(14);
-    private NumberedField section15 = new NumberedField(15);
-    private NumberedField section16 = new NumberedField(16);
-    private NumberedField section17 = new NumberedField(17);
-    private NumberedField section18 = new NumberedField(18);
+    private IRSection section1 = new IRSection(1);
+    private IRSection section2 = new IRSection(2);
+    private IRSection section3 = new IRSection(3);
+    private IRSection section4 = new IRSection(4);
+    private IRSection section5 = new IRSection(5);
+    private IRSection section6 = new IRSection(6);
+    private IRSection section7 = new IRSection(7);
+    private IRSection section8 = new IRSection(8);
+    private IRSection section9 = new IRSection(9);
+    private IRSection section10 = new IRSection(10);
+    private IRSection section11 = new IRSection(11);
+    private IRSection section12 = new IRSection(12);
+    private IRSection section13 = new IRSection(13);
+    private IRSection section14 = new IRSection(14);
+    private IRSection section15 = new IRSection(15);
+    private IRSection section16 = new IRSection(16);
+    private IRSection section17 = new IRSection(17);
+    private IRSection section18 = new IRSection(18);
     
     private CommentsInspection commentsInspection = new CommentsInspection();
     
