@@ -1,14 +1,13 @@
 package capstonezz.GUI;
 
-import capstonezz.Util;
-import java.awt.Color;
+import capstonezz.CapstoneConstants;
+import capstonezz.NavigationModel;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import javax.swing.BoxLayout;
-import javax.swing.JFrame;
+import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
 import javax.swing.ScrollPaneConstants;
@@ -19,32 +18,30 @@ import javax.swing.ScrollPaneConstants;
  * @since Apr 5, 2016
  */
 
-public class SearchResultsPage extends JPanel {
+public class SearchResultsPage extends JPanel implements NavigationModel {
     private NavigationButton backButton;
     private NavigationButton forwardButton;
-    private HomeButton homeButton;
+    public HomeButton homeButton;
     
     private final JToolBar toolbar = new JToolBar();
     private final int screenWidth;
     private final int screenHeight;
-    private GUI mainPanel; 
-    private SearchResults searchResults;
     
-    public SearchResultsPage(){
-        screenWidth = Util.getScreenDimension().width;
-        screenHeight = Util.getScreenDimension().height;
-        
+    public static final String LINK_NAME = "SEARCHRESULTS";
+    public final GUI mainPanel; 
+    public final SearchResults searchResults;
+    
+    public SearchResultsPage(int width, int height){
+        screenWidth = width;
+        screenHeight = height;
+        searchResults = new SearchResults(CapstoneConstants.PANEL_BG, screenWidth, screenHeight);
+        mainPanel = new GUI(CapstoneConstants.PANEL_BG, screenWidth, screenHeight, searchResults);
         init();
     }
     
     private void init(){
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        //NOTE: if you need to change the toolbar to have navigation buttons on far left,
-        //and home button in the middle, switch layout manager to boxlayout and adjust
-        //using glue
-        setBackground(Color.GRAY.brighter());
-        searchResults = new SearchResults(getBackground(), screenWidth, screenHeight);
-        mainPanel = new GUI(getBackground(), screenWidth, screenHeight, searchResults);
+        setBackground(CapstoneConstants.PANEL_BG);
         
         backButton = new NavigationButton(NavigationButton.NavigationType.BACK,
         NavigationButton.getButtonWidth(screenWidth), 
@@ -64,8 +61,6 @@ public class SearchResultsPage extends JPanel {
         
         toolbar.setBorderPainted(false);
         
-        
-        
         toolbar.setLayout(new FlowLayout());
         toolbar.add(backButton);
         toolbar.add(homeButton);
@@ -83,20 +78,19 @@ public class SearchResultsPage extends JPanel {
         add(scrollPane);
     }
     
-    public static void main(String[] args){
-        JPanel page = new SearchResultsPage();
-        JFrame frame = new JFrame();
-        
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        frame.setSize(Util.getScreenDimension());
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setContentPane(page);
-        //frame.setResizable(false);
-        frame.setVisible(true);
-        
-        frame.requestFocus();
-        
+    @Override
+    public JButton getBackButton(){
+        return backButton;
+    }
+    
+    @Override
+    public JButton getForwardButton(){
+        return forwardButton;
+    }
+
+    @Override
+    public JButton getHomeButton() {
+        return homeButton;
     }
 
 }

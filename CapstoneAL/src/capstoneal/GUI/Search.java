@@ -10,51 +10,81 @@ package capstoneal.GUI;
  * 
  */
 
-import javax.swing.*;
-import java.awt.*;
+import capstonezz.CapstoneConstants;
+import capstonezz.GUI.SearchBox;
+import capstonezz.LinkerModel;
+import capstonezz.Util;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.plaf.basic.BasicBorders;
 
 
-public class Search extends JPanel{
+public class Search extends JPanel implements LinkerModel{
     
-    JTextField searchBar = new JTextField("Search..."); // create search field
-    JButton searchButton = new JButton("GO"); // creates search button
+    public final SearchBox searchBar = new SearchBox("Address Search . . .", 30, 5, false); // create search field
+    public final JButton searchButton = new JButton("GO"); // creates search button
     
-    private final GridBagLayout layout;
-    private final GridBagConstraints constraints;
+    private final GridBagConstraints constraints = new GridBagConstraints();
     
     // making check boxes
-    private JCheckBox nwcb = new JCheckBox("NW");
-    private JCheckBox necb = new JCheckBox("NE");
-    private JCheckBox swcb = new JCheckBox("SW");
-    private JCheckBox secb = new JCheckBox("SE");
+    private final JCheckBox nwcb = new JCheckBox("NW");
+    private final JCheckBox necb = new JCheckBox("NE");
+    private final JCheckBox swcb = new JCheckBox("SW");
+    private final JCheckBox secb = new JCheckBox("SE");
         
-    Search(){
+    public Search(){
+        setBackground(CapstoneConstants.PANEL_BG);
+        setLayout(new GridBagLayout()); // sets the layout to GridLayout
         
-        setLayout(new GridLayout()); // set the layout to GridLayout
-        layout = new GridBagLayout();
-        setLayout(layout); // sets the layout to GridLayout
-        constraints = new GridBagConstraints();
-        
-        
+        searchButton.setBorder(new BasicBorders.ButtonBorder(Color.BLACK,
+        Color.GRAY, Color.WHITE, Color.WHITE.darker()));
+        searchButton.setContentAreaFilled(false);
+        searchButton.setPreferredSize(new Dimension(Util.getScreenDimension().width / 8, 30));
+        searchButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        nwcb.setBackground(CapstoneConstants.PANEL_BG);
+        necb.setBackground(CapstoneConstants.PANEL_BG);
+        swcb.setBackground(CapstoneConstants.PANEL_BG);
+        secb.setBackground(CapstoneConstants.PANEL_BG);
         // adding check boxes to panel
         addComponent(nwcb, 0, 0, 1, 1);
         addComponent(necb, 0, 1, 1, 1);
         addComponent(swcb, 0, 2, 1, 1);
         addComponent(secb, 0, 3, 1, 1);
-        constraints.fill = GridBagConstraints.BOTH;
-        constraints.weightx = 1000;
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.weightx = 1;
+        constraints.weighty = 0;
         addComponent(searchBar, 0, 4, 1, 1); // add search bar text field
         constraints.weightx = 0;
-        addComponent(searchButton, 0, 6, 1, 1); // add search button
+        constraints.weighty = 0;
+        constraints.fill = GridBagConstraints.NONE;
+        addComponent(searchButton, 1, 4, 1, 1); // add search button
+        
     } // end of constructor
     
-        private void addComponent(Component component, int row, int column, int width, int height)
+    private void addComponent(Component component, int row, int column, int width, int height)
     {
         constraints.gridx = column;
         constraints.gridy = row;
         constraints.gridwidth = width;
         constraints.gridheight = height;
-        layout.setConstraints(component, constraints); //set constraints
+        ((GridBagLayout)getLayout()).setConstraints(component, constraints); //set constraints
         add(component);
+    }
+        
+    @Override
+    public JTextField getLinkingComponent() {
+        return searchBar;
+    }
+    
+    public JButton getGoButton(){
+        return searchButton;
     }
 } // end of class

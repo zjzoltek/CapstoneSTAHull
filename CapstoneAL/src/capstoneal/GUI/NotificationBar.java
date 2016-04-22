@@ -10,11 +10,14 @@ package capstoneal.GUI;
  * 
  */
 
+import capstonezz.CapstoneConstants;
 import javax.swing.*;
 import java.awt.*;
 
 public class NotificationBar extends JPanel{
-    
+    private final JButton overdueB;
+    private final JButton pendingB;
+    private final JButton failedB;
     //Strings for status buttons
     String overdueText = "Overdue 0";
     String pendingText = "Pending 0";
@@ -23,17 +26,24 @@ public class NotificationBar extends JPanel{
     private final GridBagLayout layout;
     private final GridBagConstraints constraints;
     
-    NotificationBar()
+    public NotificationBar()
     {
-        
+        setBackground(CapstoneConstants.PANEL_BG);
         layout = new GridBagLayout();
         setLayout(layout);
         constraints = new GridBagConstraints();
         //Create status buttons
-        JButton overdueB = new JButton(overdueText);
-        JButton pendingB = new JButton(pendingText);
-        JButton failedB = new JButton(failedText);
+        overdueB = new JButton(overdueText);
+        pendingB = new JButton(pendingText);
+        failedB = new JButton(failedText);
         
+        overdueB.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        pendingB.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        failedB.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        
+        overdueB.setContentAreaFilled(false);
+        pendingB.setContentAreaFilled(false);
+        failedB.setContentAreaFilled(false);
         constraints.weightx = 1000;
         constraints.fill = GridBagConstraints.BOTH;
         
@@ -43,7 +53,7 @@ public class NotificationBar extends JPanel{
         addComponent(failedB, 0, 2, 1, 1);
     } // end of constructor
     
-        private void addComponent(Component component, int row, int column, int width, int height)
+    private void addComponent(Component component, int row, int column, int width, int height)
     {
         constraints.gridx = column;
         constraints.gridy = row;

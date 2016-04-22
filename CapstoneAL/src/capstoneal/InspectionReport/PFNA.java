@@ -1,9 +1,9 @@
 /*
- * This class creates a field with three radio buttons for pass, fail, and not avaible options
- * as well as a JLabel to the right
- * The constructor takes a string arguement which is the text for the JLabel
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-package inspectionReportAL;
+package capstoneal.InspectionReport;
 
 /**
  *
@@ -12,7 +12,7 @@ package inspectionReportAL;
  * 
  */
 // swing imports
-import javax.swing.JRadioButton;
+import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
@@ -20,10 +20,10 @@ import javax.swing.JLabel;
 import java.awt.FlowLayout;
 
 public class PFNA extends JPanel{
-    // JRadioButtons and button group
-    private JRadioButton pass = new JRadioButton();
-    private JRadioButton fail = new JRadioButton();
-    private JRadioButton na = new JRadioButton();
+    // JCheckBoxs and button group
+    private JCheckBox pass = new JCheckBox();
+    private JCheckBox fail = new JCheckBox();
+    private JCheckBox na = new JCheckBox();
     private ButtonGroup group =  new ButtonGroup();
     // Instantiating textfield
     private JLabel label;

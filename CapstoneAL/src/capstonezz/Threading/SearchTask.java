@@ -30,6 +30,10 @@ public class SearchTask implements Runnable {
         this.caseSensitive = caseSensitive;
         this.gui = gui;
         pool = Executors.newSingleThreadExecutor();
+        execute();
+    }
+    
+    private void execute(){
         pool.execute(this);
     }
     
@@ -56,7 +60,7 @@ public class SearchTask implements Runnable {
                 searchresults.addResults(
                         new ResultElement(
                                 "No results found in the database", "Sorry :(", 
-                                searchresults.getBackground()));
+                                searchresults.getBackground(), false));
             } else {
                 ArrayList<ResultElement> elements = new ArrayList<>();
                 
@@ -65,7 +69,7 @@ public class SearchTask implements Runnable {
                     age = String.valueOf(results.get(i).get(1));
                     address = (String)results.get(i).get(2);
                     elements.add(new ResultElement(name,
-                    String.format("%s YRS OLD | %s", age, address), searchresults.getBackground()));
+                    String.format("%s YRS OLD | %s", age, address), searchresults.getBackground(), true));
                 }
                 searchresults.addResults(elements);
             }
@@ -79,7 +83,7 @@ public class SearchTask implements Runnable {
                 searchresults.addResults(
                         new ResultElement(
                                 "No results found in the database", "Sorry :(", 
-                                searchresults.getBackground()));
+                                searchresults.getBackground(), false));
                 
             } else {
                 ArrayList<ResultElement> elements = new ArrayList<>();
@@ -89,7 +93,7 @@ public class SearchTask implements Runnable {
                     age = String.valueOf(results.get(i).get(1));
                     address = (String)results.get(i).get(2);
                     elements.add(new ResultElement(name,
-                    String.format("%s YRS OLD | %s", age, address), searchresults.getBackground()));
+                    String.format("%s YRS OLD | %s", age, address), searchresults.getBackground(), true));
                 }
                 searchresults.addResults(elements);
             }
