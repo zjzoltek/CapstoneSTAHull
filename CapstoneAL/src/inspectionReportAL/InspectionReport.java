@@ -10,6 +10,7 @@ package inspectionReportAL;
 
 
 import capstonead.CommentsInspection;
+import capstonezz.BasicInformation;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -20,20 +21,20 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
 public class InspectionReport extends JPanel{
     
     private final GridBagLayout layout = new GridBagLayout();
     private GridBagConstraints constraints;
+    
     private JPanel completeForm;
     private Title title = new Title();
     private JPanel businessInformation = new JPanel();
     private JLabel emergancyContactLabel = new JLabel("Emergency Contact Information", SwingConstants.CENTER);
     private JScrollPane scroller;
     
-    private EmergencyContactFields contactFields = new EmergencyContactFields();
+    private BasicInformation basicInfo= new BasicInformation();
     
     private NumberedFieldArea nFA = new NumberedFieldArea();
     
