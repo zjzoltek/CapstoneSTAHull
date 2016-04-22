@@ -39,7 +39,7 @@ public class PhoneNumberBox extends JFormattedTextField {
 
     public static void main(String[] args){
            JFrame frame = new JFrame();
-           BasicInformation date = new BasicInformation("Business Name", "Phone", "Address #");
+           EmergencyContact date = new EmergencyContact("Name", "Contact Type", "Number", "Type of Phone");
            frame.add(date);
            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

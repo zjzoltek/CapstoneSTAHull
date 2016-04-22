@@ -13,6 +13,7 @@ package capstoneal.InspectionReport;
 
 import capstonead.CommentsInspection;
 import capstonezz.InspectionReport.BasicInformation;
+import capstonezz.InspectionReport.EmergencyContact;
 import capstonezz.Util;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -33,16 +34,16 @@ public class InspectionReport extends JPanel{
     private final GridBagConstraints constraints;
     private final JPanel completeForm;
     private final Title title = new Title();
-    private final JPanel businessInformation = new JPanel();
     private final JLabel emergancyContactLabel = new JLabel("Emergency Contact Information", SwingConstants.CENTER);
     private final JScrollPane scroller;
     
     private final BasicInformation contactFields = new BasicInformation("Businesss Name", "Phone", "Address #");
     
-    private final InspectionReport nFA = new InspectionReport();
+    private final NumberedFieldArea nFA = new NumberedFieldArea();
     
     private final CommentsInspection commentsInspection = new CommentsInspection();
     
+    private final EmergencyContact ec = new EmergencyContact("Name", "Contact Type", "Number", "Type of Phone");
     
     public InspectionReport(){
         super(new BorderLayout());
@@ -52,20 +53,21 @@ public class InspectionReport extends JPanel{
         constraints.fill = GridBagConstraints.HORIZONTAL;
 
         addComponent(title, 0, 0, 1, 1);
-        
-        
-        businessInformation.setBorder(BorderFactory.createLineBorder(Color.black));
-        addComponent(businessInformation, 1, 0, 1, 1);
+        contactFields.setBorder(BorderFactory.createLineBorder(Color.black));
+        addComponent(contactFields, 1, 0, 1, 1);
         // creating and adding the emergancy contact label
         emergancyContactLabel.setFont(new Font("Serif", Font.BOLD, 16));
         emergancyContactLabel.setBorder(BorderFactory.createLineBorder(Color.black));
         addComponent(emergancyContactLabel, 2, 0, 1, 1);
         
-        addComponent(contactFields, 3, 0, 1, 1);
+        ec.setBorder(BorderFactory.createLineBorder(Color.black));
+        addComponent(ec, 3, 0, 1, 1);
+        
+        addComponent(contactFields, 4, 0, 1, 1);
         constraints.fill = GridBagConstraints.CENTER;
         
-        addComponent(nFA, 4, 0, 1, 4); // adding the numbered fields
-        addComponent(commentsInspection, 8, 0, 1, 1); // adding the bottom comments section
+        addComponent(nFA, 5, 0, 1, 4); // adding the numbered fields
+        addComponent(commentsInspection, 9, 0, 1, 1); // adding the bottom comments section
         
         scroller = new JScrollPane(completeForm);
         
@@ -83,8 +85,8 @@ public class InspectionReport extends JPanel{
     } // end of addComponent method
     
     public static void main(String[] args){
-        InspectionReport ir = new InspectionReport();
         JFrame frame = new JFrame();
+        InspectionReport ir = new InspectionReport();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(Util.getScreenDimension());
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
