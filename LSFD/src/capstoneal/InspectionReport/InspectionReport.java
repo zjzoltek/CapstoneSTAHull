@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package inspectionReportAL;
+package capstoneal.InspectionReport;
 
 /**
  *
@@ -22,27 +22,26 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
 public class InspectionReport extends JPanel{
     
     private final GridBagLayout layout = new GridBagLayout();
-    private GridBagConstraints constraints;
-    private JPanel completeForm;
-    private Title title = new Title();
-    private JPanel businessInformation = new JPanel();
-    private JLabel emergancyContactLabel = new JLabel("Emergency Contact Information", SwingConstants.CENTER);
-    private JScrollPane scroller;
+    private final GridBagConstraints constraints;
+    private final JPanel completeForm;
+    private final Title title = new Title();
+    private final JPanel businessInformation = new JPanel();
+    private final JLabel emergancyContactLabel = new JLabel("Emergency Contact Information", SwingConstants.CENTER);
+    private final JScrollPane scroller;
     
-    private EmergencyContactFields contactFields = new EmergencyContactFields();
+    private final EmergencyContactFields contactFields = new EmergencyContactFields();
     
-    private NumberedFieldArea nFA = new NumberedFieldArea();
+    private final InspectionReport nFA = new InspectionReport();
     
-    private CommentsInspection commentsInspection = new CommentsInspection();
+    private final CommentsInspection commentsInspection = new CommentsInspection();
     
     
-    InspectionReport(){
+    public InspectionReport(){
         super(new BorderLayout());
         completeForm = new JPanel(layout);
         constraints = new GridBagConstraints();

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package capstoneal.InspectionReport;
 
 /**
@@ -15,13 +10,13 @@ import java.awt.*;
 
 
 public class EmergencyContactFields extends JPanel{
-    private FlowLayout layout = new FlowLayout();
-    private JLabel nameLabel = new JLabel("Name");
-    private JLabel contactTypeLabel = new JLabel("Contact Type");
-    private JLabel numberLabel = new JLabel("Number");
-    private JLabel typeOfPhoneLabel = new JLabel("Type of Phone");
+    private final FlowLayout layout = new FlowLayout();
+    private final JLabel nameLabel = new JLabel("Name");
+    private final JLabel contactTypeLabel = new JLabel("Contact Type");
+    private final JLabel numberLabel = new JLabel("Number");
+    private final JLabel typeOfPhoneLabel = new JLabel("Type of Phone");
     
-    EmergencyContactFields()
+    public EmergencyContactFields()
     {
         setLayout(layout);
         

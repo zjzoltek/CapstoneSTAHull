@@ -129,12 +129,6 @@ public class IRSection extends JPanel{
     private void Field2(JLabel title, JLabel subtitle, GridBagConstraints c)
     {
         title.setText(" 2. EXIT SIGNS/EMERGENCY LIGHTS ");
-//        Rectangle rect = new Rectangle(0,0,100,500);
-//        title.setBounds(rect);
-//        Dimension dimension = new Dimension(100, 50);
-//        title.setMinimumSize(dimension);
-//        System.out.printf("%s", title.getSize());
-        c.gridx = 0;
         c.gridy = 0;
         c.anchor = GridBagConstraints.WEST;
         add(title, c);

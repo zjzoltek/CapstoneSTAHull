@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package capstoneal.InspectionReport;
 
 /**
@@ -21,14 +16,14 @@ import java.awt.FlowLayout;
 
 public class PFNA extends JPanel{
     // JCheckBoxs and button group
-    private JCheckBox pass = new JCheckBox();
-    private JCheckBox fail = new JCheckBox();
-    private JCheckBox na = new JCheckBox();
-    private ButtonGroup group =  new ButtonGroup();
+    private final JCheckBox pass = new JCheckBox();
+    private final JCheckBox fail = new JCheckBox();
+    private final JCheckBox na = new JCheckBox();
+    private final ButtonGroup group =  new ButtonGroup();
     // Instantiating textfield
-    private JLabel label;
+    private final JLabel label;
     
-    private FlowLayout layout = new FlowLayout();
+    private final FlowLayout layout = new FlowLayout();
     
     public PFNA(String labelText)
     {
