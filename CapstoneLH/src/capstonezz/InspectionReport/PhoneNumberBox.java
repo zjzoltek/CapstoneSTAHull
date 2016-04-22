@@ -1,9 +1,7 @@
 package capstonezz.InspectionReport;
 
 import capstonezz.Util;
-import java.awt.FlowLayout;
 import java.text.ParseException;
-import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.text.DefaultFormatterFactory;
@@ -17,12 +15,14 @@ import javax.swing.text.MaskFormatter;
 
 public class PhoneNumberBox extends JFormattedTextField {
     
-    public PhoneNumberBox(){
+    public PhoneNumberBox(int columns){
         super();
-        init();
+        init(columns);
     }
     
-    private void init(){
+    private void init(int columns){
+        setColumns(columns);
+        setFocusLostBehavior(JFormattedTextField.PERSIST);
         setFormatterFactory(new DefaultFormatterFactory(
         getMask("(###)-###-####"),
         getMask("(###)-###-####"),
@@ -39,9 +39,7 @@ public class PhoneNumberBox extends JFormattedTextField {
 
     public static void main(String[] args){
            JFrame frame = new JFrame();
-           PhoneNumberBox date = new PhoneNumberBox();
-           frame.setLayout(new FlowLayout());
-           frame.add(new JButton());
+           EmergencyContact date = new EmergencyContact("Name", "Contact Type", "Number", "Type of Phone");
            frame.add(date);
            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

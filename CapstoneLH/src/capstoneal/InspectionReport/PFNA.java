@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package inspectionReportAL;
+package capstoneal.InspectionReport;
 
 /**
  *
@@ -12,7 +7,7 @@ package inspectionReportAL;
  * 
  */
 // swing imports
-import javax.swing.JRadioButton;
+import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
@@ -20,10 +15,10 @@ import javax.swing.JLabel;
 import java.awt.FlowLayout;
 
 public class PFNA extends JPanel{
-    // JRadioButtons and button group
-    private final JRadioButton pass = new JRadioButton();
-    private final JRadioButton fail = new JRadioButton();
-    private final JRadioButton na = new JRadioButton("", true);
+    // JCheckBoxs and button group
+    private final JCheckBox pass = new JCheckBox();
+    private final JCheckBox fail = new JCheckBox();
+    private final JCheckBox na = new JCheckBox();
     private final ButtonGroup group =  new ButtonGroup();
     // Instantiating textfield
     private final JLabel label;

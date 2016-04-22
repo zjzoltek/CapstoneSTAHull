@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package inspectionReportAL;
+package capstoneal.InspectionReport;
 
 /**
  *
@@ -15,14 +15,14 @@ import java.awt.*;
 
 public class Title extends JPanel{
     
-    private GridBagLayout layout = new GridBagLayout();
-    private GridBagConstraints constraints;
+    private final GridBagLayout layout = new GridBagLayout();
+    private final GridBagConstraints constraints;
     
-    private JLabel header1 = new JLabel("Lee's Summit, Missouri Fire Department");
-    private JLabel header2 = new JLabel("Inspection Report");
-    private JLabel header3 = new JLabel("Phone: (816)969-1300");
+    private final JLabel header1 = new JLabel("Lee's Summit, Missouri Fire Department");
+    private final JLabel header2 = new JLabel("Inspection Report");
+    private final JLabel header3 = new JLabel("Phone: (816)969-1300");
     
-    Title(){
+    public Title(){
         setLayout(layout);
         constraints = new GridBagConstraints();
         

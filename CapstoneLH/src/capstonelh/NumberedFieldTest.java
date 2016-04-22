@@ -33,13 +33,13 @@ public class NumberedFieldTest extends JPanel
         GridBagConstraints c = new GridBagConstraints();
         
         //Create array for fields
-        NumberedField[] fields = new NumberedField[ARRAY_SIZE];
+        IRSection[] fields = new IRSection[ARRAY_SIZE];
         
         //Initialize array and add to panel
         for(int i = 0; i < ARRAY_SIZE; i++)
         {
             int row = i;
-            fields[i] = new NumberedField(i+1);
+            fields[i] = new IRSection(i+1);
             fields[i].setBorder(BorderFactory.createLineBorder(Color.black));
             if(i<6)
             {
@@ -62,7 +62,7 @@ public class NumberedFieldTest extends JPanel
         
         frame.add(panel);
         frame.setVisible(true);
-        frame.setSize(1000, 1000);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         

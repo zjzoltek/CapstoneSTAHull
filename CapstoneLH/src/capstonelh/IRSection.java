@@ -6,7 +6,9 @@
 
 package capstonelh;
 
-import inspectionReportAL.PFNA;
+import capstoneal.InspectionReport.PFNA;
+import capstonepb.locationgui.LocationDropDown;
+import capstonezz.InspectionReport.DateField;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -16,19 +18,19 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 
-public class NumberedField extends JPanel{
+public class IRSection extends JPanel{
     private GridBagLayout layout;
     
-    public NumberedField(int field)
+    public IRSection(int field)
     {
         //Set layout of the panel
         layout = new GridBagLayout();
         setLayout(layout);
         //Constraints to be used
         GridBagConstraints c = new GridBagConstraints();
-        
+        setBorder(BorderFactory.createLineBorder(Color.black));
         //Create title and set font and border
-        JLabel title = new JLabel("");
+        JLabel title = new JLabel();
         title.setFont(getFont().deriveFont(16f));
         title.setBorder(BorderFactory.createLineBorder(Color.black));
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -43,58 +45,58 @@ public class NumberedField extends JPanel{
         {
             //Pass to a function to construct the JPanel
             case 1:
-                Field1(this, title, subtitle, c);
+                Field1(title, subtitle, c);
                 break;
             case 2:
-                Field2(this, title, subtitle, c);
+                Field2(title, subtitle, c);
                 break;
             case 3:
-                Field3(this, title, subtitle, c);
+                Field3(title, subtitle, c);
                 break;
             case 4:
-                Field4(this, title, subtitle, c);
+                Field4(title, subtitle, c);
                 break;
             case 5:
-                Field5(this, title, subtitle, c);
+                Field5(title, subtitle, c);
                 break;
             case 6:
-                Field6(this, title, subtitle, c);
+                Field6(title, subtitle, c);
                 break;
             case 7:
-                Field7(this, title, subtitle, c);
+                Field7(title, subtitle, c);
                 break;
             case 8:
-                Field8(this, title, subtitle, c);
+                Field8(title, subtitle, c);
                 break;
             case 9:
-                Field9(this, title, subtitle, c);
+                Field9(title, subtitle, c);
                 break;
             case 10:
-                Field10(this, title, subtitle, c);
+                Field10(title, subtitle, c);
                 break;
             case 11:
-                Field11(this, title, subtitle, c);
+                Field11(title, subtitle, c);
                 break;
             case 12:
-                Field12(this, title, subtitle, c);
+                Field12(title, subtitle, c);
                 break;
             case 13:
-                Field13(this, title, subtitle, c);
+                Field13(title, subtitle, c);
                 break;
             case 14:
-                Field14(this, title, subtitle, c);
+                Field14(title, subtitle, c);
                 break;
             case 15:
-                Field15(this, title, subtitle, c);
+                Field15(title, subtitle, c);
                 break;
             case 16:
-                Field16(this, title, subtitle, c);
+                Field16(title, subtitle, c);
                 break;
             case 17:
-                Field17(this, title, subtitle, c);
+                Field17(title, subtitle, c);
                 break;
             case 18:
-                Field18(this, title, subtitle, c);
+                Field18(title, subtitle, c);
                 break;
             default:
                 break;
@@ -102,7 +104,7 @@ public class NumberedField extends JPanel{
     }
 
     //Create and add components for field one
-    private void Field1(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
+    private void Field1(JLabel title, JLabel subtitle, GridBagConstraints c)
     {
         title.setText(" 1. EXIT DOORS/EXIT WAYS ");
         c.gridx = 0;
@@ -124,15 +126,9 @@ public class NumberedField extends JPanel{
     }
     
     //Create and add components for field two
-    private void Field2(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
+    private void Field2(JLabel title, JLabel subtitle, GridBagConstraints c)
     {
         title.setText(" 2. EXIT SIGNS/EMERGENCY LIGHTS ");
-//        Rectangle rect = new Rectangle(0,0,100,500);
-//        title.setBounds(rect);
-//        Dimension dimension = new Dimension(100, 50);
-//        title.setMinimumSize(dimension);
-//        System.out.printf("%s", title.getSize());
-        c.gridx = 0;
         c.gridy = 0;
         c.anchor = GridBagConstraints.WEST;
         add(title, c);
@@ -151,7 +147,7 @@ public class NumberedField extends JPanel{
     }
     
     //Create and add components for field three
-    private void Field3(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
+    private void Field3(JLabel title, JLabel subtitle, GridBagConstraints c)
     {
         title.setText(" 3. FIRE DOORS ");
         c.gridx = 0;
@@ -177,7 +173,7 @@ public class NumberedField extends JPanel{
     }
     
     //Create and add components for field four
-    private void Field4(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
+    private void Field4(JLabel title, JLabel subtitle, GridBagConstraints c)
     {
         title.setText(" 4. FIRE EXTINGUISHERS ");
         c.gridx = 0;
@@ -207,7 +203,7 @@ public class NumberedField extends JPanel{
     }
     
     //Create and add components for field five
-    private void Field5(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
+    private void Field5(JLabel title, JLabel subtitle, GridBagConstraints c)
     {
         title.setText(" 5. ELECTRICAL ");
         c.gridx = 0;
@@ -241,7 +237,7 @@ public class NumberedField extends JPanel{
     }
     
     //Create and add components for field six
-    private void Field6(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
+    private void Field6(JLabel title, JLabel subtitle, GridBagConstraints c)
     {
         title.setText(" 6. STORAGE ");
         c.gridx = 0;
@@ -275,7 +271,7 @@ public class NumberedField extends JPanel{
     }
     
     //Create and add components for field seven
-    private void Field7(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
+    private void Field7(JLabel title, JLabel subtitle, GridBagConstraints c)
     {
         title.setText(" 7. FLAMMABLE/COMBUSTABLE ");
         c.gridx = 0;
@@ -301,7 +297,7 @@ public class NumberedField extends JPanel{
     }
     
     //Create and add components for field eight
-    private void Field8(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
+    private void Field8(JLabel title, JLabel subtitle, GridBagConstraints c)
     {
         title.setText(" 8. COMPRESSED GASES ");
         c.gridx = 0;
@@ -319,7 +315,7 @@ public class NumberedField extends JPanel{
     }
     
     //Create and add components for field nine
-    private void Field9(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
+    private void Field9(JLabel title, JLabel subtitle, GridBagConstraints c)
     {
         title.setText(" 9. SPRAY FINISHING OPERATION ");
         c.gridx = 0;
@@ -350,8 +346,11 @@ public class NumberedField extends JPanel{
     }
     
     //Create and add components for field ten
-    private void Field10(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
+    private void Field10(JLabel title, JLabel subtitle, GridBagConstraints c)
     {
+        final DateField dateField = new DateField('.', "Date of last service");
+        final LocationDropDown riserLocation = new LocationDropDown("Riser Location", "");
+        
         title.setText(" 10. SPRINKLER/STANDPIPE ");
         c.gridx = 0;
         c.gridy = 0;
@@ -368,6 +367,7 @@ public class NumberedField extends JPanel{
         
         c.gridy = 3;
         //date of last service here
+        add(dateField, c);
         
         c.gridy = 4;
         PFNA access = new PFNA("Access");
@@ -383,12 +383,14 @@ public class NumberedField extends JPanel{
         
         //riser location here
         c.gridy = 7;
-        
+        add(riserLocation, c);
     }
     
     //Create and add components for field eleven
-    private void Field11(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
+    private void Field11(JLabel title, JLabel subtitle, GridBagConstraints c)
     {
+        final DateField lastService = new DateField('.', "Last service date");
+        
         title.setText(" 11. HOOD EXT. SYSTEM ");
         c.gridx = 0;
         c.gridy = 0;
@@ -405,6 +407,7 @@ public class NumberedField extends JPanel{
         
         //last service date here
         c.gridy = 3;
+        add(lastService, c);
         
         PFNA access = new PFNA("Access to remote pull");
         c.gridy = 4;
@@ -428,7 +431,7 @@ public class NumberedField extends JPanel{
     }
     
     //Create and add components for field twelve
-    private void Field12(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
+    private void Field12(JLabel title, JLabel subtitle, GridBagConstraints c)
     {
         title.setText(" 12. OCCUPANT LOAD ");
         c.gridx = 0;
@@ -446,7 +449,7 @@ public class NumberedField extends JPanel{
     }
     
     //Create and add components for field thirteen
-    private void Field13(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
+    private void Field13(JLabel title, JLabel subtitle, GridBagConstraints c)
     {
         title.setText(" 13. ADDRESS ");
         c.gridx = 0;
@@ -464,8 +467,10 @@ public class NumberedField extends JPanel{
     }
     
     //Create and add components for field fourteen
-    private void Field14(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
+    private void Field14(JLabel title, JLabel subtitle, GridBagConstraints c)
     {
+        final LocationDropDown knox = new LocationDropDown("KnoxBox Location", "");
+        
         title.setText(" 14. FIRE DEPT. ACCESS ");
         c.gridx = 0;
         c.gridy = 0;
@@ -485,11 +490,15 @@ public class NumberedField extends JPanel{
         add(boxKeys, c);
         
         //Knox box location here
+        c.gridy = 5;
+        add(knox, c);
     }
     
     //Create and add components for field fifteen
-    private void Field15(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
+    private void Field15(JLabel title, JLabel subtitle, GridBagConstraints c)
     {
+        final LocationDropDown fdc = new LocationDropDown("FDC Location", "");
+        
         title.setText(" 15. FIRE DEPT. CONNECTION ");
         c.gridx = 0;
         c.gridy = 0;
@@ -508,15 +517,17 @@ public class NumberedField extends JPanel{
         c.gridy = 3;
         add(identified, c);
         
-        PFNA access = new PFNA("FDC access is uobstructed");
+        PFNA access = new PFNA("FDC access is unobstructed");
         c.gridy = 4;
         add(access, c);
         
         //FDC location here
+        c.gridy = 5;
+        add(fdc, c);
     }
     
     //Create and add components for field sixteen
-    private void Field16(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
+    private void Field16(JLabel title, JLabel subtitle, GridBagConstraints c)
     {
         title.setText(" 16. ELEVATOR ");
         c.gridx = 0;
@@ -534,7 +545,7 @@ public class NumberedField extends JPanel{
     }
     
     //Create and add components for field seventeen
-    private void Field17(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
+    private void Field17(JLabel title, JLabel subtitle, GridBagConstraints c)
     {
         title.setText(" 17. PROPANE ");
         c.gridx = 0;
@@ -560,7 +571,7 @@ public class NumberedField extends JPanel{
     }
     
     //Create and add components for field eighteen
-    private void Field18(JPanel panel, JLabel title, JLabel subtitle, GridBagConstraints c)
+    private void Field18(JLabel title, JLabel subtitle, GridBagConstraints c)
     {
         title.setText(" 18. OTHER ");
         c.gridx = 0;

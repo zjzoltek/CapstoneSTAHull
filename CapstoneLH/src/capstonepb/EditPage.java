@@ -30,7 +30,6 @@ public class EditPage extends JPanel
     public final JButton andButton;
 
     public final JButton saveButton;
-
     private final Color color;
     private final String display;
 
