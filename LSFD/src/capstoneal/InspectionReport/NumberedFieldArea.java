@@ -1,11 +1,5 @@
 package capstoneal.InspectionReport;
 
-/**
- * @author Zachary Zoltek
- * @version 1.0
- * @since Apr 21, 2016
- */
-
 import capstonelh.IRSection;
 import java.awt.Color;
 import java.awt.Component;

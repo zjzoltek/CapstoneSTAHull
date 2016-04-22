@@ -12,6 +12,8 @@ package capstoneal.InspectionReport;
 
 
 import capstonead.CommentsInspection;
+import capstonezz.InspectionReport.BasicInformation;
+import capstonezz.Util;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -19,6 +21,7 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.BorderFactory;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -34,7 +37,7 @@ public class InspectionReport extends JPanel{
     private final JLabel emergancyContactLabel = new JLabel("Emergency Contact Information", SwingConstants.CENTER);
     private final JScrollPane scroller;
     
-    private final EmergencyContactFields contactFields = new EmergencyContactFields();
+    private final BasicInformation contactFields = new BasicInformation("Businesss Name", "Phone", "Address #");
     
     private final InspectionReport nFA = new InspectionReport();
     
@@ -78,4 +81,14 @@ public class InspectionReport extends JPanel{
         layout.setConstraints(component, constraints); //set constraints
         completeForm.add(component);
     } // end of addComponent method
+    
+    public static void main(String[] args){
+        InspectionReport ir = new InspectionReport();
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(Util.getScreenDimension());
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.add(ir);
+        frame.setVisible(true);
+    }
 } // end of class
