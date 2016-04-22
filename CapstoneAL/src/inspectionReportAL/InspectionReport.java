@@ -40,7 +40,7 @@ public class InspectionReport extends JPanel{
     private CommentsInspection commentsInspection = new CommentsInspection();
     
     
-    InspectionReport(){
+    public InspectionReport(){
         super(new BorderLayout());
         completeForm = new JPanel(layout);
         constraints = new GridBagConstraints();

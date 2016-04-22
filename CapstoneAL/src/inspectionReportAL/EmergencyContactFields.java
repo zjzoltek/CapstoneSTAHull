@@ -21,7 +21,7 @@ public class EmergencyContactFields extends JPanel{
     private JLabel numberLabel = new JLabel("Number");
     private JLabel typeOfPhoneLabel = new JLabel("Type of Phone");
     
-    EmergencyContactFields()
+    public EmergencyContactFields()
     {
         setLayout(layout);
         

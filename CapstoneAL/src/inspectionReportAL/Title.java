@@ -26,7 +26,7 @@ public class Title extends JPanel{
     private JLabel header2 = new JLabel("Inspection Report");
     private JLabel header3 = new JLabel("Phone: (816)969-1300");
     
-    Title(){
+    public Title(){
         //Setting layout and constraints
         setLayout(layout);
         constraints = new GridBagConstraints();

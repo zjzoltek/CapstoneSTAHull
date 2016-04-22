@@ -42,7 +42,7 @@ public class NumberedFieldArea extends JPanel{
     private NumberedField section17 = new NumberedField(17);
     private NumberedField section18 = new NumberedField(18);
     
-    NumberedFieldArea(){
+    public NumberedFieldArea(){
         setLayout(layout);
         
         constraints.fill = GridBagConstraints.BOTH;
