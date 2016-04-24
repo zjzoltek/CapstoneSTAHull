@@ -5,12 +5,13 @@
  */
 package capstoneca;
 
+import capstoneal.InspectionReport.InspectionReport;
+import capstonepb.EditPage;
+import capstonezz.DisabledPanel;
 import capstonezz.GUI.NavigationButton;
 import capstonezz.NavigationModel;
-import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.FlowLayout;
-import java.util.Random;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -33,23 +34,26 @@ public class ViewPage extends JPanel implements NavigationModel {
     private EditButton editButton;
 
     private String displayString = "";
-
-    private Random rand = new Random();
-    private Color color;
-
+    
+    private final InspectionReport ir;
+    private final EditPage editPage;
+    
+    public final DisabledPanel panel;
+    
     public ViewPage(int width, int height, String display){
         this.width = width;
         this.height = height;
         toolBar = new JToolBar();
         displayString = display;
+        ir = new InspectionReport();
+        panel = new DisabledPanel(this);
+        editPage = new EditPage(width, height, display, ir);
         init();
     }
 
     private void init(){
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        color = new Color(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255));
 
-        toolBar.setBackground(color);
         toolBar.setBorderPainted(true);
         toolBar.setLayout(new FlowLayout());
 
@@ -83,6 +87,10 @@ public class ViewPage extends JPanel implements NavigationModel {
         toolBar.add(editButton);
 
         add(toolBar);
+        
+        add(ir);
+        
+        DisabledPanel.disable(ir);
     }
 
     @Override
@@ -111,8 +119,16 @@ public class ViewPage extends JPanel implements NavigationModel {
     public String getString(){
         return displayString;
     }
-
-    public Color getColor(){
-        return color;
+    
+    public InspectionReport getIR(){
+        return ir;
+    }
+    
+    public DisabledPanel getDisabledPanel(){
+        return panel;
+    }
+    
+    public EditPage getEditPage(){
+        return editPage;
     }
 }

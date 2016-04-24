@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package capstoneal.InspectionReport;
 
 /**
@@ -12,7 +7,7 @@ package capstoneal.InspectionReport;
 
 
 import capstonead.CommentsInspection;
-import capstonezz.InspectionReport.BasicInformation;
+import capstonezz.InspectionReport.AllContact;
 import capstonezz.InspectionReport.EmergencyContact;
 import capstonezz.Util;
 import java.awt.BorderLayout;
@@ -26,6 +21,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
 public class InspectionReport extends JPanel{
@@ -33,17 +29,14 @@ public class InspectionReport extends JPanel{
     private final GridBagLayout layout = new GridBagLayout();
     private final GridBagConstraints constraints;
     private final JPanel completeForm;
-    private final Title title = new Title();
     private final JLabel emergancyContactLabel = new JLabel("Emergency Contact Information", SwingConstants.CENTER);
     private final JScrollPane scroller;
-    
-    private final BasicInformation contactFields = new BasicInformation("Businesss Name", "Phone", "Address #");
     
     private final NumberedFieldArea nFA = new NumberedFieldArea();
     
     private final CommentsInspection commentsInspection = new CommentsInspection();
-    
-    private final EmergencyContact ec = new EmergencyContact("Name", "Contact Type", "Number", "Type of Phone");
+    private final AllContact ac = new AllContact();
+    private final EmergencyContact ec;
     
     public InspectionReport(){
         super(new BorderLayout());
@@ -51,26 +44,24 @@ public class InspectionReport extends JPanel{
         constraints = new GridBagConstraints();
         //setting basic constraints
         constraints.fill = GridBagConstraints.HORIZONTAL;
-
-        addComponent(title, 0, 0, 1, 1);
-        contactFields.setBorder(BorderFactory.createLineBorder(Color.black));
-        addComponent(contactFields, 1, 0, 1, 1);
+        
+        addComponent(ac, 0, 0, 1, 1);
+        
+        ec = new EmergencyContact();
+        ec.setBorder(BorderFactory.createLineBorder(Color.black));
+        
         // creating and adding the emergancy contact label
         emergancyContactLabel.setFont(new Font("Serif", Font.BOLD, 16));
         emergancyContactLabel.setBorder(BorderFactory.createLineBorder(Color.black));
-        addComponent(emergancyContactLabel, 2, 0, 1, 1);
+        addComponent(emergancyContactLabel, 1, 0, 1, 1);
+        addComponent(ec, 2, 0, 1, 1);
         
-        ec.setBorder(BorderFactory.createLineBorder(Color.black));
-        addComponent(ec, 3, 0, 1, 1);
-        
-        addComponent(contactFields, 4, 0, 1, 1);
-        constraints.fill = GridBagConstraints.CENTER;
-        
-        addComponent(nFA, 5, 0, 1, 4); // adding the numbered fields
+        addComponent(nFA, 3, 0, 1, 4); // adding the numbered fields
         addComponent(commentsInspection, 9, 0, 1, 1); // adding the bottom comments section
         
         scroller = new JScrollPane(completeForm);
-        
+        scroller.getVerticalScrollBar().setUnitIncrement(12);
+        scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         add(scroller, BorderLayout.CENTER);
     } // end of InspectionReport constructor
     
@@ -88,9 +79,9 @@ public class InspectionReport extends JPanel{
         JFrame frame = new JFrame();
         InspectionReport ir = new InspectionReport();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(ir);
         frame.setSize(Util.getScreenDimension());
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.add(ir);
         frame.setVisible(true);
     }
 } // end of class

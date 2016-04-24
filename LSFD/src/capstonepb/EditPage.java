@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package capstonepb;
+import capstoneal.InspectionReport.InspectionReport;
+import capstonezz.DisabledPanel;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import javax.swing.BoxLayout;
@@ -30,19 +32,17 @@ public class EditPage extends JPanel
     public final JButton andButton;
 
     public final JButton saveButton;
-    private final Color color;
     private final String display;
-
-    public EditPage(int width, int height, String display, Color color)
+    private final InspectionReport ir;
+    
+    public EditPage(int width, int height, String display, InspectionReport ir)
     {
-        this.color = color;
         this.display = display;
         this.width = width;
         this.height = height;
 
         toolBar = new JToolBar(JToolBar.HORIZONTAL);
 
-        toolBar.setBackground(color);
         cancelButton = new EditPageButtons(EditPageButtons.ButtonType.CANCEL,
             width, height);
 
@@ -51,10 +51,11 @@ public class EditPage extends JPanel
 
         saveButton = new EditPageButtons(EditPageButtons.ButtonType.SAVE,
             width, height);
-        init();
+        
+        this.ir = ir;
     }
 
-    private void init(){
+    public void init(){
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(Color.GRAY.brighter());
         toolBar.setLayout(new FlowLayout());
@@ -64,6 +65,9 @@ public class EditPage extends JPanel
         toolBar.add(saveButton);
 
         add(toolBar);
+        add(ir);
+        
+        DisabledPanel.enable(ir);
     }
 
 }
