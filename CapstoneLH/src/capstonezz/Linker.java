@@ -197,18 +197,38 @@ public class Linker {
 
     }
 
-    class ViewCreate implements ActionListener{
+    class EditCreate implements ActionListener{
         private final ViewPage view;
 
-        public ViewCreate(ViewPage view){
+        public EditCreate(ViewPage view){
             this.view = view;
         }
         @Override
         public void actionPerformed(ActionEvent e){
+            view.getEditPage().init();
             createEdit(view);
         }
     }
+    
+    class EditExit implements ActionListener{
+        private final ViewPage view;
 
+        public EditExit(ViewPage view){
+            this.view = view;
+        }
+        
+        @Override
+        public void actionPerformed(ActionEvent e){
+            view.add(view.getIR());
+            DisabledPanel.disable(view.getIR());
+            
+            currPanel = backStack.pop();
+
+            updateButtons();
+            ((CardLayout)frame.getLayout()).show(frame, currPanel);
+        }
+    }
+    
     public void updateButtons(){
         backButtonEnabled = !backStack.isEmpty();
         forwardButtonEnabled = !forwardStack.isEmpty();
@@ -239,21 +259,19 @@ public class Linker {
         view.getBackButton().addActionListener(new BackButton());
         view.getHomeButton().addActionListener(new HomeTaker());
 
-        view.getEditButton().addActionListener(new ViewCreate(view));
-
+        view.getEditButton().addActionListener(new EditCreate(view));
+        
+        view.getEditPage().andButton.addActionListener(new EditExit(view));
+        view.getEditPage().cancelButton.addActionListener(new EditExit(view));
+        view.getEditPage().saveButton.addActionListener(new EditExit(view));
+        
         changeScreen(display);
     }
 
     public void createEdit(ViewPage view){
         String identifier = view.getString() + "edit";
 
-        EditPage edit = new EditPage(view.getWidth(), view.getHeight(), identifier, view.getColor());
-
-        edit.andButton.addActionListener(new GracefulExit());
-        edit.cancelButton.addActionListener(new GracefulExit());
-        edit.saveButton.addActionListener(new GracefulExit());
-
-        frame.add(edit, identifier);
+        frame.add(view.getEditPage(), identifier);
 
         changeScreen(identifier);
     }

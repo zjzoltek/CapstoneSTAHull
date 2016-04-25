@@ -10,6 +10,7 @@ package capstonead;
  * @author awdobson1129
  */
 
+import capstonezz.InspectionReport.DateField;
 import javax.swing.*;
 import java.awt.*;
 
@@ -22,7 +23,7 @@ public class CommentsInspection extends JPanel{
         JLabel signature = new JLabel("Signature:"); // create a varriable to hold the string
         JTextArea commentArea = new JTextArea(); // arguements rows, columns
         
-        JTextField dateField = new JTextField(10); // create the text fields and show 10 spaces
+        DateField dateField = new DateField('.', "Date of Report"); // create the text fields and show 10 spaces
         JTextField inspectorField = new JTextField(10); // create the text fields and show 10 spaces
         JTextField signatureField = new JTextField(10); // create the text fields and show 10 spaces
         

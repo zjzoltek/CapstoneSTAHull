@@ -3,8 +3,7 @@ package capstoneal.InspectionReport;
 import capstonelh.IRSection;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
@@ -13,12 +12,6 @@ import javax.swing.JPanel;
  * @author ACLeavitt0612
  */
 public class NumberedFieldArea extends JPanel{
-    
-    GridBagLayout layout = new GridBagLayout();
-    GridBagConstraints constraints = new GridBagConstraints();
-    
-    
-        //create numbered sections
     private final IRSection section1 = new IRSection(1);
     private final IRSection section2 = new IRSection(2);
     private final IRSection section3 = new IRSection(3);
@@ -39,48 +32,36 @@ public class NumberedFieldArea extends JPanel{
     private final IRSection section18 = new IRSection(18);
     
     public NumberedFieldArea(){
-        setLayout(layout);
+        setLayout(new GridLayout(6,3,5,5));
         
-        constraints.fill = GridBagConstraints.BOTH;
-        constraints.anchor = GridBagConstraints.EAST;
-        constraints.ipadx = 0;
-        constraints.ipady = 0;
+        //constraints.anchor = GridBagConstraints.EAST;
         setBorder(BorderFactory.createLineBorder(Color.black));
         
         // adding the numbered fields into the form
         //column 0
-        addComponent(section1, 0, 0, 1, 1);
-        addComponent(section2, 1, 0, 1, 1);
-        addComponent(section3, 2, 0, 1, 1);
-        addComponent(section4, 3, 0, 1, 1);
+        
+        add(section1);
+        add(section2);
+        add(section3);
+        add(section4);
         //column 1
-        addComponent(section5, 0, 1, 1, 1);
-        addComponent(section6, 1, 1, 1, 1);
-        addComponent(section7, 2, 1, 1, 1);
-        addComponent(section8, 3, 1, 1, 1);
+        add(section5);
+        add(section6);
+        add(section7);
+        add(section8);
         //column 2
-        addComponent(section9, 0, 2, 1, 2);
-        addComponent(section10, 2, 2, 1, 2);
+        add(section9);
+        add(section10);
         //column 3
-        addComponent(section11, 0, 3, 1, 1);
-        addComponent(section12, 1, 3, 1, 1);
-        addComponent(section13, 2, 3, 1, 1);
-        addComponent(section14, 3, 3, 1, 1);
+        add(section11);
+        add(section12);
+        add(section13);
+        add(section14);
         //column 4
-        addComponent(section15, 0, 4, 1, 1);
-        addComponent(section16, 1, 4, 1, 1);
-        addComponent(section17, 2, 4, 1, 1);
-        addComponent(section18, 3, 4, 1, 1);
+        add(section15);
+        add(section16);
+        add(section17);
+        add(section18);
         //end of numbered fields
     }
-    
-    private void addComponent(Component component, int row, int column, int width, int height)
-    {
-        constraints.gridy = row;
-        constraints.gridx = column;
-        constraints.gridwidth = width;
-        constraints.gridheight = height;
-        layout.setConstraints(component, constraints); //set constraints
-        add(component);
-    } // end of addComponent method
 }
