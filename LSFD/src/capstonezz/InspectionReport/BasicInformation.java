@@ -33,6 +33,9 @@ public class BasicInformation extends JPanel {
         addressField = new JTextField(13);
         phoneField = new PhoneNumberBox(7);
         
+        businessField.setName("0");
+        addressField.setName("1");
+        phoneField.setName("2");
         init();
     }
     

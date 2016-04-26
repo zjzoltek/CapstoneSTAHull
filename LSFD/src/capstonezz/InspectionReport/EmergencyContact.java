@@ -73,15 +73,27 @@ public class EmergencyContact extends JPanel{
         numberField = new PhoneNumberBox(7);
         pfa = new JTextPane();
         
+        nameField.setName("10");
+        contactField.setName("11");
+        TOPField.setName("12");
+        occupancyClass.setName("13");
+        hazard.setName("14");
+        fireAlarm.setName("15");
+        panelPadLocation.setName("16");
+        numberField.setName("17");
+        pfa.setName("18");
+        
         district = new JComboBox();
         
+        district.setName("19");
         ((AbstractDocument)pfa.getDocument()).setDocumentFilter(new NumberDocument());
         
        
         active = new PFNA("Active");
         sysNormal = new PFNA("Sys Normal");
         
-        
+        active.setName("20");
+        sysNormal.setName("21");
         
         pfa.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         fireAlarm.setBorder(BorderFactory.createLineBorder(Color.BLACK));
