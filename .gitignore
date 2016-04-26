@@ -4,6 +4,7 @@
 /CapStoneZZ/nbproject/
 /CapstoneZZ/build/
 /CapstoneZZ/dist/
+<<<<<<< HEAD
 =======
 /CapstonePB/nbproject/private/
 /CapstonePB/build/
@@ -12,3 +13,8 @@
 /LSFD/build/
 LSFD/nbproject/
 CapstoneAL/nbproject/private/private.xml
+=======
+/CapstoneLH/nbproject/private/
+/CapstoneLH/build/
+/CapstoneLH/dist/
+>>>>>>> origin/Lucas-Wrok
