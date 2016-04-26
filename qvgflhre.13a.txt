@@ -1,0 +1,24 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch Cam-Wor
+# Your branch is ahead of 'origin/Cam-Wor' by 1 commit.
+#   (use "git push" to publish your local commits)
+#
+# Changes to be committed:
+#	deleted:    CapStone/src/capstone/CapStone.java
+#
+# Changes not staged for commit:
+#	modified:   CapStone/nbproject/build-impl.xml
+#	modified:   CapStone/nbproject/genfiles.properties
+#	modified:   CapStone/nbproject/private/private.xml
+#	modified:   CapStone/nbproject/project.properties
+#	modified:   CapStone/nbproject/project.xml
+#	modified:   CapStone/src/capstone/Home.java
+#	modified:   CapStone/src/capstone/ViewPage.java
+#
+# Untracked files:
+#	CapStone/res/
+#	CapstoneZZ/
+#
+
