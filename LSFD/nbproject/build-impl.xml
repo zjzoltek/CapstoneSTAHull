@@ -253,7 +253,11 @@ is divided into following sections:
     </target>
     <target depends="-init-ap-cmdline-properties" if="ap.supported.internal" name="-init-macrodef-javac-with-processors">
         <macrodef name="javac" uri="http://www.netbeans.org/ns/j2se-project/3">
+<<<<<<< HEAD:CapstoneAL/nbproject/build-impl.xml
+            <attribute default="${src.dir}" name="srcdir"/>
+=======
             <attribute default="${src.dir}:${src.res.dir}" name="srcdir"/>
+>>>>>>> Zachs-Work:LSFD/nbproject/build-impl.xml
             <attribute default="${build.classes.dir}" name="destdir"/>
             <attribute default="${javac.classpath}" name="classpath"/>
             <attribute default="${javac.processorpath}" name="processorpath"/>
@@ -294,7 +298,11 @@ is divided into following sections:
     </target>
     <target depends="-init-ap-cmdline-properties" name="-init-macrodef-javac-without-processors" unless="ap.supported.internal">
         <macrodef name="javac" uri="http://www.netbeans.org/ns/j2se-project/3">
+<<<<<<< HEAD:CapstoneAL/nbproject/build-impl.xml
+            <attribute default="${src.dir}" name="srcdir"/>
+=======
             <attribute default="${src.dir}:${src.res.dir}" name="srcdir"/>
+>>>>>>> Zachs-Work:LSFD/nbproject/build-impl.xml
             <attribute default="${build.classes.dir}" name="destdir"/>
             <attribute default="${javac.classpath}" name="classpath"/>
             <attribute default="${javac.processorpath}" name="processorpath"/>
@@ -327,7 +335,11 @@ is divided into following sections:
     </target>
     <target depends="-init-macrodef-javac-with-processors,-init-macrodef-javac-without-processors" name="-init-macrodef-javac">
         <macrodef name="depend" uri="http://www.netbeans.org/ns/j2se-project/3">
+<<<<<<< HEAD:CapstoneAL/nbproject/build-impl.xml
+            <attribute default="${src.dir}" name="srcdir"/>
+=======
             <attribute default="${src.dir}:${src.res.dir}" name="srcdir"/>
+>>>>>>> Zachs-Work:LSFD/nbproject/build-impl.xml
             <attribute default="${build.classes.dir}" name="destdir"/>
             <attribute default="${javac.classpath}" name="classpath"/>
             <sequential>
@@ -925,7 +937,11 @@ is divided into following sections:
                 <include name="*"/>
             </dirset>
         </pathconvert>
+<<<<<<< HEAD:CapstoneAL/nbproject/build-impl.xml
+        <j2seproject3:depend srcdir="${src.dir}:${build.generated.subdirs}"/>
+=======
         <j2seproject3:depend srcdir="${src.dir}:${src.res.dir}:${build.generated.subdirs}"/>
+>>>>>>> Zachs-Work:LSFD/nbproject/build-impl.xml
     </target>
     <target depends="init,deps-jar,-pre-pre-compile,-pre-compile, -copy-persistence-xml,-compile-depend" if="have.sources" name="-do-compile">
         <j2seproject3:javac gensrcdir="${build.generated.sources.dir}"/>
@@ -952,7 +968,11 @@ is divided into following sections:
     <target depends="init,deps-jar,-pre-pre-compile" name="-do-compile-single">
         <fail unless="javac.includes">Must select some files in the IDE or set javac.includes</fail>
         <j2seproject3:force-recompile/>
+<<<<<<< HEAD:CapstoneAL/nbproject/build-impl.xml
+        <j2seproject3:javac excludes="" gensrcdir="${build.generated.sources.dir}" includes="${javac.includes}" sourcepath="${src.dir}"/>
+=======
         <j2seproject3:javac excludes="" gensrcdir="${build.generated.sources.dir}" includes="${javac.includes}" sourcepath="${src.dir}:${src.res.dir}"/>
+>>>>>>> Zachs-Work:LSFD/nbproject/build-impl.xml
     </target>
     <target name="-post-compile-single">
         <!-- Empty placeholder for easier customization. -->
@@ -1219,9 +1239,12 @@ is divided into following sections:
                 <path path="${javac.classpath}"/>
             </classpath>
             <fileset dir="${src.dir}" excludes="${bug5101868workaround},${excludes}" includes="${includes}">
+<<<<<<< HEAD:CapstoneAL/nbproject/build-impl.xml
+=======
                 <filename name="**/*.java"/>
             </fileset>
             <fileset dir="${src.res.dir}" excludes="${bug5101868workaround},${excludes}" includes="${includes}">
+>>>>>>> Zachs-Work:LSFD/nbproject/build-impl.xml
                 <filename name="**/*.java"/>
             </fileset>
             <fileset dir="${build.generated.sources.dir}" erroronmissingdir="false">
@@ -1232,9 +1255,12 @@ is divided into following sections:
         </javadoc>
         <copy todir="${dist.javadoc.dir}">
             <fileset dir="${src.dir}" excludes="${excludes}" includes="${includes}">
+<<<<<<< HEAD:CapstoneAL/nbproject/build-impl.xml
+=======
                 <filename name="**/doc-files/**"/>
             </fileset>
             <fileset dir="${src.res.dir}" excludes="${excludes}" includes="${includes}">
+>>>>>>> Zachs-Work:LSFD/nbproject/build-impl.xml
                 <filename name="**/doc-files/**"/>
             </fileset>
             <fileset dir="${build.generated.sources.dir}" erroronmissingdir="false">
