@@ -1,7 +1,15 @@
-/CapstoneHomePage/nbproject/private/
+<<<<<<< HEAD
+/Capstone/nbproject/private/
+/CapstoneZZ/nbproject/private/
+/CapStoneZZ/nbproject/
+/CapstoneZZ/build/
+/CapstoneZZ/dist/
+=======
+/CapstonePB/nbproject/private/
+/CapstonePB/build/
+/CapstonePB/dist/
+>>>>>>> origin/Phillip-Work
+/LSFD/build/
+LSFD/nbproject/
+CapstoneAL/nbproject/private/private.xml
 /CapstoneAL/nbproject/private/
-/CapstoneAL/build/
-/CapstoneAL/dist/
-/CapstoneAL/src/CapstonePB/build/
-/CapstoneAL/src/CapstonePB/dist/
-/CapstoneAL/src/CapstonePB/nbproject/private/
