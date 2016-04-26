@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lossreduction;
+package capstoneal.LossReduction;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -20,15 +20,15 @@ public class Notes extends JPanel{
     static String no = "No"; // string for the no button
     JLabel date = new JLabel("Date of Report:"); // create a varriable to hold the string
     JLabel inspector = new JLabel("Inspector:"); // create a varriable to hold the string
-    JLabel YesOrNo = new JLabel("Prevetion Folow-up Required?"); // create a varriable to hold the string
+    JLabel YesOrNo = new JLabel("Prevention Folow-up Required?"); // create a varriable to hold the string
     JLabel signature = new JLabel("Signature:"); // create a varriable to hold the string
     JTextArea commentArea = new JTextArea(8, 1); // arguements rows, columns
     JTextField dateField = new JTextField(10); // create the text fields and show 10 spaces
     JTextField inspectorField = new JTextField(10); // create the text fields and show 10 spaces
     JTextField signatureField = new JTextField(10); // create the text fields and show 10 spaces
     
-    JCheckBox YesButton = new JCheckBox("yes"); // create check box
-    JCheckBox NoButton = new JCheckBox("no"); // create check box
+    JCheckBox YesButton = new JCheckBox("YES"); // create check box
+    JCheckBox NoButton = new JCheckBox("NO"); // create check box
     ButtonGroup group = new ButtonGroup(); // create the group so one check box can be selected
     
     

@@ -14,6 +14,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
 /**
@@ -36,7 +37,7 @@ public class EmergencyContactInformation extends JPanel{
     public final JLabel name = new JLabel("Name");
     public final JLabel telephone = new JLabel("Telephone");
     // section label
-    public final JLabel sectionLabel = new JLabel("EMERGENCY CONTACT INFORMATION");
+    public final JLabel sectionLabel = new JLabel("EMERGENCY CONTACT INFORMATION", SwingConstants.CENTER);
     //name text fields
     public final JTextField name1 = new JTextField();
     public final JTextField name2 = new JTextField();
@@ -56,7 +57,7 @@ public class EmergencyContactInformation extends JPanel{
     {
         setLayout(layout);
         setBorder(border);
-        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.fill = GridBagConstraints.BOTH;
         constraints.anchor = GridBagConstraints.WEST;
         
         
@@ -69,23 +70,24 @@ public class EmergencyContactInformation extends JPanel{
         
         //adding components
         //column 0
-        addComponent(sectionLabel, 0, 0, 4, 1);
+        addComponent(sectionLabel, 0, 0, 6, 1);
         addComponent(name, 0, 1, 2, 1);
         addComponent(label1, 0, 2, 1, 1);
         addComponent(label2, 0, 3, 1, 1);
         addComponent(label3, 0, 4, 1, 1);
         addComponent(label4, 0, 5, 1, 1);
         //column 1
-        addComponent(name1, 1, 2, 2, 1);
-        addComponent(name2, 1, 3, 2, 1);
-        addComponent(name3, 1, 4, 2, 1);
-        addComponent(name4, 1, 5, 2, 1);
+        constraints.weightx = 1000;
+        addComponent(name1, 2, 2, 2, 1);
+        addComponent(name2, 2, 3, 2, 1);
+        addComponent(name3, 2, 4, 2, 1);
+        addComponent(name4, 2, 5, 2, 1);
         //column 2
-        addComponent(telephone, 3, 1, 1, 1);
-        addComponent(telephone1, 3, 2, 1, 1);
-        addComponent(telephone2, 3, 3, 1, 1);
-        addComponent(telephone3, 3, 4, 1, 1);
-        addComponent(telephone4, 3, 5, 1, 1);
+        addComponent(telephone, 4, 1, 1, 1);
+        addComponent(telephone1, 4, 2, 1, 1);
+        addComponent(telephone2, 4, 3, 1, 1);
+        addComponent(telephone3, 4, 4, 1, 1);
+        addComponent(telephone4, 4, 5, 1, 1);
                 
         
         

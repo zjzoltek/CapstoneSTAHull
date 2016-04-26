@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lossreduction;
+package capstoneal.LossReduction;
 
 import javax.swing.*;
 import java.awt.BorderLayout;
@@ -20,7 +20,7 @@ public class LossReduction {
      */
     public static void main(String[] args) {
         JFrame frame = new JFrame(); // create the frame
-        Notes panel = new Notes(); // new panel
+        LossReductionForm panel = new LossReductionForm(); // new panel
         frame.add(panel); // print panel
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // make it close when you hit the red X in the corner
         frame.setVisible(true); // make it visible

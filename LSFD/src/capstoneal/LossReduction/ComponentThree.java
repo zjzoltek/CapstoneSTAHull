@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lossreductiontypetextfields;
+package capstoneal.LossReduction;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +12,7 @@ import java.awt.*;
  *
  * @author awdobson1129
  */
-public class TextFields extends JPanel{
+public class ComponentThree extends JPanel{
     BorderLayout layout = new BorderLayout(); // create layout
         FlowLayout layout2 = new FlowLayout(); // create layout
         JLabel CLASS = new JLabel("CLASS:"); // create a varriable to hold the string
@@ -30,7 +30,7 @@ public class TextFields extends JPanel{
         
         JPanel signiturePanel = new JPanel(); // create the text fields
     
-        TextFields(){
+        ComponentThree(){
             setLayout(layout); // set the layout
             
             signiturePanel.setLayout(layout2); // set new layout
