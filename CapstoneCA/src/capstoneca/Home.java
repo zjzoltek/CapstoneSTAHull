@@ -26,7 +26,7 @@ public class Home extends JButton {
         init(width, height);
     }
     
-    
+    // set the image for the the home button
     private void init(int width, int height){
         setSize(width, height);
         setContentAreaFilled(false);

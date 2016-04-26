@@ -34,6 +34,8 @@ public class ViewPage extends JPanel implements NavigationModel {
     
     private String displayString = "";
     
+    
+    // place holder till pages can be entered
     private Random rand = new Random();
     
     public ViewPage(int width, int height, String display){
@@ -45,11 +47,15 @@ public class ViewPage extends JPanel implements NavigationModel {
     }
     
     private void init(){
+        //set layout for the page
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        // makes the color for the 
         toolBar.setBackground(new Color(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)));
         toolBar.setBorderPainted(true);
         toolBar.setLayout(new FlowLayout());
         
+        
+        //places the buttons on the page
         forward = new NavigationButton(NavigationButton.NavigationType.FORWARD,
         NavigationButton.getButtonWidth(width),
         NavigationButton.getButtonHeight(height));
@@ -72,7 +78,7 @@ public class ViewPage extends JPanel implements NavigationModel {
         homeButton.setFocusPainted(true);
         homeButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         
-        
+        //makes a layout for the toolbar
         toolBar.setLayout(new FlowLayout());
         toolBar.add(backward);
         toolBar.add(homeButton);
@@ -82,6 +88,7 @@ public class ViewPage extends JPanel implements NavigationModel {
         add(toolBar);
     }
 
+    // returns a actions for the mouse actions on the buttons
     @Override
     public JButton getBackButton() {
         return backward;
