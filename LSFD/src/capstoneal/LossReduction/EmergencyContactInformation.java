@@ -23,10 +23,10 @@ import javax.swing.border.Border;
  */
 public class EmergencyContactInformation extends JPanel{
     // telephone boxes
-    public final PhoneNumberBox telephone1 = new PhoneNumberBox();
-    public final PhoneNumberBox telephone2 = new PhoneNumberBox();
-    public final PhoneNumberBox telephone3 = new PhoneNumberBox();
-    public final PhoneNumberBox telephone4 = new PhoneNumberBox();
+    public final PhoneNumberBox telephone1 = new PhoneNumberBox(7);
+    public final PhoneNumberBox telephone2 = new PhoneNumberBox(7);
+    public final PhoneNumberBox telephone3 = new PhoneNumberBox(7);
+    public final PhoneNumberBox telephone4 = new PhoneNumberBox(7);
     // number labels
     public final JLabel label1 = new JLabel("1.");
     public final JLabel label2 = new JLabel("2.");
