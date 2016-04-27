@@ -7,10 +7,8 @@ package capstoneca;
 
 import capstonezz.GUI.NavigationButton;
 import capstonezz.NavigationModel;
-import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.FlowLayout;
-import java.util.Random;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -25,7 +23,7 @@ import javax.swing.JToolBar;
 public class ViewPage extends JPanel implements NavigationModel {
     private final int width;
     private final int height;
-    private final JToolBar toolBar;
+    private JToolBar toolBar;
 
     private NavigationButton forward;
     private NavigationButton backward;
@@ -33,23 +31,19 @@ public class ViewPage extends JPanel implements NavigationModel {
     private EditButton editButton;
 
     private String displayString = "";
-
-    private Random rand = new Random();
-    private Color color;
-
+    
     public ViewPage(int width, int height, String display){
         this.width = width;
         this.height = height;
-        toolBar = new JToolBar();
         displayString = display;
+        
         init();
     }
 
     private void init(){
+        toolBar = new JToolBar();
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        color = new Color(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255));
 
-        toolBar.setBackground(color);
         toolBar.setBorderPainted(true);
         toolBar.setLayout(new FlowLayout());
 
@@ -83,6 +77,7 @@ public class ViewPage extends JPanel implements NavigationModel {
         toolBar.add(editButton);
 
         add(toolBar);
+        
     }
 
     @Override
@@ -112,7 +107,5 @@ public class ViewPage extends JPanel implements NavigationModel {
         return displayString;
     }
 
-    public Color getColor(){
-        return color;
-    }
 }
+    

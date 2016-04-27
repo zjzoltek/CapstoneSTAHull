@@ -25,24 +25,19 @@ public class EditPage extends JPanel
 
     private final JToolBar toolBar;
 
-    public final JButton cancelButton;
+    private final JButton cancelButton;
 
-    public final JButton andButton;
+    private final JButton andButton;
 
-    public final JButton saveButton;
-    private final Color color;
-    private final String display;
-
-    public EditPage(int width, int height, String display, Color color)
+    private final JButton saveButton;
+    
+    public EditPage(int width, int height, String display)
     {
-        this.color = color;
-        this.display = display;
         this.width = width;
         this.height = height;
 
         toolBar = new JToolBar(JToolBar.HORIZONTAL);
 
-        toolBar.setBackground(color);
         cancelButton = new EditPageButtons(EditPageButtons.ButtonType.CANCEL,
             width, height);
 
@@ -51,9 +46,23 @@ public class EditPage extends JPanel
 
         saveButton = new EditPageButtons(EditPageButtons.ButtonType.SAVE,
             width, height);
+        
+        
         init();
     }
-
+    
+    public JButton getCancelButton(){
+        return cancelButton;
+    }
+    
+    public JButton getAndButton(){
+        return andButton;
+    }
+    
+    public JButton getSaveButton(){
+        return saveButton;
+    }
+    
     private void init(){
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(Color.GRAY.brighter());
@@ -65,5 +74,6 @@ public class EditPage extends JPanel
 
         add(toolBar);
     }
-
+    
+    
 }

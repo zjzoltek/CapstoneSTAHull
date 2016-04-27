@@ -1,6 +1,6 @@
 package capstonezz.Threading;
 
-import capstonezz.GUI.GUI;
+import capstonezz.GUI.SearchResultsGUI;
 import capstonezz.GUI.ResultElement;
 import capstonezz.GUI.SearchResults;
 import capstonezz.SearchTestTool;
@@ -20,10 +20,10 @@ public class SearchTask implements Runnable {
     private final String address;
     private final String number;
     private final boolean caseSensitive;
-    private final GUI gui;
+    private final SearchResultsGUI gui;
     private final ExecutorService pool;
     
-    public SearchTask(SearchResults searchresults, GUI gui, String address, String number, boolean caseSensitive){
+    public SearchTask(SearchResults searchresults, SearchResultsGUI gui, String address, String number, boolean caseSensitive){
         this.searchresults = searchresults;
         this.address = address;
         this.number = number;

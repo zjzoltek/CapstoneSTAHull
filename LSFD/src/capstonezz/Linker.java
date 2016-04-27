@@ -1,8 +1,6 @@
 package capstonezz;
 
 import capstoneal.GUI.HomeScreen;
-import capstoneca.ViewPage;
-import capstonepb.EditPage;
 import capstonezz.GUI.NavigationButton;
 import capstonezz.GUI.SearchResultsPage;
 import java.awt.CardLayout;
@@ -13,7 +11,6 @@ import java.util.Stack;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  * @author Zachary Zoltek
@@ -22,7 +19,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 
 public class Linker {
-    public final JPanel frame;
+    private final JPanel frame;
     private final Stack<String> backStack;
     private final Stack<String> forwardStack;
 
@@ -92,28 +89,28 @@ public class Linker {
        homescreen.getForwardButton().addActionListener
         (new ForwardButton());
 
-       homescreen.search.getLinkingComponent().
+       homescreen.getSearch().getLinkingComponent().
                addActionListener((ActionEvent ae) -> {
-                   homescreen.search.getGoButton().doClick();
+                   homescreen.getSearch().getGoButton().doClick();
                });
 
-       homescreen.search.getGoButton().
+       homescreen.getSearch().getGoButton().
                addActionListener((ActionEvent ae) -> {
-                   searchResultsPage.mainPanel.address
-                           .setText(homescreen.search.getLinkingComponent().getText());
+                   searchResultsPage.getSearchResultsGUI().getAddressBox()
+                           .setText(homescreen.getSearch().getLinkingComponent().getText());
 
-                   homescreen.search.getLinkingComponent().setText("");
+                   homescreen.getSearch().getLinkingComponent().setText("");
                });
 
-       homescreen.search.getGoButton()
+       homescreen.getSearch().getGoButton()
                .addActionListener(new PanelChanger(SearchResultsPage.LINK_NAME));
 
-       homescreen.search.getGoButton()
+       homescreen.getSearch().getGoButton()
                .addActionListener((ActionEvent ae) -> {
-                  searchResultsPage.mainPanel.address.setText(
-                          homescreen.search.getLinkingComponent().getText());
+                  searchResultsPage.getSearchResultsGUI().getAddressBox().setText(
+                          homescreen.getSearch().getLinkingComponent().getText());
 
-                  searchResultsPage.mainPanel.initiateSearch.doClick();
+                  searchResultsPage.getSearchResultsGUI().getInitiateSearchButton().doClick();
                });
 
        ((CardLayout)frame.getLayout()).show(frame, homescreen.getName());
@@ -198,18 +195,39 @@ public class Linker {
 
     }
 
-    class ViewCreate implements ActionListener{
-        private final ViewPage view;
-
-        public ViewCreate(ViewPage view){
-            this.view = view;
+    class EditCreate implements ActionListener{
+        private final FormEntity controller;
+        public EditCreate(FormEntity controller){
+            this.controller = controller;
         }
         @Override
         public void actionPerformed(ActionEvent e){
-            createEdit(view);
+            controller.getIRP().setEnabled(true);
+            controller.getLRP().setEnabled(true);
+            controller.getEditor().add(controller.getTabber());
+            ((CardLayout)controller.getLayout()).show(controller, "edit");
+            controller.revalidate();
         }
     }
+    
+    class EditExit implements ActionListener{
+        private final FormEntity controller;
 
+        public EditExit(FormEntity controller){
+            this.controller = controller;
+        }
+        
+        @Override
+        public void actionPerformed(ActionEvent e){
+            controller.getIRP().setEnabled(false);
+            controller.getLRP().setEnabled(false);
+            controller.getViewer().add(controller.getTabber());
+            ((CardLayout)controller.getLayout()).show(controller, "view");
+            controller.revalidate();
+            updateButtons();
+        }
+    }
+    
     public void updateButtons(){
         backButtonEnabled = !backStack.isEmpty();
         forwardButtonEnabled = !forwardStack.isEmpty();
@@ -230,33 +248,25 @@ public class Linker {
 
 
     public void createView(String display){
-        ViewPage view = new ViewPage(frame.getWidth(), frame.getHeight(), display);
+        FormEntity view = new FormEntity(frame.getWidth(), frame.getHeight(), display);
         frame.add(view, display);
 
-        bhf.addButton((NavigationButton)view.getForwardButton());
-        bhb.addButton((NavigationButton)view.getBackButton());
+        bhf.addButton((NavigationButton)view.getViewer().getForwardButton());
+        bhb.addButton((NavigationButton)view.getViewer().getBackButton());
 
-        view.getForwardButton().addActionListener(new ForwardButton());
-        view.getBackButton().addActionListener(new BackButton());
-        view.getHomeButton().addActionListener(new HomeTaker());
+        view.getViewer().getForwardButton().addActionListener(new ForwardButton());
+        view.getViewer().getBackButton().addActionListener(new BackButton());
+        view.getViewer().getHomeButton().addActionListener(new HomeTaker());
 
-        view.getEditButton().addActionListener(new ViewCreate(view));
-
+        view.getViewer().getEditButton().addActionListener(new EditCreate(view));
+        
+        view.getEditor().getAndButton().addActionListener(new EditExit(view));
+        view.getEditor().getCancelButton().addActionListener(new EditExit(view));
+        view.getEditor().getSaveButton().addActionListener(new EditExit(view));
+        
         changeScreen(display);
     }
 
-    public void createEdit(ViewPage view){
-        String identifier = view.getString() + "edit";
-
-        EditPage edit = new EditPage(view.getWidth(), view.getHeight(), identifier, view.getColor());
-
-        edit.andButton.addActionListener(new GracefulExit());
-        edit.cancelButton.addActionListener(new GracefulExit());
-        
-        frame.add(edit, identifier);
-
-        changeScreen(identifier);
-    }
 
     public static Linker getLinker(int width, int height){
         if(linker == null) linker = new Linker(width, height);
@@ -275,16 +285,20 @@ public class Linker {
     public static boolean linkerExists(){
         return linker != null;
     }
+    
+    public JPanel getFrame(){
+        return frame;
+    }
 
     public static void main(String[] args){
         UIManager.put("JComponent.sizeVariant", "large");
-        try{
+        /*try{
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         }catch(ClassNotFoundException | 
                 InstantiationException | 
                 IllegalAccessException | 
                 UnsupportedLookAndFeelException e){
-        }
+        }*/
         
         Linker link = Linker.getLinker(Util.getScreenDimension());
         UIManager.put("JComponent.sizeVariant", "large");

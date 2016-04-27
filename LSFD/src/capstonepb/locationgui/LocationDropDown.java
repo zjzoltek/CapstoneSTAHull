@@ -9,35 +9,47 @@ package capstonepb.locationgui;
 import javax.swing.*;
 import javax.swing.JComboBox; //import for drop down boxes
 import java.awt.*;
+import javax.swing.plaf.basic.BasicBorders;
 
 
 
 public class LocationDropDown extends JPanel{
     
-    public LocationDropDown(){
+    public LocationDropDown(String label, String fieldText){
+        super(new GridBagLayout());
         
-         //JPanel panel = new JPanel(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        //JPanel panel = new JPanel(new GridBagLayout());
         //array of strings for the options in the drop box 
         String location[] = {"A", "B", "C", "D"};
     
         //creating the panel for the drop box to be in
         //JPanel locationPanel = new JPanel();
         
-        //setting the panel layout
-        this.setLayout(new GridBagLayout());
-        
         //creating the drop box
         JComboBox locationDrop = new JComboBox(location);
         locationDrop.setSelectedIndex(0);
         //adding the drop box to the panne;
         
-        JLabel words = new JLabel("  words n stuff  ");
+        JLabel words = new JLabel(label);
         
-        JTextField field = new JTextField("Words in a box",20);
+        JTextArea field = new JTextArea(fieldText);
+        field.setBorder(BasicBorders.getTextFieldBorder());
+        field.setColumns(8);
         
-        this.add(locationDrop);
-        this.add(words);
-        this.add(field);
+        c.gridx = 0;
+        c.gridy = 0;
+        c.insets = new Insets(0,5,0,0);
+        add(locationDrop, c);
+        c.gridx = 1;
+        c.insets = new Insets(0,5,0,0);
+        add(words, c);
+        c.gridx = 0;
+        c.gridy = 1;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.insets = new Insets(5,5,5,0);
+        c.gridwidth = 3;
+        add(field, c);
     } 
     
     

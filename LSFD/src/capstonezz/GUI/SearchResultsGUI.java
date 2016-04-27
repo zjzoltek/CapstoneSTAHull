@@ -27,17 +27,17 @@ import javax.swing.JProgressBar;
  * @since Apr 9, 2016
  */
 
-public class GUI extends JPanel implements ActionListener {
-    public final JButton initiateSearch;
+public class SearchResultsGUI extends JPanel implements ActionListener {
+    private final JButton initiateSearch;
     private final int width;
     private final int height;
-    public final SearchBox number;
-    public final SearchBox address;
+    private final SearchBox number;
+    private final SearchBox address;
     private JCheckBox caseSensitive;
-    public final JProgressBar loadingBar;
+    private final JProgressBar loadingBar;
     private final SearchResults searchresults;
     
-    public GUI(Color color, int parentWidth, int parentHeight, SearchResults results){
+    public SearchResultsGUI(Color color, int parentWidth, int parentHeight, SearchResults results){
         super(new GridBagLayout());
         width = parentWidth;
         height = parentHeight;
@@ -214,6 +214,18 @@ public class GUI extends JPanel implements ActionListener {
             loadingBar.setEnabled(false);
             revalidate();
         }
+    }
+    
+    public SearchBox getAddressBox(){
+        return address;
+    }
+    
+    public SearchBox getNumberBox(){
+        return number;
+    }
+    
+    public JButton getInitiateSearchButton(){
+        return initiateSearch;
     }
     
 }

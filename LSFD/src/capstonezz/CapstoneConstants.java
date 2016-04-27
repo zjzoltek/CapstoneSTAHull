@@ -11,4 +11,5 @@ import java.awt.Color;
 public class CapstoneConstants {
     public final static Color PANEL_BG = Color.GRAY.brighter();
     public final static float FONT_SIZE = 16f;
+    public final static Color INVISIBLE = new Color(0,0,0,0);
 }

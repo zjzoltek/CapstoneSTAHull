@@ -1,12 +1,33 @@
 <<<<<<< HEAD
+/CapStoneCA/build/
+/CapstoneCA/dist/
+/CapStoneCA/dist/
+/CapStone/build/
+/CapStone/dist/
+=======
+<<<<<<< HEAD
 /Capstone/nbproject/private/
 /CapstoneZZ/nbproject/private/
 /CapStoneZZ/nbproject/
 /CapstoneZZ/build/
 /CapstoneZZ/dist/
+<<<<<<< HEAD
 =======
 /CapstonePB/nbproject/private/
 /CapstonePB/build/
 /CapstonePB/dist/
 >>>>>>> origin/Phillip-Work
+<<<<<<< HEAD
 /LSFD/build/
+LSFD/nbproject/
+CapstoneAL/nbproject/private/private.xml
+=======
+/CapstoneLH/nbproject/private/
+/CapstoneLH/build/
+/CapstoneLH/dist/
+>>>>>>> origin/Lucas-Wrok
+=======
+>>>>>>> Zachs-Work
+/CapStone/nbproject/private/
+/CapstoneCA/build/
+>>>>>>> 348b0b3b19fce3f4240942341c8b40fee7bc6171
