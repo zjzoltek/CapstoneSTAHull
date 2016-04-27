@@ -3,15 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package SFLossReduction;
+package capstoneca.SFLossReduction;
 
 /**
  *
  * @author ccallen0504
  */
 
-import java.awt.BorderLayout;
-import java.awt.ComponentOrientation;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.*;
@@ -43,6 +41,19 @@ public class sFLRTType extends JPanel{
     public sFLRTType() {
         GridBagConstraints c = new GridBagConstraints();
         setLayout(new GridBagLayout());
+        
+        cB1.setName("30");
+        cB2.setName("31");
+        cB3.setName("32");
+        cB4.setName("33");
+        cB5.setName("34");
+        cB6.setName("35");
+        cB7.setName("36");
+        cB8.setName("37");
+        cB9.setName("38");
+        cB10.setName("39");
+        semi.setName("40");
+        annual.setName("41");
         
         c.fill = GridBagConstraints.HORIZONTAL;
         // row one

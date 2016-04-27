@@ -5,9 +5,6 @@
  */
 package capstoneca;
 
-import capstoneal.InspectionReport.InspectionReport;
-import capstonepb.EditPage;
-import capstonezz.DisabledPanel;
 import capstonezz.GUI.NavigationButton;
 import capstonezz.NavigationModel;
 import java.awt.Cursor;
@@ -26,7 +23,7 @@ import javax.swing.JToolBar;
 public class ViewPage extends JPanel implements NavigationModel {
     private final int width;
     private final int height;
-    private final JToolBar toolBar;
+    private JToolBar toolBar;
 
     private NavigationButton forward;
     private NavigationButton backward;
@@ -35,23 +32,16 @@ public class ViewPage extends JPanel implements NavigationModel {
 
     private String displayString = "";
     
-    private final InspectionReport ir;
-    private final EditPage editPage;
-    
-    public final DisabledPanel panel;
-    
     public ViewPage(int width, int height, String display){
         this.width = width;
         this.height = height;
-        toolBar = new JToolBar();
         displayString = display;
-        ir = new InspectionReport();
-        panel = new DisabledPanel(this);
-        editPage = new EditPage(width, height, display, ir);
+        
         init();
     }
 
     private void init(){
+        toolBar = new JToolBar();
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         toolBar.setBorderPainted(true);
@@ -88,9 +78,6 @@ public class ViewPage extends JPanel implements NavigationModel {
 
         add(toolBar);
         
-        add(ir);
-        
-        DisabledPanel.disable(ir);
     }
 
     @Override
@@ -120,15 +107,4 @@ public class ViewPage extends JPanel implements NavigationModel {
         return displayString;
     }
     
-    public InspectionReport getIR(){
-        return ir;
-    }
-    
-    public DisabledPanel getDisabledPanel(){
-        return panel;
-    }
-    
-    public EditPage getEditPage(){
-        return editPage;
-    }
 }

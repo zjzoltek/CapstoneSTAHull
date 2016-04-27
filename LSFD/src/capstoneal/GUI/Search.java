@@ -29,8 +29,8 @@ import javax.swing.plaf.basic.BasicBorders;
 
 public class Search extends JPanel implements LinkerModel{
     
-    public final SearchBox searchBar = new SearchBox("Address Search . . .", 30, 5, false); // create search field
-    public final JButton searchButton = new JButton("GO"); // creates search button
+    private final SearchBox searchBar = new SearchBox("Address Search . . .", 30, 5, false); // create search field
+    private final JButton searchButton = new JButton("GO"); // creates search button
     
     private final GridBagConstraints constraints = new GridBagConstraints();
     

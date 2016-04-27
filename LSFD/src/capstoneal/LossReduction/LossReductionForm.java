@@ -3,6 +3,9 @@
  */
 package capstoneal.LossReduction;
 
+import capstoneca.ContactInfoSection.LossReductionBusiness;
+import capstoneca.SFLossReduction.sFLRTType;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -20,26 +23,26 @@ import javax.swing.border.Border;
  */
 public class LossReductionForm extends JPanel{
     // layout
-    public final GridBagLayout layout = new GridBagLayout();
-    public final GridBagConstraints constraints = new GridBagConstraints();
+    private final GridBagLayout layout = new GridBagLayout();
+    private final GridBagConstraints constraints = new GridBagConstraints();
     // Individual components
-    JLabel title1 = new JLabel("LEE'S SUMMIT FIRE DEPARTMENT", SwingConstants.CENTER);
-    JLabel title2 = new JLabel("LOSS REDUCTION PROGRAM", SwingConstants.CENTER);
-    JPanel placeHolder1 = new JPanel();
-    EmergencyContactInformation emergencyContact = new EmergencyContactInformation();
-    JPanel placeHolder2 = new JPanel();
-    ComponentThree componentThree = new ComponentThree();
-    Notes notes = new Notes();
+    private final JLabel title1 = new JLabel("LEE'S SUMMIT FIRE DEPARTMENT", SwingConstants.CENTER);
+    private final JLabel title2 = new JLabel("LOSS REDUCTION PROGRAM", SwingConstants.CENTER);
+    private final LossReductionBusiness business = new LossReductionBusiness();
+    private final EmergencyContactInformation emergencyContact = new EmergencyContactInformation();
+    private final sFLRTType sflr = new sFLRTType();
+    private final LRMisc lrmisc = new LRMisc();
+    private final LRNotes notes = new LRNotes();
     // Font
-    public final Font sectionFont = new Font("Serif", Font.BOLD, 18);
+    private final Font sectionFont = new Font("Serif", Font.BOLD, 18);
     // border
-    public final Border border = BorderFactory.createLineBorder(Color.black);
+    private final Border border = BorderFactory.createLineBorder(Color.black);
     
+    private final JPanel completeForm;
     
     public LossReductionForm()
     {
-        //layout stuffs
-        setLayout(layout);
+        completeForm = new JPanel(layout);
         constraints.fill = GridBagConstraints.BOTH;
         constraints.anchor = GridBagConstraints.WEST;
         
@@ -48,19 +51,21 @@ public class LossReductionForm extends JPanel{
         title2.setFont(sectionFont);
         
         // adding borders
-        placeHolder1.setBorder(border);
-        placeHolder2.setBorder(border);
-        componentThree.setBorder(border);
+        business.setBorder(border);
+        sflr.setBorder(border);
+        lrmisc.setBorder(border);
         notes.setBorder(border);
         
         //adding components to the panel
         addComponent(title1, 0, 0, 1, 1);
         addComponent(title2, 0, 1, 1, 1);
-        addComponent(placeHolder1, 0, 2, 1, 1);
+        addComponent(business, 0, 2, 1, 1);
         addComponent(emergencyContact, 0, 3, 1, 1);
-        addComponent(placeHolder2, 0, 4, 1, 1);
-        addComponent(componentThree, 0, 5, 1, 1);
+        addComponent(sflr, 0, 4, 1, 1);
+        addComponent(lrmisc, 0, 5, 1, 1);
         addComponent(notes, 0, 6, 1, 1);
+        
+        add(completeForm, BorderLayout.CENTER);
         
     }
     
@@ -71,6 +76,28 @@ public class LossReductionForm extends JPanel{
         constraints.gridwidth = width;
         constraints.gridheight = height;
         layout.setConstraints(component, constraints); //set constraints
-        add(component);
+        completeForm.add(component);
     } // end of addComponent method
+    
+    public LossReductionBusiness getLRBusiness(){
+        return business;
+    }
+    
+    public EmergencyContactInformation getEmergencyContact(){
+        return emergencyContact;
+    }
+    
+    public sFLRTType getSFLRTType(){
+        return sflr;
+    }
+    
+    public LRMisc getLRMisc(){
+        return lrmisc;
+    }
+    
+    public LRNotes getLRNotes(){
+        return notes;
+    }
+    
+    
 }

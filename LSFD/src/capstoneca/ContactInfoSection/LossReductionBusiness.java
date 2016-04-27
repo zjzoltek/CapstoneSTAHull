@@ -1,45 +1,58 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package ContactInfoSection;
+package capstoneca.ContactInfoSection;
 
+import capstonezz.InspectionReport.PhoneNumberBox;
+import capstonezz.NumberDocument;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.*;
 import java.awt.Insets;
+import javax.swing.text.AbstractDocument;
 
 /**
  *
  * @author ccallen0504
  */
-public class Business extends JPanel {
+public class LossReductionBusiness extends JPanel {
     
-    public JTextField businessNameF = new JTextField(20);
-    public JTextField addressF = new JTextField(20);
-    public JTextField suiteF = new JTextField(8);
-    public JTextField telephoneF = new JTextField(10);
-    public JTextField cityF = new JTextField(10);
-    public JTextField stateF = new JTextField(5);
-    public JTextField zipF = new JTextField(8);
+    private final JTextField businessNameF = new JTextField(20);
+    private final JTextField addressF = new JTextField(20);
+    private final JTextField suiteF = new JTextField(8);
+    private final JTextField telephoneF = new JTextField(10);
+    private final JTextField cityF = new JTextField(10);
+    private final JTextField stateF = new JTextField(5);
+    private final JTextField zipF = new JTextField(8);
     
-    public JTextField ownerNameF = new JTextField(20);
-    public JTextField oaddressF = new JTextField(20);
-    public JTextField osuiteF = new JTextField(8);
-    public JTextField otelephoneF = new JTextField(10);
-    public JTextField ocityF = new JTextField(10);
-    public JTextField ostateF = new JTextField(5);
-    public JTextField ozipF = new JTextField(8);
+    private final JTextField ownerNameF = new JTextField(20);
+    private final JTextField oaddressF = new JTextField(20);
+    private final JTextField osuiteF = new JTextField(8);
+    private final PhoneNumberBox otelephoneF = new PhoneNumberBox(10);
+    private final JTextField ocityF = new JTextField(10);
+    private final JTextField ostateF = new JTextField(5);
+    private final JTextField ozipF = new JTextField(8);
     
     JLabel businessNameL, addressL, suiteL, telephoneL, cityL, stateL, zipL, title, ownerNameL;
     
     private final GridBagLayout layout = new GridBagLayout();
     JPanel panel = new JPanel(new GridBagLayout());
     GridBagConstraints c = new GridBagConstraints();
-    private final JLabel label;
     
-    public Business(String labelText) {
+    public LossReductionBusiness() {
+        businessNameF.setName("80");
+        addressF.setName("81");
+        suiteF.setName("82");
+        telephoneF.setName("83");
+        cityF.setName("84");
+        stateF.setName("85");
+        zipF.setName("86");
+        ownerNameF.setName("87");
+        oaddressF.setName("88");
+        osuiteF.setName("89");
+        otelephoneF.setName("90");
+        ocityF.setName("91");
+        ostateF.setName("92");
+        ozipF.setName("93");
+        
+        ((AbstractDocument)ozipF.getDocument()).setDocumentFilter(new NumberDocument());
         setLayout(layout);
         
         title = new JLabel("Emergency Contact Field");
@@ -222,6 +235,5 @@ public class Business extends JPanel {
         panel.add(ozipF, c);
         add(ozipF,c);
         
-        label = new JLabel(labelText);      
     }
 }

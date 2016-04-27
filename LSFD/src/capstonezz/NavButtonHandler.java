@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 
 public class NavButtonHandler {
-    public final ArrayList<NavigationButton> navigationButtons;
+    private final ArrayList<NavigationButton> navigationButtons;
     
     public NavButtonHandler(){
         navigationButtons = new ArrayList<>();

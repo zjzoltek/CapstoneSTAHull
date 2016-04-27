@@ -9,7 +9,6 @@ package capstoneal.InspectionReport;
 import capstonead.CommentsInspection;
 import capstonezz.InspectionReport.AllContact;
 import capstonezz.InspectionReport.EmergencyContact;
-import capstonezz.Util;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -17,11 +16,8 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.BorderFactory;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
 public class InspectionReport extends JPanel{
@@ -30,9 +26,9 @@ public class InspectionReport extends JPanel{
     private final GridBagConstraints constraints;
     private final JPanel completeForm;
     private final JLabel emergancyContactLabel = new JLabel("Emergency Contact Information", SwingConstants.CENTER);
-    private final JScrollPane scroller;
     
     private final NumberedFieldArea nFA = new NumberedFieldArea();
+    
     
     private final CommentsInspection commentsInspection = new CommentsInspection();
     private final AllContact ac = new AllContact();
@@ -59,10 +55,7 @@ public class InspectionReport extends JPanel{
         addComponent(nFA, 3, 0, 1, 4); // adding the numbered fields
         addComponent(commentsInspection, 9, 0, 1, 1); // adding the bottom comments section
         
-        scroller = new JScrollPane(completeForm);
-        scroller.getVerticalScrollBar().setUnitIncrement(12);
-        scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        add(scroller, BorderLayout.CENTER);
+        add(completeForm, BorderLayout.CENTER);
     } // end of InspectionReport constructor
     
     private void addComponent(Component component, int row, int column, int width, int height)
@@ -75,13 +68,19 @@ public class InspectionReport extends JPanel{
         completeForm.add(component);
     } // end of addComponent method
     
-    public static void main(String[] args){
-        JFrame frame = new JFrame();
-        InspectionReport ir = new InspectionReport();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(ir);
-        frame.setSize(Util.getScreenDimension());
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setVisible(true);
+    public NumberedFieldArea getNumberedFieldArea(){
+        return nFA;
+    }
+    
+    public CommentsInspection getCommentsInspection(){
+        return commentsInspection;
+    }
+    
+    public AllContact getAllContact(){
+        return ac;
+    }
+    
+    public EmergencyContact getEmergencyContact(){
+        return ec;
     }
 } // end of class

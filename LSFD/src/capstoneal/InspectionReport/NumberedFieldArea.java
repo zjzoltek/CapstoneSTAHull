@@ -2,8 +2,8 @@ package capstoneal.InspectionReport;
 
 import capstonelh.IRSection;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.GridLayout;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
@@ -63,5 +63,29 @@ public class NumberedFieldArea extends JPanel{
         add(section17);
         add(section18);
         //end of numbered fields
+    }
+    
+    public IRSection[] getIRSections(){
+        return new IRSection[]{
+            section1,
+            section2,
+            section3,
+            section4,
+            section4,
+            section5,
+            section6,
+            section7,
+            section8,
+            section9,
+            section10,
+            section11,
+            section12,
+            section13,
+            section14,
+            section15,
+            section16,
+            section17,
+            section18,
+        };
     }
 }

@@ -28,14 +28,14 @@ public class SearchResultsPage extends JPanel implements NavigationModel {
     private final int screenHeight;
     
     public static final String LINK_NAME = "SEARCHRESULTS";
-    public final GUI mainPanel; 
-    public final SearchResults searchResults;
+    private final SearchResultsGUI mainPanel; 
+    private final SearchResults searchResults;
     
     public SearchResultsPage(int width, int height){
         screenWidth = width;
         screenHeight = height;
         searchResults = new SearchResults(CapstoneConstants.PANEL_BG, screenWidth, screenHeight);
-        mainPanel = new GUI(CapstoneConstants.PANEL_BG, screenWidth, screenHeight, searchResults);
+        mainPanel = new SearchResultsGUI(CapstoneConstants.PANEL_BG, screenWidth, screenHeight, searchResults);
         init();
     }
     
@@ -91,6 +91,14 @@ public class SearchResultsPage extends JPanel implements NavigationModel {
     @Override
     public JButton getHomeButton() {
         return homeButton;
+    }
+    
+    public SearchResultsGUI getSearchResultsGUI(){
+        return mainPanel;
+    }
+    
+    public SearchResults getSearchResults(){
+        return searchResults;
     }
 
 }

@@ -20,8 +20,8 @@ import java.awt.FlowLayout;
 import javax.swing.*;
 
 public class HomeScreen extends JPanel implements NavigationModel{
-    public final Search search;
-    public final NotificationBar notificationBar;
+    private final Search search;
+    private final NotificationBar notificationBar;
     
     private final NavigationButton backButton; // creates back button
     private final NavigationButton forwardButton; // creates forward button
@@ -77,6 +77,10 @@ public class HomeScreen extends JPanel implements NavigationModel{
     @Override
     public Component getHomeButton() {
         return null;
+    }
+    
+    public Search getSearch(){
+        return search;
     }
     
 } // end of class

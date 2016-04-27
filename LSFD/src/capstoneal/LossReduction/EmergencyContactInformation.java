@@ -24,37 +24,47 @@ import javax.swing.border.Border;
  */
 public class EmergencyContactInformation extends JPanel{
     // telephone boxes
-    public final PhoneNumberBox telephone1 = new PhoneNumberBox(7);
-    public final PhoneNumberBox telephone2 = new PhoneNumberBox(7);
-    public final PhoneNumberBox telephone3 = new PhoneNumberBox(7);
-    public final PhoneNumberBox telephone4 = new PhoneNumberBox(7);
+    private final PhoneNumberBox telephone1 = new PhoneNumberBox(7);
+    private final PhoneNumberBox telephone2 = new PhoneNumberBox(7);
+    private final PhoneNumberBox telephone3 = new PhoneNumberBox(7);
+    private final PhoneNumberBox telephone4 = new PhoneNumberBox(7);
     // number labels
-    public final JLabel label1 = new JLabel("1.");
-    public final JLabel label2 = new JLabel("2.");
-    public final JLabel label3 = new JLabel("3.");
-    public final JLabel label4 = new JLabel("4.");
+    private final JLabel label1 = new JLabel("1.");
+    private final JLabel label2 = new JLabel("2.");
+    private final JLabel label3 = new JLabel("3.");
+    private final JLabel label4 = new JLabel("4.");
     // name and telephone label
-    public final JLabel name = new JLabel("Name");
-    public final JLabel telephone = new JLabel("Telephone");
+    private final JLabel name = new JLabel("Name");
+    private final JLabel telephone = new JLabel("Telephone");
     // section label
-    public final JLabel sectionLabel = new JLabel("EMERGENCY CONTACT INFORMATION", SwingConstants.CENTER);
+    private final JLabel sectionLabel = new JLabel("EMERGENCY CONTACT INFORMATION", SwingConstants.CENTER);
     //name text fields
-    public final JTextField name1 = new JTextField();
-    public final JTextField name2 = new JTextField();
-    public final JTextField name3 = new JTextField();
-    public final JTextField name4 = new JTextField();
+    private final JTextField name1 = new JTextField();
+    private final JTextField name2 = new JTextField();
+    private final JTextField name3 = new JTextField();
+    private final JTextField name4 = new JTextField();
     // border
-    public final Border border = BorderFactory.createLineBorder(Color.black);
+    private final Border border = BorderFactory.createLineBorder(Color.black);
     // fonts
-    public final Font sectionFont = new Font("Serif", Font.BOLD, 16);
-    public final Font headerFont = new Font("Serif", Font.BOLD, 14);
+    private final Font sectionFont = new Font("Serif", Font.BOLD, 16);
+    private final Font headerFont = new Font("Serif", Font.BOLD, 14);
     // layout
-    public final GridBagLayout layout = new GridBagLayout();
-    public final GridBagConstraints constraints = new GridBagConstraints();
+    private final GridBagLayout layout = new GridBagLayout();
+    private final GridBagConstraints constraints = new GridBagConstraints();
     
     
     public EmergencyContactInformation()
     {
+        telephone1.setName("60");
+        telephone2.setName("61");
+        telephone3.setName("62");
+        telephone4.setName("63");
+        
+        name1.setName("64");
+        name2.setName("65");
+        name3.setName("66");
+        name4.setName("67");
+        
         setLayout(layout);
         setBorder(border);
         constraints.fill = GridBagConstraints.BOTH;
@@ -88,9 +98,6 @@ public class EmergencyContactInformation extends JPanel{
         addComponent(telephone2, 4, 3, 1, 1);
         addComponent(telephone3, 4, 4, 1, 1);
         addComponent(telephone4, 4, 5, 1, 1);
-                
-        
-        
     }
     
     private void addComponent(Component component, int column, int row, int width, int height)
