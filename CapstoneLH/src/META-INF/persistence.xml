@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="CapstoneLHPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>capstonelh.database.TitlesTable</class>
+    <class>capstonelh.database.LossReductionProgram</class>
+    <class>capstonelh.database.AdministrationCodes</class>
+    <class>capstonelh.database.Quadrant</class>
+    <class>capstonelh.database.Property</class>
+    <class>capstonelh.database.InspectionCodes</class>
+    <class>capstonelh.database.Signator</class>
+    <class>capstonelh.database.Inspector</class>
+    <class>capstonelh.database.Permits</class>
+    <class>capstonelh.database.ZipcodeTable</class>
+    <class>capstonelh.database.EcRole</class>
+    <class>capstonelh.database.OccupancyClassCodes</class>
+    <class>capstonelh.database.Contact</class>
+    <class>capstonelh.database.PhoneType</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/lsfd?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="yoast"/>
+    </properties>
+  </persistence-unit>
+</persistence>
