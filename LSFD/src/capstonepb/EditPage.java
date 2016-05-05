@@ -37,10 +37,11 @@ public class EditPage extends JPanel
     
     public EditPage(int width, int height, String display, InspectionReport ir)
     {
+        //setting the display, width, and height
         this.display = display;
         this.width = width;
         this.height = height;
-
+        //initializing toolBar and buttons
         toolBar = new JToolBar(JToolBar.HORIZONTAL);
 
         cancelButton = new EditPageButtons(EditPageButtons.ButtonType.CANCEL,
@@ -56,10 +57,12 @@ public class EditPage extends JPanel
     }
 
     public void init(){
+        //creating and setting layout
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(Color.GRAY.brighter());
         toolBar.setLayout(new FlowLayout());
         toolBar.setBorderPainted(false);
+        //adding components
         toolBar.add(cancelButton);
         toolBar.add(andButton);
         toolBar.add(saveButton);

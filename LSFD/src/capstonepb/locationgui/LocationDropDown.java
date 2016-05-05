@@ -6,9 +6,13 @@
  */
 package capstonepb.locationgui;
 
-import javax.swing.*;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import javax.swing.JComboBox; //import for drop down boxes
-import java.awt.*;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.plaf.basic.BasicBorders;
 
 
@@ -36,7 +40,7 @@ public class LocationDropDown extends JPanel{
         JTextArea field = new JTextArea(fieldText);
         field.setBorder(BasicBorders.getTextFieldBorder());
         field.setColumns(8);
-        
+        //adjusting constraints and adding components
         c.gridx = 0;
         c.gridy = 0;
         c.insets = new Insets(0,5,0,0);
