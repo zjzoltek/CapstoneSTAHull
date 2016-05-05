@@ -1,5 +1,6 @@
 /**
- * NumberedField: 
+ * NumberedField: The numbered fields on the inspection report form. Each section
+ * is created uniquely based on the number passed into the constructor.
  * @author Lucas Hall
  * @version Apr 18, 2016
  */
