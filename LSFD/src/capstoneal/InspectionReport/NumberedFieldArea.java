@@ -1,8 +1,12 @@
+/*
+* This class creates a panel containing all 18 numbered sections for the 
+* loss reduction form
+*/
+
 package capstoneal.InspectionReport;
 
 import capstonelh.IRSection;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
@@ -12,6 +16,7 @@ import javax.swing.JPanel;
  * @author ACLeavitt0612
  */
 public class NumberedFieldArea extends JPanel{
+    // making all of the inspection report sections
     private final IRSection section1 = new IRSection(1);
     private final IRSection section2 = new IRSection(2);
     private final IRSection section3 = new IRSection(3);

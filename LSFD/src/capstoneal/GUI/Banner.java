@@ -10,10 +10,13 @@ package capstoneal.GUI;
  * 
  */
 
-import javax.swing.*;
-import java.awt.*;
+
 import capstonezz.GUI.NavigationButton;
 import capstonezz.Util;
+import java.awt.FlowLayout;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JToolBar;
 
 
 public class Banner extends JPanel{

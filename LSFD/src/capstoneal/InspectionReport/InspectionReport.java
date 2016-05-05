@@ -9,7 +9,6 @@ package capstoneal.InspectionReport;
 import capstonead.CommentsInspection;
 import capstonezz.InspectionReport.AllContact;
 import capstonezz.InspectionReport.EmergencyContact;
-import capstonezz.Util;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -17,7 +16,6 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.BorderFactory;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -74,14 +72,5 @@ public class InspectionReport extends JPanel{
         layout.setConstraints(component, constraints); //set constraints
         completeForm.add(component);
     } // end of addComponent method
-    
-    public static void main(String[] args){
-        JFrame frame = new JFrame();
-        InspectionReport ir = new InspectionReport();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(ir);
-        frame.setSize(Util.getScreenDimension());
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setVisible(true);
-    }
+
 } // end of class
