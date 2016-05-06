@@ -1,20 +1,24 @@
 /**
  * AdministrationCodes: 
  * @author Lucas Hall
- * @version May 3, 2016
+ * @version May 6, 2016
  */
 
 package capstonelh.database;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 
 @Entity
@@ -33,6 +37,8 @@ public class AdministrationCodes implements Serializable {
     @Basic(optional = false)
     @Column(name = "Description")
     private String description;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "adminCode")
+    private List<Property> propertyList;
 
     public AdministrationCodes() {
     }
@@ -60,6 +66,15 @@ public class AdministrationCodes implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @XmlTransient
+    public List<Property> getPropertyList() {
+        return propertyList;
+    }
+
+    public void setPropertyList(List<Property> propertyList) {
+        this.propertyList = propertyList;
     }
 
     @Override

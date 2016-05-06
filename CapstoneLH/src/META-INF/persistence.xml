@@ -16,6 +16,8 @@
     <class>capstonelh.database.OccupancyClassCodes</class>
     <class>capstonelh.database.Contact</class>
     <class>capstonelh.database.PhoneType</class>
+    <class>capstonelh.database.InspectionReport</class>
+    <class>capstonelh.database.Business</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/lsfd?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

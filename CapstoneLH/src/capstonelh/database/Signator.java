@@ -1,7 +1,7 @@
 /**
  * Signator: 
  * @author Lucas Hall
- * @version May 3, 2016
+ * @version May 6, 2016
  */
 
 package capstonelh.database;
@@ -34,6 +34,10 @@ public class Signator implements Serializable {
     private List<LossReductionProgram> lossReductionProgramList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "respSignLName")
     private List<LossReductionProgram> lossReductionProgramList1;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "respSignFName")
+    private List<InspectionReport> inspectionReportList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "respSignLName")
+    private List<InspectionReport> inspectionReportList1;
 
     public Signator() {
     }
@@ -70,6 +74,24 @@ public class Signator implements Serializable {
 
     public void setLossReductionProgramList1(List<LossReductionProgram> lossReductionProgramList1) {
         this.lossReductionProgramList1 = lossReductionProgramList1;
+    }
+
+    @XmlTransient
+    public List<InspectionReport> getInspectionReportList() {
+        return inspectionReportList;
+    }
+
+    public void setInspectionReportList(List<InspectionReport> inspectionReportList) {
+        this.inspectionReportList = inspectionReportList;
+    }
+
+    @XmlTransient
+    public List<InspectionReport> getInspectionReportList1() {
+        return inspectionReportList1;
+    }
+
+    public void setInspectionReportList1(List<InspectionReport> inspectionReportList1) {
+        this.inspectionReportList1 = inspectionReportList1;
     }
 
     @Override

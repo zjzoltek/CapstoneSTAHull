@@ -1,5 +1,5 @@
 /**
- * ContactPK: 
+ * BusinessPK: 
  * @author Lucas Hall
  * @version May 6, 2016
  */
@@ -13,20 +13,20 @@ import javax.persistence.Embeddable;
 
 
 @Embeddable
-public class ContactPK implements Serializable {
+public class BusinessPK implements Serializable {
     @Basic(optional = false)
     @Column(name = "Property_ID")
     private int propertyID;
     @Basic(optional = false)
-    @Column(name = "Bus_Name")
-    private String busName;
+    @Column(name = "SName")
+    private String sName;
 
-    public ContactPK() {
+    public BusinessPK() {
     }
 
-    public ContactPK(int propertyID, String busName) {
+    public BusinessPK(int propertyID, String sName) {
         this.propertyID = propertyID;
-        this.busName = busName;
+        this.sName = sName;
     }
 
     public int getPropertyID() {
@@ -37,33 +37,33 @@ public class ContactPK implements Serializable {
         this.propertyID = propertyID;
     }
 
-    public String getBusName() {
-        return busName;
+    public String getSName() {
+        return sName;
     }
 
-    public void setBusName(String busName) {
-        this.busName = busName;
+    public void setSName(String sName) {
+        this.sName = sName;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (int) propertyID;
-        hash += (busName != null ? busName.hashCode() : 0);
+        hash += (sName != null ? sName.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ContactPK)) {
+        if (!(object instanceof BusinessPK)) {
             return false;
         }
-        ContactPK other = (ContactPK) object;
+        BusinessPK other = (BusinessPK) object;
         if (this.propertyID != other.propertyID) {
             return false;
         }
-        if ((this.busName == null && other.busName != null) || (this.busName != null && !this.busName.equals(other.busName))) {
+        if ((this.sName == null && other.sName != null) || (this.sName != null && !this.sName.equals(other.sName))) {
             return false;
         }
         return true;
@@ -71,7 +71,7 @@ public class ContactPK implements Serializable {
 
     @Override
     public String toString() {
-        return "capstonelh.database.ContactPK[ propertyID=" + propertyID + ", busName=" + busName + " ]";
+        return "capstonelh.database.BusinessPK[ propertyID=" + propertyID + ", sName=" + sName + " ]";
     }
 
 }

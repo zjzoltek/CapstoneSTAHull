@@ -1,20 +1,24 @@
 /**
  * TitlesTable: 
  * @author Lucas Hall
- * @version May 3, 2016
+ * @version May 6, 2016
  */
 
 package capstonelh.database;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 
 @Entity
@@ -29,6 +33,8 @@ public class TitlesTable implements Serializable {
     @Basic(optional = false)
     @Column(name = "Title")
     private String title;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "title")
+    private List<Contact> contactList;
 
     public TitlesTable() {
     }
@@ -43,6 +49,15 @@ public class TitlesTable implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @XmlTransient
+    public List<Contact> getContactList() {
+        return contactList;
+    }
+
+    public void setContactList(List<Contact> contactList) {
+        this.contactList = contactList;
     }
 
     @Override

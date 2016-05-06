@@ -1,5 +1,5 @@
 /**
- * ContactPK: 
+ * InspectionReportPK: 
  * @author Lucas Hall
  * @version May 6, 2016
  */
@@ -7,26 +7,30 @@
 package capstonelh.database;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 @Embeddable
-public class ContactPK implements Serializable {
+public class InspectionReportPK implements Serializable {
     @Basic(optional = false)
     @Column(name = "Property_ID")
     private int propertyID;
     @Basic(optional = false)
-    @Column(name = "Bus_Name")
-    private String busName;
+    @Column(name = "Insp_Dt")
+    @Temporal(TemporalType.DATE)
+    private Date inspDt;
 
-    public ContactPK() {
+    public InspectionReportPK() {
     }
 
-    public ContactPK(int propertyID, String busName) {
+    public InspectionReportPK(int propertyID, Date inspDt) {
         this.propertyID = propertyID;
-        this.busName = busName;
+        this.inspDt = inspDt;
     }
 
     public int getPropertyID() {
@@ -37,33 +41,33 @@ public class ContactPK implements Serializable {
         this.propertyID = propertyID;
     }
 
-    public String getBusName() {
-        return busName;
+    public Date getInspDt() {
+        return inspDt;
     }
 
-    public void setBusName(String busName) {
-        this.busName = busName;
+    public void setInspDt(Date inspDt) {
+        this.inspDt = inspDt;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (int) propertyID;
-        hash += (busName != null ? busName.hashCode() : 0);
+        hash += (inspDt != null ? inspDt.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ContactPK)) {
+        if (!(object instanceof InspectionReportPK)) {
             return false;
         }
-        ContactPK other = (ContactPK) object;
+        InspectionReportPK other = (InspectionReportPK) object;
         if (this.propertyID != other.propertyID) {
             return false;
         }
-        if ((this.busName == null && other.busName != null) || (this.busName != null && !this.busName.equals(other.busName))) {
+        if ((this.inspDt == null && other.inspDt != null) || (this.inspDt != null && !this.inspDt.equals(other.inspDt))) {
             return false;
         }
         return true;
@@ -71,7 +75,7 @@ public class ContactPK implements Serializable {
 
     @Override
     public String toString() {
-        return "capstonelh.database.ContactPK[ propertyID=" + propertyID + ", busName=" + busName + " ]";
+        return "capstonelh.database.InspectionReportPK[ propertyID=" + propertyID + ", inspDt=" + inspDt + " ]";
     }
 
 }

@@ -1,7 +1,7 @@
 /**
  * LossReductionProgram: 
  * @author Lucas Hall
- * @version May 3, 2016
+ * @version May 6, 2016
  */
 
 package capstonelh.database;
@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "LossReductionProgram.findByLRTOccupancy", query = "SELECT l FROM LossReductionProgram l WHERE l.lRTOccupancy = :lRTOccupancy"),
     @NamedQuery(name = "LossReductionProgram.findByLRTComplaint", query = "SELECT l FROM LossReductionProgram l WHERE l.lRTComplaint = :lRTComplaint"),
     @NamedQuery(name = "LossReductionProgram.findByLRTSemiAnnual", query = "SELECT l FROM LossReductionProgram l WHERE l.lRTSemiAnnual = :lRTSemiAnnual"),
-    @NamedQuery(name = "LossReductionProgram.findByLRTExplosive", query = "SELECT l FROM LossReductionProgram l WHERE l.lRTExplosive = :lRTExplosive"),
+    @NamedQuery(name = "LossReductionProgram.findByLRTExplosives", query = "SELECT l FROM LossReductionProgram l WHERE l.lRTExplosives = :lRTExplosives"),
     @NamedQuery(name = "LossReductionProgram.findByLRTAnnual", query = "SELECT l FROM LossReductionProgram l WHERE l.lRTAnnual = :lRTAnnual"),
     @NamedQuery(name = "LossReductionProgram.findByLrtUst", query = "SELECT l FROM LossReductionProgram l WHERE l.lrtUst = :lrtUst"),
     @NamedQuery(name = "LossReductionProgram.findByLRTLifeSafety", query = "SELECT l FROM LossReductionProgram l WHERE l.lRTLifeSafety = :lRTLifeSafety"),
@@ -45,11 +45,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "LossReductionProgram.findByLRTClass", query = "SELECT l FROM LossReductionProgram l WHERE l.lRTClass = :lRTClass"),
     @NamedQuery(name = "LossReductionProgram.findByLRTBox", query = "SELECT l FROM LossReductionProgram l WHERE l.lRTBox = :lRTBox"),
     @NamedQuery(name = "LossReductionProgram.findByLRTKnoxBox", query = "SELECT l FROM LossReductionProgram l WHERE l.lRTKnoxBox = :lRTKnoxBox"),
-    @NamedQuery(name = "LossReductionProgram.findByLRTKnoxBoxLocation", query = "SELECT l FROM LossReductionProgram l WHERE l.lRTKnoxBoxLocation = :lRTKnoxBoxLocation"),
-    @NamedQuery(name = "LossReductionProgram.findByLRNNoCorrections", query = "SELECT l FROM LossReductionProgram l WHERE l.lRNNoCorrections = :lRNNoCorrections"),
-    @NamedQuery(name = "LossReductionProgram.findByLRNAllCorrectionsDone", query = "SELECT l FROM LossReductionProgram l WHERE l.lRNAllCorrectionsDone = :lRNAllCorrectionsDone"),
+    @NamedQuery(name = "LossReductionProgram.findByLRTKnoxBoxlocation", query = "SELECT l FROM LossReductionProgram l WHERE l.lRTKnoxBoxlocation = :lRTKnoxBoxlocation"),
     @NamedQuery(name = "LossReductionProgram.findByLRNLastInspection", query = "SELECT l FROM LossReductionProgram l WHERE l.lRNLastInspection = :lRNLastInspection"),
-    @NamedQuery(name = "LossReductionProgram.findByLRNPreventionFollowUp", query = "SELECT l FROM LossReductionProgram l WHERE l.lRNPreventionFollowUp = :lRNPreventionFollowUp")})
+    @NamedQuery(name = "LossReductionProgram.findByLRNPreventionFollowup", query = "SELECT l FROM LossReductionProgram l WHERE l.lRNPreventionFollowup = :lRNPreventionFollowup")})
 public class LossReductionProgram implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
@@ -63,8 +61,8 @@ public class LossReductionProgram implements Serializable {
     private String lRTComplaint;
     @Column(name = "LRT_SemiAnnual")
     private String lRTSemiAnnual;
-    @Column(name = "LRT_Explosive")
-    private String lRTExplosive;
+    @Column(name = "LRT_Explosives")
+    private String lRTExplosives;
     @Column(name = "LRT_Annual")
     private String lRTAnnual;
     @Column(name = "LRT_UST")
@@ -87,18 +85,14 @@ public class LossReductionProgram implements Serializable {
     private String lRTBox;
     @Column(name = "LRT_Knox_Box")
     private String lRTKnoxBox;
-    @Column(name = "LRT_Knox_Box_Location")
-    private String lRTKnoxBoxLocation;
-    @Column(name = "LRN_No_Corrections")
-    private String lRNNoCorrections;
-    @Column(name = "LRN_All_Corrections_Done")
-    private String lRNAllCorrectionsDone;
+    @Column(name = "LRT_Knox_Box_location")
+    private String lRTKnoxBoxlocation;
     @Column(name = "LRN_Last_Inspection")
     @Temporal(TemporalType.DATE)
     private Date lRNLastInspection;
     @Basic(optional = false)
-    @Column(name = "LRN_Prevention_Follow_Up")
-    private String lRNPreventionFollowUp;
+    @Column(name = "LRN_Prevention_Follow_up")
+    private String lRNPreventionFollowup;
     @JoinColumn(name = "Property_ID", referencedColumnName = "Property_ID", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Property property;
@@ -125,10 +119,10 @@ public class LossReductionProgram implements Serializable {
         this.lossReductionProgramPK = lossReductionProgramPK;
     }
 
-    public LossReductionProgram(LossReductionProgramPK lossReductionProgramPK, int pFANumber, String lRNPreventionFollowUp) {
+    public LossReductionProgram(LossReductionProgramPK lossReductionProgramPK, int pFANumber, String lRNPreventionFollowup) {
         this.lossReductionProgramPK = lossReductionProgramPK;
         this.pFANumber = pFANumber;
-        this.lRNPreventionFollowUp = lRNPreventionFollowUp;
+        this.lRNPreventionFollowup = lRNPreventionFollowup;
     }
 
     public LossReductionProgram(int propertyID, Date lRdt) {
@@ -175,12 +169,12 @@ public class LossReductionProgram implements Serializable {
         this.lRTSemiAnnual = lRTSemiAnnual;
     }
 
-    public String getLRTExplosive() {
-        return lRTExplosive;
+    public String getLRTExplosives() {
+        return lRTExplosives;
     }
 
-    public void setLRTExplosive(String lRTExplosive) {
-        this.lRTExplosive = lRTExplosive;
+    public void setLRTExplosives(String lRTExplosives) {
+        this.lRTExplosives = lRTExplosives;
     }
 
     public String getLRTAnnual() {
@@ -271,28 +265,12 @@ public class LossReductionProgram implements Serializable {
         this.lRTKnoxBox = lRTKnoxBox;
     }
 
-    public String getLRTKnoxBoxLocation() {
-        return lRTKnoxBoxLocation;
+    public String getLRTKnoxBoxlocation() {
+        return lRTKnoxBoxlocation;
     }
 
-    public void setLRTKnoxBoxLocation(String lRTKnoxBoxLocation) {
-        this.lRTKnoxBoxLocation = lRTKnoxBoxLocation;
-    }
-
-    public String getLRNNoCorrections() {
-        return lRNNoCorrections;
-    }
-
-    public void setLRNNoCorrections(String lRNNoCorrections) {
-        this.lRNNoCorrections = lRNNoCorrections;
-    }
-
-    public String getLRNAllCorrectionsDone() {
-        return lRNAllCorrectionsDone;
-    }
-
-    public void setLRNAllCorrectionsDone(String lRNAllCorrectionsDone) {
-        this.lRNAllCorrectionsDone = lRNAllCorrectionsDone;
+    public void setLRTKnoxBoxlocation(String lRTKnoxBoxlocation) {
+        this.lRTKnoxBoxlocation = lRTKnoxBoxlocation;
     }
 
     public Date getLRNLastInspection() {
@@ -303,12 +281,12 @@ public class LossReductionProgram implements Serializable {
         this.lRNLastInspection = lRNLastInspection;
     }
 
-    public String getLRNPreventionFollowUp() {
-        return lRNPreventionFollowUp;
+    public String getLRNPreventionFollowup() {
+        return lRNPreventionFollowup;
     }
 
-    public void setLRNPreventionFollowUp(String lRNPreventionFollowUp) {
-        this.lRNPreventionFollowUp = lRNPreventionFollowUp;
+    public void setLRNPreventionFollowup(String lRNPreventionFollowup) {
+        this.lRNPreventionFollowup = lRNPreventionFollowup;
     }
 
     public Property getProperty() {

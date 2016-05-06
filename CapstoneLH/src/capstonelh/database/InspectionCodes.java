@@ -1,7 +1,7 @@
 /**
  * InspectionCodes: 
  * @author Lucas Hall
- * @version May 3, 2016
+ * @version May 6, 2016
  */
 
 package capstonelh.database;
@@ -39,6 +39,8 @@ public class InspectionCodes implements Serializable {
     private String description;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "inspectionCode")
     private List<LossReductionProgram> lossReductionProgramList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "inspectionCode")
+    private List<InspectionReport> inspectionReportList;
 
     public InspectionCodes() {
     }
@@ -75,6 +77,15 @@ public class InspectionCodes implements Serializable {
 
     public void setLossReductionProgramList(List<LossReductionProgram> lossReductionProgramList) {
         this.lossReductionProgramList = lossReductionProgramList;
+    }
+
+    @XmlTransient
+    public List<InspectionReport> getInspectionReportList() {
+        return inspectionReportList;
+    }
+
+    public void setInspectionReportList(List<InspectionReport> inspectionReportList) {
+        this.inspectionReportList = inspectionReportList;
     }
 
     @Override

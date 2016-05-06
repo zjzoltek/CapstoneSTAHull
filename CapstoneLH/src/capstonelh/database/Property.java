@@ -1,7 +1,7 @@
 /**
  * Property: 
  * @author Lucas Hall
- * @version May 3, 2016
+ * @version May 6, 2016
  */
 
 package capstonelh.database;
@@ -14,9 +14,12 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -33,19 +36,13 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Property.findBySNumber", query = "SELECT p FROM Property p WHERE p.propertyPK.sNumber = :sNumber"),
     @NamedQuery(name = "Property.findByStreet", query = "SELECT p FROM Property p WHERE p.propertyPK.street = :street"),
     @NamedQuery(name = "Property.findBySuiteUnit", query = "SELECT p FROM Property p WHERE p.propertyPK.suiteUnit = :suiteUnit"),
-    @NamedQuery(name = "Property.findByZipcode", query = "SELECT p FROM Property p WHERE p.zipcode = :zipcode"),
     @NamedQuery(name = "Property.findByLastInspofIR", query = "SELECT p FROM Property p WHERE p.lastInspofIR = :lastInspofIR"),
     @NamedQuery(name = "Property.findByLastInspofLR", query = "SELECT p FROM Property p WHERE p.lastInspofLR = :lastInspofLR"),
-    @NamedQuery(name = "Property.findByPropertyID", query = "SELECT p FROM Property p WHERE p.propertyID = :propertyID"),
-    @NamedQuery(name = "Property.findByAdminCode", query = "SELECT p FROM Property p WHERE p.adminCode = :adminCode"),
-    @NamedQuery(name = "Property.findByOccupancyCode", query = "SELECT p FROM Property p WHERE p.occupancyCode = :occupancyCode")})
+    @NamedQuery(name = "Property.findByPropertyID", query = "SELECT p FROM Property p WHERE p.propertyID = :propertyID")})
 public class Property implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected PropertyPK propertyPK;
-    @Basic(optional = false)
-    @Column(name = "Zipcode")
-    private int zipcode;
     @Basic(optional = false)
     @Column(name = "Last_Insp_of_IR")
     @Temporal(TemporalType.DATE)
@@ -56,14 +53,26 @@ public class Property implements Serializable {
     private Date lastInspofLR;
     @Column(name = "Property_ID")
     private Integer propertyID;
-    @Basic(optional = false)
-    @Column(name = "Admin_Code")
-    private String adminCode;
-    @Basic(optional = false)
-    @Column(name = "Occupancy_Code")
-    private String occupancyCode;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "property")
+    private Business business;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "property")
     private List<LossReductionProgram> lossReductionProgramList;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "property")
+    private Contact contact;
+    @JoinColumn(name = "Zipcode", referencedColumnName = "Zipcode")
+    @ManyToOne(optional = false)
+    private ZipcodeTable zipcode;
+    @JoinColumn(name = "Admin_Code", referencedColumnName = "Admin_Code")
+    @ManyToOne(optional = false)
+    private AdministrationCodes adminCode;
+    @JoinColumn(name = "Occupancy_Code", referencedColumnName = "Occupancy_Code")
+    @ManyToOne(optional = false)
+    private OccupancyClassCodes occupancyCode;
+    @JoinColumn(name = "Quadrant", referencedColumnName = "Quadrant", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Quadrant quadrant1;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "property")
+    private List<InspectionReport> inspectionReportList;
 
     public Property() {
     }
@@ -72,13 +81,10 @@ public class Property implements Serializable {
         this.propertyPK = propertyPK;
     }
 
-    public Property(PropertyPK propertyPK, int zipcode, Date lastInspofIR, Date lastInspofLR, String adminCode, String occupancyCode) {
+    public Property(PropertyPK propertyPK, Date lastInspofIR, Date lastInspofLR) {
         this.propertyPK = propertyPK;
-        this.zipcode = zipcode;
         this.lastInspofIR = lastInspofIR;
         this.lastInspofLR = lastInspofLR;
-        this.adminCode = adminCode;
-        this.occupancyCode = occupancyCode;
     }
 
     public Property(String quadrant, int sNumber, String street, int suiteUnit) {
@@ -91,14 +97,6 @@ public class Property implements Serializable {
 
     public void setPropertyPK(PropertyPK propertyPK) {
         this.propertyPK = propertyPK;
-    }
-
-    public int getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(int zipcode) {
-        this.zipcode = zipcode;
     }
 
     public Date getLastInspofIR() {
@@ -125,20 +123,12 @@ public class Property implements Serializable {
         this.propertyID = propertyID;
     }
 
-    public String getAdminCode() {
-        return adminCode;
+    public Business getBusiness() {
+        return business;
     }
 
-    public void setAdminCode(String adminCode) {
-        this.adminCode = adminCode;
-    }
-
-    public String getOccupancyCode() {
-        return occupancyCode;
-    }
-
-    public void setOccupancyCode(String occupancyCode) {
-        this.occupancyCode = occupancyCode;
+    public void setBusiness(Business business) {
+        this.business = business;
     }
 
     @XmlTransient
@@ -148,6 +138,55 @@ public class Property implements Serializable {
 
     public void setLossReductionProgramList(List<LossReductionProgram> lossReductionProgramList) {
         this.lossReductionProgramList = lossReductionProgramList;
+    }
+
+    public Contact getContact() {
+        return contact;
+    }
+
+    public void setContact(Contact contact) {
+        this.contact = contact;
+    }
+
+    public ZipcodeTable getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(ZipcodeTable zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    public AdministrationCodes getAdminCode() {
+        return adminCode;
+    }
+
+    public void setAdminCode(AdministrationCodes adminCode) {
+        this.adminCode = adminCode;
+    }
+
+    public OccupancyClassCodes getOccupancyCode() {
+        return occupancyCode;
+    }
+
+    public void setOccupancyCode(OccupancyClassCodes occupancyCode) {
+        this.occupancyCode = occupancyCode;
+    }
+
+    public Quadrant getQuadrant1() {
+        return quadrant1;
+    }
+
+    public void setQuadrant1(Quadrant quadrant1) {
+        this.quadrant1 = quadrant1;
+    }
+
+    @XmlTransient
+    public List<InspectionReport> getInspectionReportList() {
+        return inspectionReportList;
+    }
+
+    public void setInspectionReportList(List<InspectionReport> inspectionReportList) {
+        this.inspectionReportList = inspectionReportList;
     }
 
     @Override
