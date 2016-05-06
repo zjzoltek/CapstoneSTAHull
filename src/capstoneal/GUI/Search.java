@@ -21,15 +21,18 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.plaf.basic.BasicBorders;
+import javax.swing.border.BevelBorder;
 
 
-public class Search extends JPanel implements LinkerModel{
+public class Search extends JPanel{
     
-    private final SearchBox searchBar = new SearchBox("Address Search . . .", 30, 5, false); // create search field
+    private final SearchBox addressSearchBar = new SearchBox("Address Search . . .", 30, 5, false); // create search field
+    private final SearchBox numberSearchBar = new SearchBox("PFA # Search . . .", 30, 5, true);
+    
     private final JButton searchButton = new JButton("GO"); // creates search button
     
     private final GridBagConstraints constraints = new GridBagConstraints();
@@ -38,20 +41,23 @@ public class Search extends JPanel implements LinkerModel{
         setBackground(CapstoneConstants.PANEL_BG);
         setLayout(new GridBagLayout()); // sets the layout to GridLayout
         constraints.insets = new Insets(5,5,5,5);
-        searchButton.setBorder(new BasicBorders.ButtonBorder(Color.BLACK,
-        Color.GRAY, Color.WHITE, Color.WHITE.darker()));
+        searchButton.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
         searchButton.setContentAreaFilled(false);
         searchButton.setPreferredSize(new Dimension(Util.getScreenDimension().width / 8, 30));
         searchButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.weightx = 1;
         constraints.weighty = 0;
-        searchBar.setFocusLostColor(Color.WHITE);
-        addComponent(searchBar, 0, 4, 1, 1); // add search bar text field
+        
+        addressSearchBar.setFocusLostColor(Color.WHITE);
+        numberSearchBar.setFocusLostColor(Color.WHITE);
+        
+        addComponent(addressSearchBar, 0, 4, 1, 1); // add search bar text field
+        addComponent(numberSearchBar, 1, 4, 1, 1);
         constraints.weightx = 0;
         constraints.weighty = 0;
         constraints.fill = GridBagConstraints.NONE;
-        addComponent(searchButton, 1, 4, 1, 1); // add search button
+        addComponent(searchButton, 2, 4, 1, 1); // add search button
         
     } // end of constructor
     
@@ -65,9 +71,12 @@ public class Search extends JPanel implements LinkerModel{
         add(component);
     }
         
-    @Override
-    public JTextField getLinkingComponent() {
-        return searchBar;
+    public JTextField getAddressSearch() {
+        return addressSearchBar;
+    }
+    
+    public JTextField getNumberSearch(){
+        return numberSearchBar;
     }
     
     public JButton getGoButton(){

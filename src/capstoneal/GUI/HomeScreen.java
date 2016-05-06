@@ -64,6 +64,8 @@ public class HomeScreen extends JPanel implements NavigationModel{
            Linker.getLinker().createView("new" + String.valueOf(Math.random() * Math.random()));
         });
         
+        newAddressButton.setToolTipText("Create new form");
+        
         toolBar.add(backButton);
         toolBar.add(newAddressButton);
         toolBar.add(forwardButton);

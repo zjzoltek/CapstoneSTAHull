@@ -83,7 +83,7 @@ public class EmergencyContact extends JPanel{
         numberField.setName("17");
         pfa.setName("18");
         
-        district = new JComboBox();
+        district = new JComboBox(new Object[]{1,2,3,4,5,6,7});
         
         district.setName("19");
         ((AbstractDocument)pfa.getDocument()).setDocumentFilter(new NumberDocument());

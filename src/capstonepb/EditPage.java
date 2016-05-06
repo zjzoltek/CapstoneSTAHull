@@ -48,6 +48,9 @@ public class EditPage extends JPanel
         saveButton = new EditPageButtons(EditPageButtons.ButtonType.SAVE,
             NavigationButton.getButtonWidth(width), NavigationButton.getButtonHeight(height));
         
+        cancelButton.setToolTipText("Cancel");
+        andButton.setToolTipText("Save and Exit");
+        saveButton.setToolTipText("Save");
         
         init();
     }

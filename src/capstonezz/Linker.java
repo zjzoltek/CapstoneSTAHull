@@ -5,6 +5,7 @@ import capstonezz.GUI.NavigationButton;
 import capstonezz.GUI.SearchResultsPage;
 import java.awt.CardLayout;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Stack;
@@ -88,7 +89,12 @@ public class Linker {
        homescreen.getForwardButton().addActionListener
         (new ForwardButton());
 
-       homescreen.getSearch().getLinkingComponent().
+       homescreen.getSearch().getAddressSearch().
+               addActionListener((ActionEvent ae) -> {
+                   homescreen.getSearch().getGoButton().doClick();
+               });
+       
+       homescreen.getSearch().getNumberSearch().
                addActionListener((ActionEvent ae) -> {
                    homescreen.getSearch().getGoButton().doClick();
                });
@@ -96,7 +102,7 @@ public class Linker {
        homescreen.getSearch().getGoButton().
                addActionListener((ActionEvent ae) -> {
                    searchResultsPage.getSearchResultsGUI().getAddressBox()
-                           .setText(homescreen.getSearch().getLinkingComponent().getText());
+                           .setText(homescreen.getSearch().getAddressSearch().getText());
 
                });
 
@@ -106,8 +112,21 @@ public class Linker {
        homescreen.getSearch().getGoButton()
                .addActionListener((ActionEvent ae) -> {
                   searchResultsPage.getSearchResultsGUI().getAddressBox().setText(
-                          homescreen.getSearch().getLinkingComponent().getText());
-
+                          homescreen.getSearch().getAddressSearch().getText());
+                  
+                  searchResultsPage.getSearchResultsGUI().getNumberBox().setText(
+                          homescreen.getSearch().getNumberSearch().getText());
+                  
+                  searchResultsPage.getSearchResultsGUI().getAddressBox().setFont(
+                          searchResultsPage.getSearchResultsGUI().getAddressBox()
+                                  .getFont().deriveFont(Font.BOLD));
+                  
+                  searchResultsPage.getSearchResultsGUI().getNumberBox().setFont(
+                          searchResultsPage.getSearchResultsGUI().getNumberBox()
+                                  .getFont().deriveFont(Font.BOLD));
+                  
+                  searchResultsPage.getSearchResultsGUI().getAddressBox().requestFocus();
+                  
                   searchResultsPage.getSearchResultsGUI().getInitiateSearchButton().doClick();
                });
 
@@ -286,6 +305,14 @@ public class Linker {
     
     public JPanel getFrame(){
         return frame;
+    }
+    
+    public HomeScreen getHome(){
+        return homescreen;
+    }
+    
+    public SearchResultsPage getSearchResultsPage(){
+        return searchResultsPage;
     }
 
     public static void main(String[] args){

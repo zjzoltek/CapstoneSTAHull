@@ -29,7 +29,6 @@ public class InspectionReport extends JPanel{
     
     private final NumberedFieldArea nFA = new NumberedFieldArea();
     
-    
     private final CommentsInspection commentsInspection = new CommentsInspection();
     private final AllContact ac = new AllContact();
     private final EmergencyContact ec;

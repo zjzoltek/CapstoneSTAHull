@@ -64,7 +64,8 @@ public class ViewPage extends JPanel implements NavigationModel {
         editButton.setBorderPainted(true);
         editButton.setFocusPainted(true);
         editButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-
+        editButton.setToolTipText("Switch to edit mode");
+        
         homeButton.setBorderPainted(true);
         homeButton.setFocusPainted(true);
         homeButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

@@ -39,7 +39,7 @@ public class Home extends JButton {
         
         ImageIcon ico = new ImageIcon(homeImg);
         setIcon((Icon) ico);
-        
+        setToolTipText("Go Home");
          
     }
     
