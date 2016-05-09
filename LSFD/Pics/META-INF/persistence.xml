@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="LSFDPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>capstonezz.Database.EcRole</class>
+    <class>capstonezz.Database.PhoneType</class>
+    <class>capstonezz.Database.Permits</class>
+    <class>capstonezz.Database.Inspector</class>
+    <class>capstonezz.Database.InspectionReport</class>
+    <class>capstonezz.Database.Quadrant</class>
+    <class>capstonezz.Database.LossReductionProgram</class>
+    <class>capstonezz.Database.Signator</class>
+    <class>capstonezz.Database.Business</class>
+    <class>capstonezz.Database.ZipcodeTable</class>
+    <class>capstonezz.Database.TitlesTable</class>
+    <class>capstonezz.Database.AdministrationCodes</class>
+    <class>capstonezz.Database.OccupancyClassCodes</class>
+    <class>capstonezz.Database.InspectionCodes</class>
+    <class>capstonezz.Database.Contact</class>
+    <class>capstonezz.Database.Property</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/lsfd?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="yoast"/>
+    </properties>
+  </persistence-unit>
+</persistence>
