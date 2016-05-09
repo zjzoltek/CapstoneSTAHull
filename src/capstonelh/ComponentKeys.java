@@ -1,5 +1,8 @@
 /**
- * ComponentKeys: 
+ * ComponentKeys: An enum to translate between the string name of each component
+ * and the number given to the component using .setName().
+ * Anything beginning with LR corresponds to the loss reduction form, while the 
+ * others correspond to the Inspection Report.
  * @author Lucas Hall
  * @author Zachary Zoltek
  * @version Apr 26, 2016
@@ -9,6 +12,74 @@ package capstonelh;
 
 public enum ComponentKeys{
     
+    
+    //Basic Information
+    BUSINESS_NAME(0),
+    PHONE(1),
+    ADDRESS(2),
+    //Emergency Contact
+    NAME(10),
+    CONTACT(11),
+    TOP(12),
+    OCCUPANCY_CLASS(13),
+    HAZARD(14),
+    FIREALARM(15),
+    PANEL_PAD_LOCATION(16),
+    NUMBER(17),
+    PFA(18),
+    DISTRICT(19),
+    ACTIVE(20),
+    SYSNORMAL(21),
+    //SFLRTType
+    OCCUPANCY(30),
+    LIFE_SAFETY(31),
+    SPRINKLER(32),
+    COMPLAINT(33),
+    EXPLOSIVE_STORAGE(34),
+    HAZARDOUS_MATERIALS_PERMIT(35),
+    UST(36),
+    POST_INCIDENT(37),
+    OPEN_BURNING(38),
+    OTHER(39),
+    SEMI_ANNUAL(40),
+    ANNUAL(41),
+    //LRMisc
+    CLASS(51),
+    BOX(52),
+    LR_PFA(53),
+    KNOX_BOX(54),
+    LOCATION(55),
+    //LR Emergency Contact
+    LR_PHONE1(60),
+    LR_PHONE2(61),
+    LR_PHONE3(62),
+    LR_PHONE4(63),
+    LR_NAME1(64),
+    LR_NAME2(65),
+    LR_NAME3(66),
+    LR_NAME4(67),
+    //LR Notes
+    LR_NOTES_COMMENTAREA(70),
+    LR_NOTES_DATEFIELD(71),
+    LR_NOTES_INSPECTORFIELD(72),
+    LR_NOTES_SIGNATUREFIELD(73),
+    LR_NOTES_YESBUTTON(74),
+    LR_NOTE_NOBUTTON(75),
+    //LR Business
+    LR_BUSINESS_NAME(80),
+    LR_BUSINESS_ADDRESS(81),
+    LR_BUSINESS_SUITE(82),
+    LR_BUSINESS_TELEPHONE(83),
+    LR_BUSINESS_CITY(84),
+    LR_BUSINESS_STATE(85),
+    LR_BUSINESS_ZIP(86),
+    LR_BUSINESS_OWNER_NAME(87),
+    LR_BUSINESS_OWNER_ADDRESS(88),
+    LR_BUSINESS_OWNER_SUITE(89),
+    LR_BUSINESS_OWNER_TELEPHONE(90),
+    LR_BUSINESS_OWNER_CITY(91),
+    LR_BUSINESS_OWNER_STATE(92),
+    LR_BUSINESS_OWNER_ZIP(93),
     //Field One
     OBSTRUCTION(100),
     HARDWARE(101),
@@ -81,74 +152,7 @@ public enum ComponentKeys{
     PERMIT_ON_SITE(261),
     IMPACT_BOLLARDS(262),
     //Field Eighteen
-    OTHER_VIOLATIONS_NOTED(270),
-    //Basic Information
-    BUSINESS_NAME(0),
-    PHONE(1),
-    ADDRESS(2),
-    //Emergency Contact
-    NAME(10),
-    CONTACT(11),
-    TOP(12),
-    OCCUPANCY_CLASS(13),
-    HAZARD(14),
-    FIREALARM(15),
-    PANEL_PAD_LOCATION(16),
-    NUMBER(17),
-    PFA(18),
-    DISTRICT(19),
-    ACTIVE(20),
-    SYSNORMAL(21),
-    //SFLRTType
-    OCCUPANCY(30),
-    LIFE_SAFETY(31),
-    SPRINKLER(32),
-    COMPLAINT(33),
-    EXPLOSIVE_STORAGE(34),
-    HAZARDOUS_MATERIALS_PERMIT(35),
-    UST(36),
-    POST_INCIDENT(37),
-    OPEN_BURNING(38),
-    OTHER(39),
-    SEMI_ANNUAL(40),
-    ANNUAL(41),
-    //LRMisc
-    CLASS(51),
-    BOX(52),
-    LR_PFA(53),
-    KNOX_BOX(54),
-    LOCATION(55),
-    //LR Emergency Contact
-    LR_PHONE1(60),
-    LR_PHONE2(61),
-    LR_PHONE3(62),
-    LR_PHONE4(63),
-    LR_NAME1(64),
-    LR_NAME2(65),
-    LR_NAME3(66),
-    LR_NAME4(67),
-    //LR Notes
-    LR_NOTES_COMMENTAREA(70),
-    LR_NOTES_DATEFIELD(71),
-    LR_NOTES_INSPECTORFIELD(72),
-    LR_NOTES_SIGNATUREFIELD(73),
-    LR_NOTES_YESBUTTON(74),
-    LR_NOTE_NOBUTTON(75),
-    //LR Business
-    LR_BUSINESS_NAME(80),
-    LR_BUSINESS_ADDRESS(81),
-    LR_BUSINESS_SUITE(82),
-    LR_BUSINESS_TELEPHONE(83),
-    LR_BUSINESS_CITY(84),
-    LR_BUSINESS_STATE(85),
-    LR_BUSINESS_ZIP(86),
-    LR_BUSINESS_OWNER_NAME(87),
-    LR_BUSINESS_OWNER_ADDRESS(88),
-    LR_BUSINESS_OWNER_SUITE(89),
-    LR_BUSINESS_OWNER_TELEPHONE(90),
-    LR_BUSINESS_OWNER_CITY(91),
-    LR_BUSINESS_OWNER_STATE(92),
-    LR_BUSINESS_OWNER_ZIP(93);
+    OTHER_VIOLATIONS_NOTED(270);
     
     
     private final int value;

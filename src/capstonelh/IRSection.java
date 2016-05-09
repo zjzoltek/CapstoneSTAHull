@@ -1,5 +1,6 @@
 /**
- * NumberedField: 
+ * NumberedField: The numbered fields on the inspection report form. Each section
+ * is created uniquely based on the number passed into the constructor.
  * @author Lucas Hall
  * @version Apr 18, 2016
  */
@@ -20,13 +21,15 @@ import javax.swing.JPanel;
 
 
 public class IRSection extends JPanel{
+    
+    //Constructor creates the components that are the same for all sections and then
+    //passes control to another function to create the section specific components.
     public IRSection(int field)
     {
         super(new BorderLayout());
         //Constraints to be used
         GridBagConstraints c = new GridBagConstraints();
         c.anchor = GridBagConstraints.NORTH;
-        
        
         //Create title and set font and border
         JLabel title = new JLabel();
